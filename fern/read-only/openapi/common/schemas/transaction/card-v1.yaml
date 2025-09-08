@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Payroc API
   version: '1'
@@ -17,7 +17,7 @@ components:
       properties:
         type:
           type: string
-          description: Card brand that the card is linked to. For example, Visa.
+          description: Card brand of the card, for example, Visa. 
           example: Visa
         entryMethod:
           type: string
@@ -185,7 +185,7 @@ components:
       properties:
         type:
           type: string
-          description: Card brand, for example, Visa.
+          description: Card brand of the card, for example, Visa. 
         cardNumber:
           maxLength: 19
           minLength: 12
@@ -238,7 +238,7 @@ components:
           example: '1225'
         cardType:
           type: string
-          description: Card brand of the payment card, for example, Visa. 
+          description: Card brand of the card, for example, Visa.  
         currency:
           $ref: '../../../common/schemas/common/currency-v1.yaml#/components/schemas/currency'
         debit:
@@ -258,8 +258,7 @@ components:
           description: Indicates if the merchant can add a surcharge when the customer uses this card.
           example: true
         amount:
-          minimum: 0
-          exclusiveMinimum: true
+          exclusiveMinimum: 0
           type: integer
           format: int64
           description: |
@@ -267,10 +266,8 @@ components:
             **Note:** Our gateway returns the surcharge amount only if you include a transaction amount in the request.
           example: 87
         percentage:
+          exclusiveMinimum: 0
           maximum: 100
-          exclusiveMaximum: false
-          minimum: 0
-          exclusiveMinimum: true
           type: number
           format: double
           description: Surcharge rate that the merchant configures on their account.
