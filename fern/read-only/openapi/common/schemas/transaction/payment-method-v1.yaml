@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Payroc API
   version: '1'
@@ -30,12 +30,13 @@ components:
           enum:
             - checking
             - savings
+          example: checking
         serviceProvider:
           type: string
           description: |
             Provider of the digital wallet. Send one of the following values:
-            - `apple` - For more information about how to integrate with Apple Pay, go to [Apple Pay®](/guides/integrate/apple-pay).
-            - `google` - For more information about how to integrate with google Pay, go to [Google Pay®](/guides/integrate/google-pay).
+            - `apple` - For more information about how to integrate with Apple Pay, go to [Apple Pay®](https://docs.payroc.com/guides/integrate/apple-pay).
+            - `google` - For more information about how to integrate with google Pay, go to [Google Pay®](https://docs.payroc.com/guides/integrate/google-pay).
           enum:
           - apple
           - google
@@ -253,7 +254,7 @@ components:
           example: A1B2C3D4E5F67890ABCD1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF
         cardholderSignature:
           type: string
-          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](/knowledge/basic-concepts/signature-capture).
+          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](https://docs.payroc.com/knowledge/basic-concepts/signature-capture).
           example: a1b1c012345678a000b000c0012345d0e0f010g10061a031i001j071k0a1b0c1d0e1234567890120f1g0h1i0j1k0a1b0123451c012d0e1f0g1h0i1j123k1a1b1c1d1e1f1g123h1i1j1k1a1b1c1d1e1f1g123h123i1j123k12340a120a12345b012c0123012d0d1e0f1g0h1i123j123k10000
 
     iccCardDetails:
@@ -295,7 +296,7 @@ components:
           example: '4'
         cardholderSignature:
           type: string
-          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](/knowledge/basic-concepts/signature-capture).
+          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](https://docs.payroc.com/knowledge/basic-concepts/signature-capture).
           example: '012345678a000b000c0012345d0e0f010g10061a031i001j071k0a1b0c1d0e1234567890120f1g0h1i0j1k0a1b0123451c012d0e1f0g1h0i1j123k1a1b1c1d1e1f1g123h1i1j1k1a1b1c1d1e1f1g123h123i1j123k12340a120a12345b012c0123012d0d1e0f1g0h1i123j123k1a1b1c0000'
 
     keyedCardDetails:
@@ -332,7 +333,7 @@ components:
           example: Sarah Hazel Hopper
         cardholderSignature:
           type: string
-          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](/knowledge/basic-concepts/signature-capture).
+          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](https://docs.payroc.com/knowledge/basic-concepts/signature-capture).
           example: a1b1c012345678a000b000c0012345d0e0f010g10061a031i001j071k0a1b0c1d0e1234567890120f1g0h1i0j1k0a1b0123451c012d0e1f0g1h0i1j123k1a1b1c1d1e1f1g123h1i1j1k1a1b1c1d1e1f1g123h123i1j123k12340a120a12345b012c0123012d0d1e0f1g0h1i123j123k10000
         pinDetails:
           type: object
@@ -386,7 +387,7 @@ components:
           example: Sarah Hazel Hopper
         cardholderSignature:
           type: string
-          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](/knowledge/basic-concepts/signature-capture).
+          description: Cardholder's signature. For more information about how to format the signature, go to [How to send a signature to our gateway](https://docs.payroc.com/knowledge/basic-concepts/signature-capture).
           example: a1b1c012345678a000b000c0012345d0e0f010g10061a031i001j071k0a1b0c1d0e1234567890120f1g0h1i0j1k0a1b0123451c012d0e1f0g1h0i1j123k1a1b1c1d1e1f1g123h1i1j1k1a1b1c1d1e1f1g123h123i1j123k12340a120a12345b012c0123012d0d1e0f1g0h1i123j123k10000
         pinDetails:
           type: object
@@ -630,7 +631,10 @@ components:
       properties:
         type:
           type: string
-          description: Method that the terminal used to take the payment.
+          description: |
+            Indicates the type of bank account details the customer is using:  
+            - **ACH** - Customer's bank account is in the United States.  
+            - **PAD** - Customer's bank account is in Canada.  
           enum:
             - ach
           example: ach
@@ -672,7 +676,7 @@ components:
           type: string
           description: |
            Customer’s bank account number.  
-           **Note:** In responses, our gateway shows only the last four digits of the account number. For example, `*****5929`.
+           **Note:** In responses, our gateway shows only the last four digits of the account number, for example, `*****5929`.
           example: '1234567890'
         routingNumber:
           maxLength: 9
@@ -696,7 +700,10 @@ components:
       properties:
         type:
           type: string
-          description: Method that the terminal used to take the payment.
+          description: |
+            Indicates the type of bank account details the customer is using:  
+            - **ACH** - Customer's bank account is in the United States.  
+            - **PAD** - Customer's bank account is in Canada.  
           enum:
             - pad
           example: pad
@@ -704,7 +711,6 @@ components:
           type: string
           description: |
             Indicates the customer’s account type.  
-
             **Note:** For bank account details, send a value for accountType.
           enum:
             - checking
@@ -723,8 +729,7 @@ components:
           type: string
           description: |
            Customer's account number.  
-           
-           **Note:** In responses, our gateway shows only the last four digits of the account number. For example, `*****5929`.
+           **Note:** In responses, our gateway shows only the last four digits of the account number, for example, `*****5929`.
           example: '1234567890'
         transitNumber:
           maxLength: 5
