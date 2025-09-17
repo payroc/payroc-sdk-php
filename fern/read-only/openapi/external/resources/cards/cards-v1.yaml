@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: Transaction API
   version: '1'
@@ -20,9 +20,14 @@ paths:
     post:
       tags:
         - Cards
-      summary: Verify a card
+      summary: Verify card
       operationId: verifyCard
-      description: Verify that a card is valid. For banks that do not support verification, we charge a micro deposit that we void immediately.
+      description: |
+        Use this method to verify a customer’s card details.  
+
+        In the request, send the customer’s card details.  
+
+        In the response, our gateway indicates if the card details are valid and if you should use them in follow-on actions.  
       parameters:
         - $ref: ../../../common/parameters/idempotency-key-v1.yaml#/components/parameters/idempotencyKey
       requestBody:
@@ -128,7 +133,7 @@ paths:
 
         - **Card details** - Information about the card, for example, the issuing bank and the masked card number.  
 
-        - **Surcharging information** - If you apply a surcharge to transactions, our gateway checks that the card supports surcharging and returns information about the surcharge. For more information about surcharging, go to [Credit card surcharging](/knowledge/card-payments/credit-card-surcharging). 
+        - **Surcharging information** - If you apply a surcharge to transactions, our gateway checks that the card supports surcharging and returns information about the surcharge. For more information about surcharging, go to [Credit card surcharging](https://docs.payroc.com/knowledge/card-payments/credit-card-surcharging). 
       operationId: binLookup
       requestBody:
         content:
@@ -199,63 +204,35 @@ components:
             - $ref: '../../../common/schemas/transaction/payment-method-v1.yaml#/components/schemas/cardPayload'
     cardVerificationResult:
       required:
-        - card
+        #- card # Property does not exist
         - processingTerminalId
         - verified
       type: object
       properties:
-        processingTerminalId:
-          maxLength: 50
-          minLength: 4
-          type: string
-          description: Unique identifier that we assigned to the terminal.
-          example: '1234001'
         operator:
           maxLength: 50
           minLength: 0
           type: string
           description: Operator who requested to verify the card.
           example: Jane
+        processingTerminalId:
+          maxLength: 50
+          minLength: 4
+          type: string
+          description: Unique identifier that we assigned to the terminal.
+          example: '1234001'
+        card:
+          $ref: '../../../common/schemas/transaction/card-v1.yaml#/components/schemas/card'
         verified:
           type: boolean
           description: |
-            Indicates if we have verified the card details.
-            - `true` - The card details are valid.
-            - `false` - The card details are not valid.
+            Indicates if the card details are valid:  
+
+            - `true` - Card details are valid.
+            - `false` - Card details are not valid.
           example: true
-        dateTime:
-          type: string
-          format: date-time
-          description: Date and time that we processed the request. This format follows the ISO 8601 standard, for example, 2024-07-02T15:02:07+00:00. 
-          example: '2024-07-02T15:30:00Z'
-        responseCode:
-          type: string
-          description: |
-            Response from the processor.  
-            - `A` - The processor approved the transaction.  
-            - `D` - The processor declined the transaction.  
-            - `E` - The processor received the transaction but will process the transaction later.  
-            - `P` - The processor authorized a portion of the original amount of the transaction.  
-            - `R` - The issuer declined the transaction and indicated that the customer should contact their bank.  
-            - `C` - The issuer declined the transaction and indicated that the merchant should keep the card as it was reported lost or stolen.
-          enum:
-            - A
-            - D
-            - E
-            - P
-            - R
-            - C
-          example: A
-        responseMessage:
-          maxLength: 48
-          minLength: 1
-          type: string
-          description: 'Response description from the payment processor. For example, "Refer to Card Issuer".'
-          example: Refer to Card Issuer
-        processorResponseCode:
-          type: string
-          description: Response code from payment processor. This code is then mapped onto a `responseCode` enum.
-          example: A
+        transactionResult:
+          $ref: '../../../common/schemas/transaction/card-transaction-v1.yaml#/components/schemas/transactionResult'
     balanceInquiry:
       required:
         - card
@@ -345,8 +322,7 @@ components:
           description: Unique identifier that we assigned to the terminal.
           example: '1234001'
         amount:
-          minimum: 0
-          exclusiveMinimum: true
+          exclusiveMinimum: 0
           type: integer
           format: int64
           description: Transaction amount that you send to check the surcharge amount. The value is in the currency's lowest denomination, for example, cents. 

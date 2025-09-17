@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Payroc API
   version: '1'
@@ -24,10 +24,12 @@ components:
             - failure
             - inProgress
           example: completed
-          
         errorMessage:
           type: string
-          description: Description of the error that caused the instruction to fail.
+          description: | 
+            Description of the error that caused the instruction to fail.
+
+            **Note:** We return this field only if the status is `failure`.
         link:
           $ref: ../common/link/link-v1.yaml#/components/schemas/link
 
