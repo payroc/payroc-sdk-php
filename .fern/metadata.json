@@ -1,0 +1,19 @@
+{
+  "cliVersion": "3.0.3",
+  "generatorName": "fernapi/fern-php-sdk",
+  "generatorVersion": "1.25.1",
+  "generatorConfig": {
+    "composerJson": {
+      "require": {
+        "sentry/sentry": "^4.19"
+      },
+      "autoload": {
+        "files": [
+          "src/SentryIntegration.php"
+        ]
+      }
+    },
+    "custom-pager-classname": "PayrocPager",
+    "enable-wire-tests": true
+  }
+}

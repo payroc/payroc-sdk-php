@@ -1,0 +1,10 @@
+# Specify files that shouldn't be modified by Fern
+.gitignore
+README.md
+CONTRIBUTING.md
+LICENSE
+scripts
+src/Core/Pagination/CustomPager.php
+src/Core/Pagination/PayrocPager.php
+src/SentryIntegration.php
+tests/Integration/

@@ -1,0 +1,12 @@
+<?php
+
+namespace Payroc\Exceptions;
+
+use Exception;
+
+/**
+ * Base exception class for all exceptions thrown by the SDK.
+ */
+class PayrocException extends Exception
+{
+}
