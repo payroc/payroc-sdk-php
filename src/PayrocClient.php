@@ -141,8 +141,8 @@ class PayrocClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Payroc',
-            'X-Fern-SDK-Version' => '0.0.3697',
-            'User-Agent' => 'payroc/payroc-sdk-php/0.0.3697',
+            'X-Fern-SDK-Version' => '0.0.3767',
+            'User-Agent' => 'payroc/payroc-sdk-php/0.0.3767',
         ];
         if ($apiKey != null) {
             $defaultHeaders['x-api-key'] = $apiKey;

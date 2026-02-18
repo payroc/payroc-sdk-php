@@ -64,7 +64,7 @@ class AttachmentsClient
      * - **type** - Type of attachment that you want to upload.
      * - **description** - Short description of the attachment.
      *
-     * In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/get-attachment).
+     * In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/retrieve).
      *
      * @param string $processingAccountId Unique identifier that we assigned to the processing account.
      * @param UploadAttachment $request
@@ -143,7 +143,7 @@ class AttachmentsClient
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function getAttachment(string $attachmentId, ?array $options = null): Attachment
+    public function retrieve(string $attachmentId, ?array $options = null): Attachment
     {
         $options = array_merge($this->options, $options ?? []);
         try {

@@ -726,7 +726,7 @@ In the request, include the attachment that you want to upload and the following
 - **type** - Type of attachment that you want to upload.
 - **description** - Short description of the attachment.  
 
-In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/get-attachment).
+In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/retrieve).
 </dd>
 </dl>
 </dd>
@@ -785,7 +785,7 @@ $client->attachments->uploadToProcessingAccount(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;attachments-&gt;getAttachment($attachmentId) -> Attachment</code></summary>
+<details><summary><code>$client-&gt;attachments-&gt;retrieve($attachmentId) -> Attachment</code></summary>
 <dl>
 <dd>
 
@@ -816,7 +816,7 @@ Our gateway returns information about the attachment, including its upload statu
 <dd>
 
 ```php
-$client->attachments->getAttachment(
+$client->attachments->retrieve(
     '12876',
 );
 ```
