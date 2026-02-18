@@ -11,7 +11,19 @@ use Payroc\Core\Json\JsonProperty;
 class PricingAgreementUs50Processor extends JsonSerializableType
 {
     /**
-     * @var ?PricingAgreementUs50ProcessorCard $card Object that contains information about card fees.
+     * Polymorphic object that contains fees for card transactions.
+     *
+     * The value of the planType field determines which variant you should use:
+     * -	`interchangePlus` - Interchange + pricing
+     * -	`interchangePlusPlus` - Interchange pricing with three tiers
+     * -	`tiered3` - Three-tiered pricing
+     * -	`tiered4` - Four-tiered pricing
+     * -	`tiered6` - Six-tiered pricing
+     * -	`flatRate` - Flat rate pricing
+     * -	`consumerChoice` - ConsumerChoice
+     * -	`rewardPayChoice` - RewardPayChoice
+     *
+     * @var ?PricingAgreementUs50ProcessorCard $card
      */
     #[JsonProperty('card')]
     public ?PricingAgreementUs50ProcessorCard $card;

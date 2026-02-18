@@ -89,7 +89,7 @@ class CardPaymentsRefundsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'card_payments.refunds.list_.0';
-        $this->client->cardPayments->refunds->list(
+        $response = $this->client->cardPayments->refunds->list(
             new ListRefundsRequest([
                 'processingTerminalId' => '1234001',
                 'orderId' => 'OrderRef6543',
@@ -112,6 +112,9 @@ class CardPaymentsRefundsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

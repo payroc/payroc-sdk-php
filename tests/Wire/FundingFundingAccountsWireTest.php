@@ -24,7 +24,7 @@ class FundingFundingAccountsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'funding.funding_accounts.list_.0';
-        $this->client->funding->fundingAccounts->list(
+        $response = $this->client->funding->fundingAccounts->list(
             new ListFundingAccountsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -36,6 +36,9 @@ class FundingFundingAccountsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -74,11 +77,14 @@ class FundingFundingAccountsWireTest extends WireMockTestCase
             1,
             new UpdateFundingAccountsRequest([
                 'body' => new FundingAccount([
-                    'type' => FundingAccountType::Checking->value,
+                    'type' => FundingAccountType::Savings->value,
                     'use' => FundingAccountUse::Credit->value,
-                    'nameOnAccount' => 'Jane Doe',
+                    'nameOnAccount' => 'Fred Nerk',
                     'paymentMethods' => [
                         PaymentMethodsItem::ach(new PaymentMethodAch([])),
+                    ],
+                    'metadata' => [
+                        'responsiblePerson' => 'Jane Doe',
                     ],
                 ]),
             ]),

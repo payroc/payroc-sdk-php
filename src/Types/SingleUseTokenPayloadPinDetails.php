@@ -6,6 +6,13 @@ use Payroc\Core\Json\JsonSerializableType;
 use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
+/**
+ * Polymorphic object that contains information about a customer's PIN.
+ *
+ * The value of the dataFormat parameter determines which variant you should use:
+ * - `dukpt` - PIN information is encrypted.
+ * - `raw` - PIN information is unencrypted.
+ */
 class SingleUseTokenPayloadPinDetails extends JsonSerializableType
 {
     /**

@@ -32,7 +32,7 @@ class MerchantPlatformProcessingAccountsItem extends JsonSerializableType
      * - `cancelled` - Merchant withdrew the application for the processing account.
      * - `failed` - An error occurred while we were setting up the processing account.
      *
-     * **Note**: You can subscribe to our processingAccount.status.changed event to get notifications when we change the status of a processing account. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).
+     * **Note**: You can subscribe to our processingAccount.status.changed event to get notifications when we change the status of a processing account. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).
      *
      * @var ?value-of<MerchantPlatformProcessingAccountsItemStatus> $status
      */

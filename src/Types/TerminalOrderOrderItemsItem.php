@@ -16,7 +16,7 @@ class TerminalOrderOrderItemsItem extends JsonSerializableType
      * @param array{
      *   type: value-of<OrderItemType>,
      *   solutionTemplateId: string,
-     *   solutionQuantity?: ?float,
+     *   solutionQuantity?: ?int,
      *   deviceCondition?: ?value-of<OrderItemDeviceCondition>,
      *   solutionSetup?: ?OrderItemSolutionSetup,
      *   links?: ?array<ProcessingTerminalSummary>,

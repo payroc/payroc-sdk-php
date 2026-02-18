@@ -7,7 +7,7 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains the host processor configuration.
+ * Polymorphic object that contains the host processor configuration.
  */
 class HostConfigurationConfiguration extends JsonSerializableType
 {

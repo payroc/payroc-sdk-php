@@ -104,18 +104,18 @@ class PaymentsClient
      * **Payment methods**
      *
      * - **Cards** - Credit, debit, and EBT
-     * - **Digital wallets** - [Apple Pay®](https://docs.payroc.com/guides/integrate/apple-pay) and [Google Pay®](https://docs.payroc.com/guides/integrate/google-pay)
+     * - **Digital wallets** - [Apple Pay®](https://docs.payroc.com/guides/take-payments/apple-pay) and [Google Pay®](https://docs.payroc.com/guides/take-payments/google-pay)
      * - **Tokens** - Secure tokens and single-use tokens
      *
      * **Features**
      *
      * Our Create Payment method also supports the following features:
      *
-     * - [Repeat payments](https://docs.payroc.com/guides/integrate/repeat-payments/use-your-own-software) - Run multiple payments as part of a payment schedule that you manage with your own software.
+     * - [Repeat payments](https://docs.payroc.com/guides/take-payments/repeat-payments/use-your-own-software) - Run multiple payments as part of a payment schedule that you manage with your own software.
      * - **Offline sales** - Run a sale or a pre-authorization if the terminal loses its connection to our gateway.
-     * - [Tokenization](https://docs.payroc.com/guides/integrate/save-payment-details) - Save card details to use in future transactions.
-     * - [3-D Secure](https://docs.payroc.com/guides/integrate/3-d-secure) - Verify the identity of the cardholder.
-     * - [Custom fields](https://docs.payroc.com/guides/integrate/add-custom-fields) - Add your own data to a payment.
+     * - [Tokenization](https://docs.payroc.com/guides/take-payments/save-payment-details) - Save card details to use in future transactions.
+     * - [3-D Secure](https://docs.payroc.com/guides/take-payments/3-d-secure) - Verify the identity of the cardholder.
+     * - [Custom fields](https://docs.payroc.com/guides/take-payments/add-custom-fields) - Add your own data to a payment.
      * - **Tips** - Add tips to the card payment.
      * - **Taxes** - Add local taxes to the card payment.
      * - **Surcharging** - Add a surcharge to the card payment.

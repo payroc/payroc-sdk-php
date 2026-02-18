@@ -7,7 +7,7 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains the single-use token.
+ * Polymorphic object that contains information about the single-use token.
  */
 class AccountUpdate extends JsonSerializableType
 {

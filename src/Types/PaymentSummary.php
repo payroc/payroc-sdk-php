@@ -57,10 +57,10 @@ class PaymentSummary extends JsonSerializableType
     public string $responseCode;
 
     /**
-     * @var string $responseMessage Response description from the processor.
+     * @var ?string $responseMessage Response description from the processor.
      */
     #[JsonProperty('responseMessage')]
-    public string $responseMessage;
+    public ?string $responseMessage;
 
     /**
      * @var ?Link $link
@@ -76,7 +76,7 @@ class PaymentSummary extends JsonSerializableType
      *   amount: int,
      *   status: value-of<PaymentSummaryStatus>,
      *   responseCode: value-of<PaymentSummaryResponseCode>,
-     *   responseMessage: string,
+     *   responseMessage?: ?string,
      *   link?: ?Link,
      * } $values
      */
@@ -89,7 +89,7 @@ class PaymentSummary extends JsonSerializableType
         $this->amount = $values['amount'];
         $this->status = $values['status'];
         $this->responseCode = $values['responseCode'];
-        $this->responseMessage = $values['responseMessage'];
+        $this->responseMessage = $values['responseMessage'] ?? null;
         $this->link = $values['link'] ?? null;
     }
 

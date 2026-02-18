@@ -65,7 +65,7 @@ class BoardingMerchantPlatformsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'boarding.merchant_platforms.list_.0';
-        $this->client->boarding->merchantPlatforms->list(
+        $response = $this->client->boarding->merchantPlatforms->list(
             new ListMerchantPlatformsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -77,6 +77,9 @@ class BoardingMerchantPlatformsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -325,7 +328,7 @@ class BoardingMerchantPlatformsWireTest extends WireMockTestCase
      */
     public function testListProcessingAccounts(): void {
         $testId = 'boarding.merchant_platforms.list_processing_accounts.0';
-        $this->client->boarding->merchantPlatforms->listProcessingAccounts(
+        $response = $this->client->boarding->merchantPlatforms->listProcessingAccounts(
             '12345',
             new ListBoardingMerchantPlatformProcessingAccountsRequest([
                 'before' => '2571',
@@ -339,6 +342,9 @@ class BoardingMerchantPlatformsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

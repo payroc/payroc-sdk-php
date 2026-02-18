@@ -25,7 +25,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListBatches(): void {
         $testId = 'reporting.settlement.list_batches.0';
-        $this->client->reporting->settlement->listBatches(
+        $response = $this->client->reporting->settlement->listBatches(
             new ListReportingSettlementBatchesRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -39,6 +39,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -73,7 +76,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListTransactions(): void {
         $testId = 'reporting.settlement.list_transactions.0';
-        $this->client->reporting->settlement->listTransactions(
+        $response = $this->client->reporting->settlement->listTransactions(
             new ListReportingSettlementTransactionsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -89,6 +92,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -123,7 +129,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListAuthorizations(): void {
         $testId = 'reporting.settlement.list_authorizations.0';
-        $this->client->reporting->settlement->listAuthorizations(
+        $response = $this->client->reporting->settlement->listAuthorizations(
             new ListReportingSettlementAuthorizationsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -138,6 +144,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -172,7 +181,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListDisputes(): void {
         $testId = 'reporting.settlement.list_disputes.0';
-        $this->client->reporting->settlement->listDisputes(
+        $response = $this->client->reporting->settlement->listDisputes(
             new ListReportingSettlementDisputesRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -186,6 +195,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -220,7 +232,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListAchDeposits(): void {
         $testId = 'reporting.settlement.list_ach_deposits.0';
-        $this->client->reporting->settlement->listAchDeposits(
+        $response = $this->client->reporting->settlement->listAchDeposits(
             new ListReportingSettlementAchDepositsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -234,6 +246,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -268,7 +283,7 @@ class ReportingSettlementWireTest extends WireMockTestCase
      */
     public function testListAchDepositFees(): void {
         $testId = 'reporting.settlement.list_ach_deposit_fees.0';
-        $this->client->reporting->settlement->listAchDepositFees(
+        $response = $this->client->reporting->settlement->listAchDepositFees(
             new ListReportingSettlementAchDepositFeesRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -283,6 +298,9 @@ class ReportingSettlementWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

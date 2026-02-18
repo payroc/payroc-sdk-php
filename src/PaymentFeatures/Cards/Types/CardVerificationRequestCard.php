@@ -8,7 +8,7 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains information about the card.
+ * Polymorphic object that contains payment details.
  */
 class CardVerificationRequestCard extends JsonSerializableType
 {

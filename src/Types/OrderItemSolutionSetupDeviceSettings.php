@@ -11,10 +11,10 @@ use Payroc\Core\Json\JsonProperty;
 class OrderItemSolutionSetupDeviceSettings extends JsonSerializableType
 {
     /**
-     * @var ?float $numberOfMobileUsers Number of users that we need to set up for mobile solutions.
+     * @var ?int $numberOfMobileUsers Number of users that we need to set up for mobile solutions.
      */
     #[JsonProperty('numberOfMobileUsers')]
-    public ?float $numberOfMobileUsers;
+    public ?int $numberOfMobileUsers;
 
     /**
      * @var ?value-of<OrderItemSolutionSetupDeviceSettingsCommunicationType> $communicationType Method of connection between a terminal or a peripheral device and the host.
@@ -24,7 +24,7 @@ class OrderItemSolutionSetupDeviceSettings extends JsonSerializableType
 
     /**
      * @param array{
-     *   numberOfMobileUsers?: ?float,
+     *   numberOfMobileUsers?: ?int,
      *   communicationType?: ?value-of<OrderItemSolutionSetupDeviceSettingsCommunicationType>,
      * } $values
      */

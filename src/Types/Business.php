@@ -36,13 +36,23 @@ class Business extends JsonSerializableType
     public ?string $countryOfOperation;
 
     /**
-     * @var array<LegalAddress> $addresses Object that contains the addresses for the business.
+     * @var array<LegalAddress> $addresses Array of polymorphic objects that contain address information for the business.
      */
     #[JsonProperty('addresses'), ArrayType([LegalAddress::class])]
     public array $addresses;
 
     /**
-     * @var array<ContactMethod> $contactMethods Array of contactMethod objects. One contact method must be an email address.
+     * Array of polymorphic objects, which contain contact information.
+     *
+     * **Note:** You must provide an email address.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number
+     *
+     * @var array<ContactMethod> $contactMethods
      */
     #[JsonProperty('contactMethods'), ArrayType([ContactMethod::class])]
     public array $contactMethods;

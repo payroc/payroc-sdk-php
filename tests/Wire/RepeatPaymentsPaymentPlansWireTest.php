@@ -32,7 +32,7 @@ class RepeatPaymentsPaymentPlansWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'repeat_payments.payment_plans.list_.0';
-        $this->client->repeatPayments->paymentPlans->list(
+        $response = $this->client->repeatPayments->paymentPlans->list(
             '1234001',
             new ListPaymentPlansRequest([
                 'before' => '2571',
@@ -45,6 +45,9 @@ class RepeatPaymentsPaymentPlansWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

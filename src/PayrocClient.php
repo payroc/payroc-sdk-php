@@ -5,6 +5,7 @@ namespace Payroc;
 use Payroc\PaymentLinks\PaymentLinksClient;
 use Payroc\HostedFields\HostedFieldsClient;
 use Payroc\ApplePaySessions\ApplePaySessionsClient;
+use Payroc\Attachments\AttachmentsClient;
 use Payroc\Auth\AuthClient;
 use Payroc\Funding\FundingClient;
 use Payroc\BankTransferPayments\BankTransferPaymentsClient;
@@ -36,6 +37,11 @@ class PayrocClient
      * @var ApplePaySessionsClient $applePaySessions
      */
     public ApplePaySessionsClient $applePaySessions;
+
+    /**
+     * @var AttachmentsClient $attachments
+     */
+    public AttachmentsClient $attachments;
 
     /**
      * @var AuthClient $auth
@@ -135,8 +141,8 @@ class PayrocClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Payroc',
-            'X-Fern-SDK-Version' => '0.0.1438',
-            'User-Agent' => 'payroc/payroc/0.0.1438',
+            'X-Fern-SDK-Version' => '0.0.3697',
+            'User-Agent' => 'payroc/payroc-sdk-php/0.0.3697',
         ];
         if ($apiKey != null) {
             $defaultHeaders['x-api-key'] = $apiKey;
@@ -168,6 +174,7 @@ class PayrocClient
         $this->paymentLinks = new PaymentLinksClient($this->client, $this->environment);
         $this->hostedFields = new HostedFieldsClient($this->client, $this->environment);
         $this->applePaySessions = new ApplePaySessionsClient($this->client, $this->environment);
+        $this->attachments = new AttachmentsClient($this->client, $this->environment);
         $this->auth = new AuthClient($this->client, $this->environment);
         $this->funding = new FundingClient($this->client, $this->environment);
         $this->bankTransferPayments = new BankTransferPaymentsClient($this->client, $this->environment);

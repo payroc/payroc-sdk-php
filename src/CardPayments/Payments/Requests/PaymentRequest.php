@@ -59,13 +59,27 @@ class PaymentRequest extends JsonSerializableType
     public ?IpAddress $ipAddress;
 
     /**
-     * @var PaymentRequestPaymentMethod $paymentMethod Object that contains information about the customer's payment details.
+     * Polymorphic object that contains payment details.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`card` - Payment card details
+     * -	`secureToken` - Secure token details
+     * -	`digitalWallet` - Digital wallet details
+     * -	`singleUseToken` - Single-use token details
+     *
+     * @var PaymentRequestPaymentMethod $paymentMethod
      */
     #[JsonProperty('paymentMethod')]
     public PaymentRequestPaymentMethod $paymentMethod;
 
     /**
-     * @var ?PaymentRequestThreeDSecure $threeDSecure Object that contains information for an authentication check on the customer's payment details using the 3-D Secure protocol.
+     * Polymorphic object that contains authentication information from 3-D Secure.
+     *
+     * The value of the serviceProvider parameter determines which variant you should use:
+     * -	`gateway` - Use our gateway to run a 3-D Secure check.
+     * -	`thirdParty` - Use a third party to run a 3-D Secure check.
+     *
+     * @var ?PaymentRequestThreeDSecure $threeDSecure
      */
     #[JsonProperty('threeDSecure')]
     public ?PaymentRequestThreeDSecure $threeDSecure;

@@ -136,7 +136,7 @@ class BoardingProcessingAccountsWireTest extends WireMockTestCase
      */
     public function testListOwners(): void {
         $testId = 'boarding.processing_accounts.list_owners.0';
-        $this->client->boarding->processingAccounts->listOwners(
+        $response = $this->client->boarding->processingAccounts->listOwners(
             '38765',
             new ListProcessingAccountOwnersRequest([
                 'before' => '2571',
@@ -149,6 +149,9 @@ class BoardingProcessingAccountsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -300,7 +303,7 @@ class BoardingProcessingAccountsWireTest extends WireMockTestCase
      */
     public function testListProcessingTerminals(): void {
         $testId = 'boarding.processing_accounts.list_processing_terminals.0';
-        $this->client->boarding->processingAccounts->listProcessingTerminals(
+        $response = $this->client->boarding->processingAccounts->listProcessingTerminals(
             '38765',
             new ListProcessingTerminalsProcessingAccountsRequest([
                 'before' => '2571',
@@ -313,6 +316,9 @@ class BoardingProcessingAccountsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

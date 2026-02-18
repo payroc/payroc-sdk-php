@@ -12,10 +12,16 @@ use Payroc\Core\Types\Union;
 class ProcessingTerminalFeatures extends JsonSerializableType
 {
     /**
+     * Polymorphic object that indicates if the terminal accepts tips.
+     *
+     * The value of the enabled field determines which variant you should use:
+     * -	`true` - Terminal allows tips.
+     * -	`false` - Terminal doesn't allow tips.
+     *
      * @var (
      *    TipProcessingEnabled
      *   |TipProcessingDisabled
-     * )|null $tips Object that contains the tip settings for the processing terminal.
+     * )|null $tips
      */
     #[JsonProperty('tips'), Union(TipProcessingEnabled::class, TipProcessingDisabled::class, 'null')]
     public TipProcessingEnabled|TipProcessingDisabled|null $tips;
@@ -27,10 +33,16 @@ class ProcessingTerminalFeatures extends JsonSerializableType
     public ProcessingTerminalFeaturesEnhancedProcessing $enhancedProcessing;
 
     /**
+     * Polymorphic object that indicates if the terminal accepts EBT transactions.
+     *
+     * The value of the enabled field determines which variant you should use:
+     * -	`true` - Terminal allows EBT transactions.
+     * -	`false` - Terminal doesn't allow EBT transactions.
+     *
      * @var (
      *    EbtEnabled
      *   |EbtDisabled
-     * ) $ebt Object that contains details about EBT transactions.
+     * ) $ebt
      */
     #[JsonProperty('ebt'), Union(EbtEnabled::class, EbtDisabled::class)]
     public EbtEnabled|EbtDisabled $ebt;
@@ -42,7 +54,7 @@ class ProcessingTerminalFeatures extends JsonSerializableType
     public bool $pinDebitCashback;
 
     /**
-     * @var ?bool $recurringPayments Indicates if the terminal can run repeat payments. For more information about repeat payments, go to [Payment Plans](https://docs.payroc.com/guides/integrate/repeat-payments).
+     * @var ?bool $recurringPayments Indicates if the terminal can run repeat payments. For more information about repeat payments, go to [Payment Plans](https://docs.payroc.com/guides/take-payments/repeat-payments).
      */
     #[JsonProperty('recurringPayments')]
     public ?bool $recurringPayments;

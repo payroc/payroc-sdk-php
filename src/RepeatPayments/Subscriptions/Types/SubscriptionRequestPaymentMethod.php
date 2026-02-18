@@ -8,7 +8,7 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains information about the customer's payment details.
+ * Polymorphic object that contains information about the secure token.
  */
 class SubscriptionRequestPaymentMethod extends JsonSerializableType
 {

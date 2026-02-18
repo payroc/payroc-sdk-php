@@ -136,7 +136,15 @@ class ProcessingAccountsClient
     }
 
     /**
-     * Retrieve a list of funding accounts associated with a processing account.
+     * Use this method to return a list of funding accounts linked to a processing acccount.
+     *
+     * To retrieve a list of funding accounts for a processing account, you need the processingAccountId. Our gateway returned the processingAccountId in the response of the [Create Merchant Platform](https://docs.payroc.com/api/schema/boarding/merchant-platforms/create) method or the [Create Proccessing Account](https://docs.payroc.com/api/schema/boarding/merchant-platforms/create-processing-account) method.
+     *
+     * Our gateway returns information about the following for each funding account in the list:
+     * - Account information, including the name on the account and payment methods.
+     * - Status, including whether we have approved or rejected the account.
+     *
+     * For each funding account, we also return its fundingAccountId, which you can use to perform follow-on actions.
      *
      * @param string $processingAccountId Unique identifier that we assigned to the processing account.
      * @param ?array{
@@ -521,7 +529,7 @@ class ProcessingAccountsClient
      *
      * In the response, our gateway returns information about the terminal order including its status and terminalOrderId that you can use to [retrieve the terminal order](https://docs.payroc.com/api/schema/boarding/terminal-orders/retrieve).
      *
-     * **Note**: You can subscribe to the terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).
+     * **Note**: You can subscribe to the terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).
      *
      * @param string $processingAccountId Unique identifier that we assigned to the processing account.
      * @param CreateTerminalOrder $request

@@ -35,7 +35,13 @@ class BalanceInquiry extends JsonSerializableType
     public ?Customer $customer;
 
     /**
-     * @var BalanceInquiryCard $card Object that contains information about the card.
+     * Polymorphic object that contains payment details.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`card` - Payment card details
+     * -	`singleUseToken` - Single-use token details
+     *
+     * @var BalanceInquiryCard $card
      */
     #[JsonProperty('card')]
     public BalanceInquiryCard $card;

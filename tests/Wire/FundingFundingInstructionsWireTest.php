@@ -8,6 +8,11 @@ use Payroc\Funding\FundingInstructions\Requests\ListFundingInstructionsRequest;
 use DateTime;
 use Payroc\Funding\FundingInstructions\Requests\CreateFundingInstructionsRequest;
 use Payroc\Types\Instruction;
+use Payroc\Types\InstructionMerchantsItem;
+use Payroc\Types\InstructionMerchantsItemRecipientsItem;
+use Payroc\Types\InstructionMerchantsItemRecipientsItemPaymentMethod;
+use Payroc\Types\InstructionMerchantsItemRecipientsItemAmount;
+use Payroc\Types\InstructionMerchantsItemRecipientsItemAmountCurrency;
 use Payroc\Funding\FundingInstructions\Requests\UpdateFundingInstructionsRequest;
 use Payroc\Environments;
 
@@ -22,7 +27,7 @@ class FundingFundingInstructionsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'funding.funding_instructions.list_.0';
-        $this->client->funding->fundingInstructions->list(
+        $response = $this->client->funding->fundingInstructions->list(
             new ListFundingInstructionsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -36,6 +41,9 @@ class FundingFundingInstructionsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -52,7 +60,29 @@ class FundingFundingInstructionsWireTest extends WireMockTestCase
         $this->client->funding->fundingInstructions->create(
             new CreateFundingInstructionsRequest([
                 'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
-                'body' => new Instruction([]),
+                'body' => new Instruction([
+                    'merchants' => [
+                        new InstructionMerchantsItem([
+                            'merchantId' => '4525644354',
+                            'recipients' => [
+                                new InstructionMerchantsItemRecipientsItem([
+                                    'fundingAccountId' => 123,
+                                    'paymentMethod' => InstructionMerchantsItemRecipientsItemPaymentMethod::Ach->value,
+                                    'amount' => new InstructionMerchantsItemRecipientsItemAmount([
+                                        'value' => 120000,
+                                        'currency' => InstructionMerchantsItemRecipientsItemAmountCurrency::Usd->value,
+                                    ]),
+                                    'metadata' => [
+                                        'yourCustomField' => 'abc123',
+                                    ],
+                                ]),
+                            ],
+                        ]),
+                    ],
+                    'metadata' => [
+                        'yourCustomField' => 'abc123',
+                    ],
+                ]),
             ]),
             [
                 'headers' => [
@@ -97,7 +127,29 @@ class FundingFundingInstructionsWireTest extends WireMockTestCase
         $this->client->funding->fundingInstructions->update(
             1,
             new UpdateFundingInstructionsRequest([
-                'body' => new Instruction([]),
+                'body' => new Instruction([
+                    'merchants' => [
+                        new InstructionMerchantsItem([
+                            'merchantId' => '9876543219',
+                            'recipients' => [
+                                new InstructionMerchantsItemRecipientsItem([
+                                    'fundingAccountId' => 124,
+                                    'paymentMethod' => InstructionMerchantsItemRecipientsItemPaymentMethod::Ach->value,
+                                    'amount' => new InstructionMerchantsItemRecipientsItemAmount([
+                                        'value' => 69950,
+                                        'currency' => InstructionMerchantsItemRecipientsItemAmountCurrency::Usd->value,
+                                    ]),
+                                    'metadata' => [
+                                        'supplier' => 'IT Support Services',
+                                    ],
+                                ]),
+                            ],
+                        ]),
+                    ],
+                    'metadata' => [
+                        'instructionCreatedBy' => 'Jane Doe',
+                    ],
+                ]),
             ]),
             [
                 'headers' => [

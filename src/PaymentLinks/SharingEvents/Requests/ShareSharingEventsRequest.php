@@ -13,7 +13,7 @@ class ShareSharingEventsRequest extends JsonSerializableType
     public string $idempotencyKey;
 
     /**
-     * @var PaymentLinkEmailShareEvent $body
+     * @var PaymentLinkEmailShareEvent $body Polymorphic object that contains information about how to share a payment link.
      */
     public PaymentLinkEmailShareEvent $body;
 

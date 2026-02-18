@@ -11,10 +11,10 @@ use Payroc\Core\Json\JsonProperty;
 class InstructionMerchantsItemRecipientsItemAmount extends JsonSerializableType
 {
     /**
-     * @var float $value Amount of funds in the currency's lowest denomination, for example, cents.
+     * @var int $value Amount of funds in the currency's lowest denomination, for example, cents.
      */
     #[JsonProperty('value')]
-    public float $value;
+    public int $value;
 
     /**
      * @var ?value-of<InstructionMerchantsItemRecipientsItemAmountCurrency> $currency Currency of the value parameter.
@@ -24,7 +24,7 @@ class InstructionMerchantsItemRecipientsItemAmount extends JsonSerializableType
 
     /**
      * @param array{
-     *   value: float,
+     *   value: int,
      *   currency?: ?value-of<InstructionMerchantsItemRecipientsItemAmountCurrency>,
      * } $values
      */

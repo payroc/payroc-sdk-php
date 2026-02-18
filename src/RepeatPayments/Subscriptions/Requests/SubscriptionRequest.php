@@ -32,7 +32,7 @@ class SubscriptionRequest extends JsonSerializableType
     public string $paymentPlanId;
 
     /**
-     * @var SubscriptionRequestPaymentMethod $paymentMethod Object that contains information about the customer's payment details.
+     * @var SubscriptionRequestPaymentMethod $paymentMethod Polymorphic object that contains information about the secure token.
      */
     #[JsonProperty('paymentMethod')]
     public SubscriptionRequestPaymentMethod $paymentMethod;

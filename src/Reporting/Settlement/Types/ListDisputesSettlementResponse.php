@@ -22,8 +22,8 @@ class ListDisputesSettlementResponse extends JsonSerializableType
     /**
      * @param array{
      *   data: array<Dispute>,
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

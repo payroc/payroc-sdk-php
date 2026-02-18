@@ -6,6 +6,9 @@ use Payroc\Core\Json\JsonSerializableType;
 use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
+/**
+ * Polymorphic object that contains information about the customer's PIN.
+ */
 class KeyedCardDetailsPinDetails extends JsonSerializableType
 {
     /**

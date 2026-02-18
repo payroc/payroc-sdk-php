@@ -53,8 +53,15 @@ class Owner extends JsonSerializableType
     public array $identifiers;
 
     /**
-     * Array of contactMethod objects.
+     * Array of polymorphic objects, which contain contact information.
+     *
      * **Note:** If you are adding information about an owner, you must provide at least an email address. If you are adding information about a contact, you must provide at least a contact number.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number
      *
      * @var array<ContactMethod> $contactMethods
      */

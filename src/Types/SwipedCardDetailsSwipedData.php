@@ -6,6 +6,13 @@ use Payroc\Core\Json\JsonSerializableType;
 use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
+/**
+ * Polymorphic object that contains payment card details that a device captured from the magnetic strip.
+ *
+ * The value of the dataFormat parameter determines which variant you should use:
+ * -	`encrypted` - Payment card details are encrypted.
+ * -	`plainText` - Payment card details are in plain text.
+ */
 class SwipedCardDetailsSwipedData extends JsonSerializableType
 {
     /**

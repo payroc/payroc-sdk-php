@@ -21,8 +21,8 @@ class ListFundingInstructionsResponse extends JsonSerializableType
     /**
      * @param array{
      *   data: array<ListFundingInstructionsResponseDataItem>,
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

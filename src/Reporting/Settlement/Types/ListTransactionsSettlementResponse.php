@@ -22,8 +22,8 @@ class ListTransactionsSettlementResponse extends JsonSerializableType
     /**
      * @param array{
      *   data: array<Transaction>,
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

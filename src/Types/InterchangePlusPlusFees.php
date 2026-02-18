@@ -17,7 +17,13 @@ class InterchangePlusPlusFees extends JsonSerializableType
     public QualRates $mastercardVisaDiscover;
 
     /**
-     * @var ?InterchangePlusPlusFeesAmex $amex Object that contains the fees for American Express transactions.
+     * Polymorphic object that contains fees for American Express transactions.
+     *
+     * The value of the type field determines which variant you should use:
+     * -	`optBlue` - Amex OptBlue pricing program.
+     * -	`direct` - Amex Direct pricing program.
+     *
+     * @var ?InterchangePlusPlusFeesAmex $amex
      */
     #[JsonProperty('amex')]
     public ?InterchangePlusPlusFeesAmex $amex;

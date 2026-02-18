@@ -1,0 +1,4 @@
+# Specify files that shouldn't be included in SDK previews
+/.git/**
+/.fern/**
+composer.json

@@ -27,7 +27,14 @@ class SingleUseTokenRequest extends JsonSerializableType
     public ?string $operator;
 
     /**
-     * @var SingleUseTokenRequestSource $source Object that contains information about the payment method to tokenize.
+     * Polymorphic object that contains the payment method to tokenize.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`ach` - Automated Clearing House (ACH) details
+     * -	`pad` - Pre-authorized debit (PAD) details
+     * -	`card` - Payment card details
+     *
+     * @var SingleUseTokenRequestSource $source
      */
     #[JsonProperty('source')]
     public SingleUseTokenRequestSource $source;

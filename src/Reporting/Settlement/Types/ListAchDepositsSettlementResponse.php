@@ -22,8 +22,8 @@ class ListAchDepositsSettlementResponse extends JsonSerializableType
     /**
      * @param array{
      *   data: array<AchDeposit>,
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

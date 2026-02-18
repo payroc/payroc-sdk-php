@@ -59,13 +59,21 @@ class FundingRecipient extends JsonSerializableType
     public string $doingBusinessAs;
 
     /**
-     * @var Address $address Address of the funding recipient.
+     * @var Address $address Polymorphic object that contains address information for a funding recipient.
      */
     #[JsonProperty('address')]
     public Address $address;
 
     /**
-     * @var array<ContactMethod> $contactMethods Array of contactMethod objects for the funding recipient.
+     * Array of polymorphic objects, which contain contact information.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number
+     *
+     * @var array<ContactMethod> $contactMethods
      */
     #[JsonProperty('contactMethods'), ArrayType([ContactMethod::class])]
     public array $contactMethods;

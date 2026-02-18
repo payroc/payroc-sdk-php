@@ -14,7 +14,7 @@ use Payroc\Core\Types\ArrayType;
 trait Links
 {
     /**
-     * @var ?array<ProcessingTerminalSummary> $links
+     * @var ?array<ProcessingTerminalSummary> $links Polymorphic object that contains information about the processing terminal that the order is linked to.
      */
     #[JsonProperty('links'), ArrayType([ProcessingTerminalSummary::class])]
     public ?array $links;

@@ -19,8 +19,8 @@ class PaginatedFundRecipients extends JsonSerializableType
 
     /**
      * @param array{
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      *   data?: ?array<FundingRecipient>,

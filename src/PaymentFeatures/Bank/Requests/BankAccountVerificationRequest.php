@@ -20,7 +20,13 @@ class BankAccountVerificationRequest extends JsonSerializableType
     public string $processingTerminalId;
 
     /**
-     * @var BankAccountVerificationRequestBankAccount $bankAccount Object that contains information about the bank account.
+     * Polymorphic object that contains bank account information.
+     *
+     * The value of the type field determines which variant you should use:
+     * -	`ach` - Automated Clearing House (ACH) details
+     * -	`pad` - Pre-authorized debit (PAD) details
+     *
+     * @var BankAccountVerificationRequestBankAccount $bankAccount
      */
     #[JsonProperty('bankAccount')]
     public BankAccountVerificationRequestBankAccount $bankAccount;

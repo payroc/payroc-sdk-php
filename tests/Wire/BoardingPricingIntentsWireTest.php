@@ -42,7 +42,7 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'boarding.pricing_intents.list_.0';
-        $this->client->boarding->pricingIntents->list(
+        $response = $this->client->boarding->pricingIntents->list(
             new ListPricingIntentsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -54,6 +54,9 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

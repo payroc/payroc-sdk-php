@@ -34,7 +34,7 @@ class RepeatPaymentsSubscriptionsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'repeat_payments.subscriptions.list_.0';
-        $this->client->repeatPayments->subscriptions->list(
+        $response = $this->client->repeatPayments->subscriptions->list(
             '1234001',
             new ListSubscriptionsRequest([
                 'customerName' => 'Sarah%20Hazel%20Hopper',
@@ -54,6 +54,9 @@ class RepeatPaymentsSubscriptionsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

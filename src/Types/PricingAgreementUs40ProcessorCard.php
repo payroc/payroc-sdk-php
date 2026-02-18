@@ -7,7 +7,18 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains the fees for card transactions.
+ * Polymorphic object that contains fees for card transactions.
+ *
+ * The value of the planType field determines which variant you should use:
+ * -	`interchangePlus` - Interchange + pricing
+ * -	`interchangePlusTiered3` - Interchange pricing with three tiers
+ * -	`tiered3` - Three-tiered pricing
+ * -	`tiered4` - Four-tiered pricing
+ * -	`tiered6` - Six-tiered pricing
+ * -	`flatRate` - Flat rate pricing
+ * -	`consumerChoice` - ConsumerChoice
+ * -	`rewardPay` - RewardPay
+ * -	`rewardPayChoice` - RewardPayChoice
  */
 class PricingAgreementUs40ProcessorCard extends JsonSerializableType
 {

@@ -7,7 +7,7 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains the fees for American Express transactions.
+ * Polymorphic object that contains fees for American Express transactions.
  */
 class FlatRateFeesAmex extends JsonSerializableType
 {

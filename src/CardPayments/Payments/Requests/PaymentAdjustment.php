@@ -21,7 +21,15 @@ class PaymentAdjustment extends JsonSerializableType
     public ?string $operator;
 
     /**
-     * @var array<PaymentAdjustmentAdjustmentsItem> $adjustments Array of objects that contain information about the adjustments to the payment.
+     * Array of polymorphic objects which contain information about adjustments to a payment.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`order` - Tip information.
+     * -	`status` - Status of the transaction.
+     * -	`customer` - Customer's contact information and shipping address.
+     * -	`signature` - Customer's signature.
+     *
+     * @var array<PaymentAdjustmentAdjustmentsItem> $adjustments
      */
     #[JsonProperty('adjustments'), ArrayType([PaymentAdjustmentAdjustmentsItem::class])]
     public array $adjustments;

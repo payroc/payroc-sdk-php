@@ -14,7 +14,13 @@ trait BreakdownRequest
     use BreakdownBase;
 
     /**
-     * @var ?array<Tax> $taxes List of taxes.
+     * Array of polymorphic tax objects, which contain information about a tax.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`amount` - Tax is a fixed amount.
+     * -	`rate` - Tax is a percentage.
+     *
+     * @var ?array<Tax> $taxes
      */
     #[JsonProperty('taxes'), ArrayType([Tax::class])]
     public ?array $taxes;

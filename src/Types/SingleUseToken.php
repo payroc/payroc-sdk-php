@@ -22,7 +22,7 @@ class SingleUseToken extends JsonSerializableType
     public ?string $operator;
 
     /**
-     * @var ?SingleUseTokenPaymentMethod $paymentMethod Object that contains information about the customer's payment details.
+     * @var ?SingleUseTokenPaymentMethod $paymentMethod Polymorphic object that contains payment card details.
      */
     #[JsonProperty('paymentMethod')]
     public ?SingleUseTokenPaymentMethod $paymentMethod;
@@ -43,7 +43,14 @@ class SingleUseToken extends JsonSerializableType
     public ?DateTime $expiresAt;
 
     /**
-     * @var SingleUseTokenSource $source Object that contains information about the payment method that we tokenized.
+     * Polymorphic object that contains the payment method that we tokenized.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`ach` - Automated Clearing House (ACH) details
+     * -	`pad` - Pre-authorized debit (PAD) details
+     * -	`card` - Payment card details
+     *
+     * @var SingleUseTokenSource $source
      */
     #[JsonProperty('source')]
     public SingleUseTokenSource $source;

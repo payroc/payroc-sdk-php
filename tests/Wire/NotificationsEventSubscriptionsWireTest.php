@@ -27,7 +27,7 @@ class NotificationsEventSubscriptionsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'notifications.event_subscriptions.list_.0';
-        $this->client->notifications->eventSubscriptions->list(
+        $response = $this->client->notifications->eventSubscriptions->list(
             new ListEventSubscriptionsRequest([
                 'status' => ListEventSubscriptionsRequestStatus::Registered->value,
                 'event' => 'processingAccount.status.changed',
@@ -38,6 +38,9 @@ class NotificationsEventSubscriptionsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

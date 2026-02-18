@@ -45,10 +45,10 @@ class ActivityRecord extends JsonSerializableType
     public string $description;
 
     /**
-     * @var float $amount Total amount that we removed or added to the merchant's funding balance. The value is in the currency’s lowest denomination, for example, cents.
+     * @var int $amount Total amount that we removed or added to the merchant's funding balance. The value is in the currency’s lowest denomination, for example, cents.
      */
     #[JsonProperty('amount')]
-    public float $amount;
+    public int $amount;
 
     /**
      * Indicates if we moved funds into or out of the funding balance. Our gateway returns one of the following values:
@@ -72,7 +72,7 @@ class ActivityRecord extends JsonSerializableType
      *   date: string,
      *   merchant: string,
      *   description: string,
-     *   amount: float,
+     *   amount: int,
      *   type: value-of<ActivityRecordType>,
      *   currency: string,
      *   recipient?: ?string,
