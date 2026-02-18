@@ -1,5 +1,5 @@
 {
-  "cliVersion": "3.78.0",
+  "cliVersion": "3.79.2",
   "generatorName": "fernapi/fern-php-sdk",
   "generatorVersion": "1.30.0",
   "generatorConfig": {
@@ -17,5 +17,5 @@
     "custom-pager-classname": "PayrocPager",
     "enable-wire-tests": true
   },
-  "sdkVersion": "0.0.3697"
+  "sdkVersion": "0.0.3767"
 }

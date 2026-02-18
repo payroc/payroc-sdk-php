@@ -47,13 +47,13 @@ class AttachmentsWireTest extends WireMockTestCase
 
     /**
      */
-    public function testGetAttachment(): void {
-        $testId = 'attachments.get_attachment.0';
-        $this->client->attachments->getAttachment(
+    public function testRetrieve(): void {
+        $testId = 'attachments.retrieve.0';
+        $this->client->attachments->retrieve(
             '12876',
             [
                 'headers' => [
-                    'X-Test-Id' => 'attachments.get_attachment.0',
+                    'X-Test-Id' => 'attachments.retrieve.0',
                 ],
             ],
         );
