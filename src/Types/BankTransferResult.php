@@ -26,32 +26,32 @@ class BankTransferResult extends JsonSerializableType
      * Amount of the transaction.
      * **Note:** The amount is negative for a refund.
      *
-     * @var ?float $authorizedAmount
+     * @var ?int $authorizedAmount
      */
     #[JsonProperty('authorizedAmount')]
-    public ?float $authorizedAmount;
+    public ?int $authorizedAmount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * Response from the processor.
      * - `A` - The processor approved the transaction.
      * - `D` - The processor declined the transaction.
      *
-     * @var ?string $responseCode
+     * @var string $responseCode
      */
     #[JsonProperty('responseCode')]
-    public ?string $responseCode;
+    public string $responseCode;
 
     /**
-     * @var string $responseMessage Description of the response from the processor.
+     * @var ?string $responseMessage Description of the response from the processor.
      */
     #[JsonProperty('responseMessage')]
-    public string $responseMessage;
+    public ?string $responseMessage;
 
     /**
      * @var ?string $processorResponseCode Original response code that the processor sent.
@@ -63,10 +63,10 @@ class BankTransferResult extends JsonSerializableType
      * @param array{
      *   type: value-of<BankTransferResultType>,
      *   status: value-of<BankTransferResultStatus>,
-     *   responseMessage: string,
-     *   authorizedAmount?: ?float,
-     *   currency?: ?value-of<Currency>,
-     *   responseCode?: ?string,
+     *   currency: value-of<Currency>,
+     *   responseCode: string,
+     *   authorizedAmount?: ?int,
+     *   responseMessage?: ?string,
      *   processorResponseCode?: ?string,
      * } $values
      */
@@ -76,9 +76,9 @@ class BankTransferResult extends JsonSerializableType
         $this->type = $values['type'];
         $this->status = $values['status'];
         $this->authorizedAmount = $values['authorizedAmount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
-        $this->responseCode = $values['responseCode'] ?? null;
-        $this->responseMessage = $values['responseMessage'];
+        $this->currency = $values['currency'];
+        $this->responseCode = $values['responseCode'];
+        $this->responseMessage = $values['responseMessage'] ?? null;
         $this->processorResponseCode = $values['processorResponseCode'] ?? null;
     }
 

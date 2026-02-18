@@ -9,7 +9,11 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains information about the customer's payment details.
+ * Polymorphic object that contains the customer's updated payment details.
+ *
+ * The value of the type parameter determines which variant you should use:
+ * -	`ach` - Automated Clearing House (ACH) details
+ * -	`secureToken` - Secure token details
  */
 class RepresentmentPaymentMethod extends JsonSerializableType
 {

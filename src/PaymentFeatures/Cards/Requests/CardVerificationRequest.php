@@ -33,7 +33,7 @@ class CardVerificationRequest extends JsonSerializableType
     public ?Customer $customer;
 
     /**
-     * @var CardVerificationRequestCard $card Object that contains information about the card.
+     * @var CardVerificationRequestCard $card Polymorphic object that contains payment details.
      */
     #[JsonProperty('card')]
     public CardVerificationRequestCard $card;

@@ -33,13 +33,19 @@ class ProcessingTerminal extends JsonSerializableType
     public ?string $program;
 
     /**
-     * @var ?PayrocGateway $gateway Object that contains the gateway settings for the solution.
+     * @var ?PayrocGateway $gateway Polymorphic object that contains the gateway settings for the solution.
      */
     #[JsonProperty('gateway')]
     public ?PayrocGateway $gateway;
 
     /**
-     * @var ProcessingTerminalBatchClosure $batchClosure Object that contains information about when and how the terminal closes the batch.
+     * Polymorphic object that contains information about when and how the terminal closes the batch.
+     *
+     * The value of the batchCloseType field determines which variant you should use:
+     * -	`automatic` - Terminal automatically closes the batch at a specific time each day.
+     * - `manual` - Merchant uses the terminal to manually close the batch.
+     *
+     * @var ProcessingTerminalBatchClosure $batchClosure
      */
     #[JsonProperty('batchClosure')]
     public ProcessingTerminalBatchClosure $batchClosure;

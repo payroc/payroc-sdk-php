@@ -42,7 +42,7 @@ class EventSubscription extends JsonSerializableType
     public array $eventTypes;
 
     /**
-     * @var array<Notification> $notifications Array of notifications objects. Each object contains information about how we contact you when an event occurs.
+     * @var array<Notification> $notifications Array of polymorphic notification objects that contain information about how we contact you when an event occurs.
      */
     #[JsonProperty('notifications'), ArrayType([Notification::class])]
     public array $notifications;

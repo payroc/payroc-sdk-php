@@ -38,7 +38,7 @@ class BankTransferPaymentsPaymentsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'bank_transfer_payments.payments.list_.0';
-        $this->client->bankTransferPayments->payments->list(
+        $response = $this->client->bankTransferPayments->payments->list(
             new ListPaymentsRequest([
                 'processingTerminalId' => '1234001',
                 'orderId' => 'OrderRef6543',
@@ -59,6 +59,9 @@ class BankTransferPaymentsPaymentsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

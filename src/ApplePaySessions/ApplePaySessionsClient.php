@@ -55,7 +55,7 @@ class ApplePaySessionsClient
      *
      * In the response, we return the startSessionObject that you send to Apple when you retrieve the cardholder's encrypted payment details.
      *
-     * **Note:** For more information about how to integrate with Apple Pay, go to [Apple Pay](https://docs.payroc.com/guides/integrate/apple-pay).
+     * **Note:** For more information about how to integrate with Apple Pay, go to [Apple Pay](https://docs.payroc.com/guides/take-payments/apple-pay).
      *
      * @param string $processingTerminalId Unique identifier that we assigned to the terminal.
      * @param ApplePaySessions $request

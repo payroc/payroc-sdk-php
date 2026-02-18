@@ -367,7 +367,7 @@ class SecureTokensClient
     /**
      * Use this method to update a secure token if you have a single-use token from Hosted Fields.
      *
-     * **Note:** If you don't have a single-use token, you can update saved payment details with our [Update Secure Token](https://docs.payroc.com/api/resources#updateSecureToken) method. For more information about our two options to update a secure token, go to [Update saved payment details](https://docs.payroc.com/guides/integrate/update-saved-payment-details).
+     * **Note:** If you don't have a single-use token, you can update saved payment details with our [Update Secure Token](https://docs.payroc.com/api/resources#updateSecureToken) method. For more information about our two options to update a secure token, go to [Update saved payment details](https://docs.payroc.com/guides/take-payments/update-saved-payment-details).
      *
      * @param string $processingTerminalId Unique identifier that we assigned to the terminal.
      * @param string $secureTokenId Unique identifier that the merchant assigned to the secure token.

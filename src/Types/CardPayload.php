@@ -21,7 +21,15 @@ class CardPayload extends JsonSerializableType
     public ?string $accountType;
 
     /**
-     * @var CardPayloadCardDetails $cardDetails Object that contains the details of the payment card.
+     * Polymorphic object that contains payment card information.
+     *
+     * The value of the entryMethod parameter determines which variant you should use:
+     * - `raw` - Unencrypted payment data directly from the device.
+     * - `icc` - Payment data that the device captured from the chip.
+     * - `keyed` - Payment data that the merchant entered manually.
+     * - `swiped` - Payment data that the device captured from the magnetic strip.
+     *
+     * @var CardPayloadCardDetails $cardDetails
      */
     #[JsonProperty('cardDetails')]
     public CardPayloadCardDetails $cardDetails;

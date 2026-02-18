@@ -23,16 +23,16 @@ class MerchantBalance extends JsonSerializableType
     public ?int $funds;
 
     /**
-     * @var ?float $pending Amount of the funding balance that we have not yet sent to funding accounts. The value is in the currency's lowest denomination, for example, cents.
+     * @var ?int $pending Amount of the funding balance that we have not yet sent to funding accounts. The value is in the currency's lowest denomination, for example, cents.
      */
     #[JsonProperty('pending')]
-    public ?float $pending;
+    public ?int $pending;
 
     /**
-     * @var ?float $available Amount of the funding balance that you can use in funding instructions. The value is in the currency's lowest denomination, for example, cents.
+     * @var ?int $available Amount of the funding balance that you can use in funding instructions. The value is in the currency's lowest denomination, for example, cents.
      */
     #[JsonProperty('available')]
-    public ?float $available;
+    public ?int $available;
 
     /**
      * @var ?string $currency Currency of the funding balance. We return a value of `USD`.
@@ -44,8 +44,8 @@ class MerchantBalance extends JsonSerializableType
      * @param array{
      *   merchantId?: ?string,
      *   funds?: ?int,
-     *   pending?: ?float,
-     *   available?: ?float,
+     *   pending?: ?int,
+     *   available?: ?int,
      *   currency?: ?string,
      * } $values
      */

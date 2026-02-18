@@ -34,7 +34,7 @@ class PaymentLinksWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'payment_links.list_.0';
-        $this->client->paymentLinks->list(
+        $response = $this->client->paymentLinks->list(
             '1234001',
             new ListPaymentLinksRequest([
                 'merchantReference' => 'LinkRef6543',
@@ -55,6 +55,9 @@ class PaymentLinksWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

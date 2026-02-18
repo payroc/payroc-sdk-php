@@ -10,7 +10,7 @@ use Payroc\Core\Json\JsonProperty;
 /**
  * @property value-of<OrderItemType> $type
  * @property string $solutionTemplateId
- * @property ?float $solutionQuantity
+ * @property ?int $solutionQuantity
  * @property ?value-of<OrderItemDeviceCondition> $deviceCondition
  * @property ?OrderItemSolutionSetup $solutionSetup
  */
@@ -57,10 +57,10 @@ trait OrderItem
     public string $solutionTemplateId;
 
     /**
-     * @var ?float $solutionQuantity Quantity of the solution.
+     * @var ?int $solutionQuantity Quantity of the solution.
      */
     #[JsonProperty('solutionQuantity')]
-    public ?float $solutionQuantity;
+    public ?int $solutionQuantity;
 
     /**
      * @var ?value-of<OrderItemDeviceCondition> $deviceCondition Indicates if the order contains a new item or a refurbished item.

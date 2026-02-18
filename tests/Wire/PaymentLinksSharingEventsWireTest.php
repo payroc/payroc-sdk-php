@@ -22,7 +22,7 @@ class PaymentLinksSharingEventsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'payment_links.sharing_events.list_.0';
-        $this->client->paymentLinks->sharingEvents->list(
+        $response = $this->client->paymentLinks->sharingEvents->list(
             'JZURRJBUPS',
             new ListSharingEventsRequest([
                 'recipientName' => 'Sarah Hazel Hopper',
@@ -37,6 +37,9 @@ class PaymentLinksSharingEventsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

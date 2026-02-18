@@ -11,6 +11,13 @@ use Payroc\Core\Json\JsonProperty;
 class KeyedCardDetails extends JsonSerializableType
 {
     /**
+     * Polymorphic object that contains payment card details that the merchant manually entered into the device.
+     *
+     * The value of the dataFormat parameter determines which variant you should use:
+     * -	`fullyEncrypted` - Some payment card details are encrypted.
+     * -	`partiallyEncrypted` - Payment card details are in plain text.
+     * -	`plainText` - All payment card details are encrypted.
+     *
      * @var KeyedCardDetailsKeyedData $keyedData
      */
     #[JsonProperty('keyedData')]
@@ -29,7 +36,7 @@ class KeyedCardDetails extends JsonSerializableType
     public ?string $cardholderSignature;
 
     /**
-     * @var ?KeyedCardDetailsPinDetails $pinDetails
+     * @var ?KeyedCardDetailsPinDetails $pinDetails Polymorphic object that contains information about the customer's PIN.
      */
     #[JsonProperty('pinDetails')]
     public ?KeyedCardDetailsPinDetails $pinDetails;

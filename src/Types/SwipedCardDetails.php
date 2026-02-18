@@ -20,6 +20,12 @@ class SwipedCardDetails extends JsonSerializableType
     public ?string $downgradeTo;
 
     /**
+     * Polymorphic object that contains payment card details that a device captured from the magnetic strip.
+     *
+     * The value of the dataFormat parameter determines which variant you should use:
+     * -	`encrypted` - Payment card details are encrypted.
+     * -	`plainText` - Payment card details are in plain text.
+     *
      * @var SwipedCardDetailsSwipedData $swipedData
      */
     #[JsonProperty('swipedData')]
@@ -38,7 +44,7 @@ class SwipedCardDetails extends JsonSerializableType
     public ?string $cardholderSignature;
 
     /**
-     * @var ?SwipedCardDetailsPinDetails $pinDetails
+     * @var ?SwipedCardDetailsPinDetails $pinDetails Polymorphic object that contains information about the customer's PIN.
      */
     #[JsonProperty('pinDetails')]
     public ?SwipedCardDetailsPinDetails $pinDetails;

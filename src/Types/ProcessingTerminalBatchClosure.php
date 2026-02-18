@@ -7,7 +7,11 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains information about when and how the terminal closes the batch.
+ * Polymorphic object that contains information about when and how the terminal closes the batch.
+ *
+ * The value of the batchCloseType field determines which variant you should use:
+ * -	`automatic` - Terminal automatically closes the batch at a specific time each day.
+ * - `manual` - Merchant uses the terminal to manually close the batch.
  */
 class ProcessingTerminalBatchClosure extends JsonSerializableType
 {

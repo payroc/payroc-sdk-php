@@ -19,7 +19,7 @@ class LineItemRequest extends JsonSerializableType
 
     /**
      * @param array{
-     *   unitPrice: float,
+     *   unitPrice: int,
      *   quantity: float,
      *   commodityCode?: ?string,
      *   productCode?: ?string,

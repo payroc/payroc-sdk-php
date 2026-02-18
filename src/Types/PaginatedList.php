@@ -12,20 +12,20 @@ use Payroc\Core\Types\ArrayType;
 class PaginatedList extends JsonSerializableType
 {
     /**
-     * @var ?float $limit Maximum number of results that we return for each page.
+     * @var ?int $limit Maximum number of results that we return for each page.
      */
     #[JsonProperty('limit')]
-    public ?float $limit;
+    public ?int $limit;
 
     /**
      * Number of results we returned on this page.
      *
      * **Note:** This might not be the total number of results that match your query.
      *
-     * @var ?float $count
+     * @var ?int $count
      */
     #[JsonProperty('count')]
-    public ?float $count;
+    public ?int $count;
 
     /**
      * @var ?bool $hasMore Indicates whether there is another page of results available.
@@ -41,8 +41,8 @@ class PaginatedList extends JsonSerializableType
 
     /**
      * @param array{
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

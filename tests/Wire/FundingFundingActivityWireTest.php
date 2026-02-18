@@ -46,7 +46,7 @@ class FundingFundingActivityWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'funding.funding_activity.list_.0';
-        $this->client->funding->fundingActivity->list(
+        $response = $this->client->funding->fundingActivity->list(
             new ListFundingActivityRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -61,6 +61,9 @@ class FundingFundingActivityWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

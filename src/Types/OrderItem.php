@@ -48,10 +48,10 @@ class OrderItem extends JsonSerializableType
     public string $solutionTemplateId;
 
     /**
-     * @var ?float $solutionQuantity Quantity of the solution.
+     * @var ?int $solutionQuantity Quantity of the solution.
      */
     #[JsonProperty('solutionQuantity')]
-    public ?float $solutionQuantity;
+    public ?int $solutionQuantity;
 
     /**
      * @var ?value-of<OrderItemDeviceCondition> $deviceCondition Indicates if the order contains a new item or a refurbished item.
@@ -69,7 +69,7 @@ class OrderItem extends JsonSerializableType
      * @param array{
      *   type: value-of<OrderItemType>,
      *   solutionTemplateId: string,
-     *   solutionQuantity?: ?float,
+     *   solutionQuantity?: ?int,
      *   deviceCondition?: ?value-of<OrderItemDeviceCondition>,
      *   solutionSetup?: ?OrderItemSolutionSetup,
      * } $values

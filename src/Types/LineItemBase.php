@@ -35,10 +35,10 @@ class LineItemBase extends JsonSerializableType
     public ?string $unitOfMeasure;
 
     /**
-     * @var float $unitPrice Price of each unit.
+     * @var int $unitPrice Price of each unit.
      */
     #[JsonProperty('unitPrice')]
-    public float $unitPrice;
+    public int $unitPrice;
 
     /**
      * @var float $quantity Number of units.
@@ -54,7 +54,7 @@ class LineItemBase extends JsonSerializableType
 
     /**
      * @param array{
-     *   unitPrice: float,
+     *   unitPrice: int,
      *   quantity: float,
      *   commodityCode?: ?string,
      *   productCode?: ?string,

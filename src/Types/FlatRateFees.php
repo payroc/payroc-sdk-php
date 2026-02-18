@@ -17,7 +17,7 @@ class FlatRateFees extends JsonSerializableType
     public ProcessorFee $standardCards;
 
     /**
-     * @var ?FlatRateFeesAmex $amex Object that contains the fees for American Express transactions.
+     * @var ?FlatRateFeesAmex $amex Polymorphic object that contains fees for American Express transactions.
      */
     #[JsonProperty('amex')]
     public ?FlatRateFeesAmex $amex;

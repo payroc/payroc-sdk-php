@@ -40,7 +40,7 @@ class ProcessingAccount extends JsonSerializableType
      * - `rejected` - We rejected the application for the processing account.
      * - `terminated` - Processing account is closed.
      * - `cancelled` - Merchant withdrew the application for the processing account.
-     * **Note**: You can subscribe to our processingAccount.status.changed event to get notifications when we change the status of a processing account. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).
+     * **Note**: You can subscribe to our processingAccount.status.changed event to get notifications when we change the status of a processing account. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).
      *
      * @var ?value-of<ProcessingAccountStatus> $status
      */
@@ -96,13 +96,23 @@ class ProcessingAccount extends JsonSerializableType
     public string $timezone;
 
     /**
-     * @var Address $address
+     * @var Address $address Polymorphic object that contains address information for the processing account.
      */
     #[JsonProperty('address')]
     public Address $address;
 
     /**
-     * @var array<ContactMethod> $contactMethods Array of contactMethods objects for the processing account. At least one contactMethod must be an email address.
+     * Array of polymorphic objects, which contain contact information.
+     *
+     * **Note:** You must provide an email address.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number
+     *
+     * @var array<ContactMethod> $contactMethods
      */
     #[JsonProperty('contactMethods'), ArrayType([ContactMethod::class])]
     public array $contactMethods;

@@ -10,6 +10,7 @@ use Payroc\Funding\FundingRecipients\Types\CreateFundingRecipientRecipientType;
 use Payroc\Types\Address;
 use Payroc\Types\ContactMethod;
 use Payroc\Types\ContactMethodEmail;
+use Payroc\Types\ContactMethodPhone;
 use Payroc\Types\Owner;
 use DateTime;
 use Payroc\Types\Identifier;
@@ -23,6 +24,11 @@ use Payroc\Types\PaymentMethodAch;
 use Payroc\Funding\FundingRecipients\Requests\UpdateFundingRecipientsRequest;
 use Payroc\Types\FundingRecipient;
 use Payroc\Types\FundingRecipientRecipientType;
+use Payroc\Types\FundingRecipientOwnersItem;
+use Payroc\Types\FundingRecipientOwnersItemLink;
+use Payroc\Types\FundingRecipientFundingAccountsItem;
+use Payroc\Types\FundingRecipientFundingAccountsItemStatus;
+use Payroc\Types\FundingRecipientFundingAccountsItemLink;
 use Payroc\Funding\FundingRecipients\Requests\CreateAccountFundingRecipientsRequest;
 use Payroc\Funding\FundingRecipients\Requests\CreateOwnerFundingRecipientsRequest;
 use Payroc\Environments;
@@ -38,7 +44,7 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'funding.funding_recipients.list_.0';
-        $this->client->funding->fundingRecipients->list(
+        $response = $this->client->funding->fundingRecipients->list(
             new ListFundingRecipientsRequest([
                 'before' => '2571',
                 'after' => '8516',
@@ -50,6 +56,9 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
@@ -67,10 +76,12 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
             new CreateFundingRecipient([
                 'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
                 'recipientType' => CreateFundingRecipientRecipientType::PrivateCorporation->value,
-                'taxId' => '123456789',
-                'doingBusinessAs' => 'doingBusinessAs',
+                'taxId' => '12-3456789',
+                'doingBusinessAs' => 'Pizza Doe',
                 'address' => new Address([
                     'address1' => '1 Example Ave.',
+                    'address2' => 'Example Address Line 2',
+                    'address3' => 'Example Address Line 3',
                     'city' => 'Chicago',
                     'state' => 'Illinois',
                     'country' => 'US',
@@ -80,10 +91,17 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
                     ContactMethod::email(new ContactMethodEmail([
                         'value' => 'jane.doe@example.com',
                     ])),
+                    ContactMethod::phone(new ContactMethodPhone([
+                        'value' => '2025550164',
+                    ])),
+                ],
+                'metadata' => [
+                    'yourCustomField' => 'abc123',
                 ],
                 'owners' => [
                     new Owner([
                         'firstName' => 'Jane',
+                        'middleName' => 'Helen',
                         'lastName' => 'Doe',
                         'dateOfBirth' => new DateTime('1964-03-22'),
                         'address' => new Address([
@@ -96,16 +114,22 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
                         'identifiers' => [
                             new Identifier([
                                 'type' => IdentifierType::NationalId->value,
-                                'value' => 'xxxxx4320',
+                                'value' => '000-00-4320',
                             ]),
                         ],
                         'contactMethods' => [
                             ContactMethod::email(new ContactMethodEmail([
                                 'value' => 'jane.doe@example.com',
                             ])),
+                            ContactMethod::phone(new ContactMethodPhone([
+                                'value' => '2025550164',
+                            ])),
                         ],
                         'relationship' => new OwnerRelationship([
+                            'equityPercentage' => 48.5,
+                            'title' => 'CFO',
                             'isControlProng' => true,
+                            'isAuthorizedSignatory' => false,
                         ]),
                     ]),
                 ],
@@ -165,10 +189,12 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
             new UpdateFundingRecipientsRequest([
                 'body' => new FundingRecipient([
                     'recipientType' => FundingRecipientRecipientType::PrivateCorporation->value,
-                    'taxId' => '123456789',
-                    'doingBusinessAs' => 'doingBusinessAs',
+                    'taxId' => '12-3456789',
+                    'doingBusinessAs' => 'Doe Hot Dogs',
                     'address' => new Address([
-                        'address1' => '1 Example Ave.',
+                        'address1' => '2 Example Ave.',
+                        'address2' => 'Example Address Line 2',
+                        'address3' => 'Example Address Line 3',
                         'city' => 'Chicago',
                         'state' => 'Illinois',
                         'country' => 'US',
@@ -178,6 +204,33 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
                         ContactMethod::email(new ContactMethodEmail([
                             'value' => 'jane.doe@example.com',
                         ])),
+                        ContactMethod::phone(new ContactMethodPhone([
+                            'value' => '2025550164',
+                        ])),
+                    ],
+                    'metadata' => [
+                        'responsiblePerson' => 'Jane Doe',
+                    ],
+                    'owners' => [
+                        new FundingRecipientOwnersItem([
+                            'ownerId' => 12346,
+                            'link' => new FundingRecipientOwnersItemLink([
+                                'rel' => 'owner',
+                                'href' => 'https://api.payroc.com/v1/owners/12346',
+                                'method' => 'get',
+                            ]),
+                        ]),
+                    ],
+                    'fundingAccounts' => [
+                        new FundingRecipientFundingAccountsItem([
+                            'fundingAccountId' => 124,
+                            'status' => FundingRecipientFundingAccountsItemStatus::Approved->value,
+                            'link' => new FundingRecipientFundingAccountsItemLink([
+                                'rel' => 'fundingAccount',
+                                'href' => 'https://api.payroc.com/v1/funding-accounts/124',
+                                'method' => 'get',
+                            ]),
+                        ]),
                     ],
                 ]),
             ]),
@@ -247,11 +300,14 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
             new CreateAccountFundingRecipientsRequest([
                 'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
                 'body' => new FundingAccount([
-                    'type' => FundingAccountType::Checking->value,
+                    'type' => FundingAccountType::Savings->value,
                     'use' => FundingAccountUse::Credit->value,
-                    'nameOnAccount' => 'Jane Doe',
+                    'nameOnAccount' => 'Fred Nerk',
                     'paymentMethods' => [
                         PaymentMethodsItem::ach(new PaymentMethodAch([])),
+                    ],
+                    'metadata' => [
+                        'responsiblePerson' => 'Jane Doe',
                     ],
                 ]),
             ]),
@@ -300,11 +356,12 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
             new CreateOwnerFundingRecipientsRequest([
                 'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
                 'body' => new Owner([
-                    'firstName' => 'Jane',
-                    'lastName' => 'Doe',
-                    'dateOfBirth' => new DateTime('1964-03-22'),
+                    'firstName' => 'Fred',
+                    'middleName' => 'Jim',
+                    'lastName' => 'Nerk',
+                    'dateOfBirth' => new DateTime('1980-01-19'),
                     'address' => new Address([
-                        'address1' => '1 Example Ave.',
+                        'address1' => '2 Example Ave.',
                         'city' => 'Chicago',
                         'state' => 'Illinois',
                         'country' => 'US',
@@ -313,16 +370,22 @@ class FundingFundingRecipientsWireTest extends WireMockTestCase
                     'identifiers' => [
                         new Identifier([
                             'type' => IdentifierType::NationalId->value,
-                            'value' => 'xxxxx4320',
+                            'value' => '000-00-9876',
                         ]),
                     ],
                     'contactMethods' => [
                         ContactMethod::email(new ContactMethodEmail([
                             'value' => 'jane.doe@example.com',
                         ])),
+                        ContactMethod::phone(new ContactMethodPhone([
+                            'value' => '2025550164',
+                        ])),
                     ],
                     'relationship' => new OwnerRelationship([
-                        'isControlProng' => true,
+                        'equityPercentage' => 51.5,
+                        'title' => 'CEO',
+                        'isControlProng' => false,
+                        'isAuthorizedSignatory' => true,
                     ]),
                 ]),
             ]),

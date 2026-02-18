@@ -12,15 +12,15 @@ class SharingEventPaginatedList extends JsonSerializableType
     use PaginatedList;
 
     /**
-     * @var ?array<PaymentLinkEmailShareEvent> $data Array of sharing events for the payment link.
+     * @var ?array<PaymentLinkEmailShareEvent> $data Array of polymorphic objects that contain information about how the merchant shared a payment link.
      */
     #[JsonProperty('data'), ArrayType([PaymentLinkEmailShareEvent::class])]
     public ?array $data;
 
     /**
      * @param array{
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      *   data?: ?array<PaymentLinkEmailShareEvent>,

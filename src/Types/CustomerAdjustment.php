@@ -18,7 +18,15 @@ class CustomerAdjustment extends JsonSerializableType
     public ?Shipping $shippingAddress;
 
     /**
-     * @var ?array<ContactMethod> $contactMethods Customer's contact information.
+     * Array of polymorphic objects, which contain contact information.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number
+     *
+     * @var ?array<ContactMethod> $contactMethods
      */
     #[JsonProperty('contactMethods'), ArrayType([ContactMethod::class])]
     public ?array $contactMethods;

@@ -11,7 +11,13 @@ use Exception;
 use Payroc\Core\Json\JsonDecoder;
 
 /**
- * Object that contains information about the payment method to tokenize.
+ * Polymorphic object that contains the payment method to tokenize.
+ *
+ * The value of the type parameter determines which variant you should use:
+ * -	`ach` - Automated Clearing House (ACH) details
+ * -	`pad` - Pre-authorized debit (PAD) details
+ * -	`card` - Payment card details
+ * -	`singleUseToken` - Single-use token details
  */
 class TokenizationRequestSource extends JsonSerializableType
 {

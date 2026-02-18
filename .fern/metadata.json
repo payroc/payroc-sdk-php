@@ -1,8 +1,9 @@
 {
-  "cliVersion": "3.0.3",
+  "cliVersion": "3.78.0",
   "generatorName": "fernapi/fern-php-sdk",
-  "generatorVersion": "1.25.1",
+  "generatorVersion": "1.30.0",
   "generatorConfig": {
+    "packageName": "payroc/payroc-sdk-php",
     "composerJson": {
       "require": {
         "sentry/sentry": "^4.19"
@@ -15,5 +16,6 @@
     },
     "custom-pager-classname": "PayrocPager",
     "enable-wire-tests": true
-  }
+  },
+  "sdkVersion": "0.0.3697"
 }

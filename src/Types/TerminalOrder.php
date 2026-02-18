@@ -19,7 +19,7 @@ class TerminalOrder extends JsonSerializableType
     /**
      * Status of the terminal order.
      *
-     * **Note**: You can subscribe to our terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).
+     * **Note**: You can subscribe to our terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Event Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).
      *
      * @var value-of<TerminalOrderStatus> $status
      */

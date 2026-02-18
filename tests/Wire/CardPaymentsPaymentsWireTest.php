@@ -42,7 +42,7 @@ class CardPaymentsPaymentsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'card_payments.payments.list_.0';
-        $this->client->cardPayments->payments->list(
+        $response = $this->client->cardPayments->payments->list(
             new ListPaymentsRequest([
                 'processingTerminalId' => '1234001',
                 'orderId' => 'OrderRef6543',
@@ -66,6 +66,9 @@ class CardPaymentsPaymentsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

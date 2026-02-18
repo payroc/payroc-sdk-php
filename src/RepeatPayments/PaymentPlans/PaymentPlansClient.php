@@ -89,7 +89,7 @@ class PaymentPlansClient
     /**
      * Use this method to create a payment schedule that you can assign customers to.
      *
-     * **Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Subscriptions endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/integrate/repeat-payments).
+     * **Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Subscriptions endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/take-payments/repeat-payments).
      *
      * When you create a payment plan you need to provide a unique paymentPlanId that you use to run follow-on actions:
      *

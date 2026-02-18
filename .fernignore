@@ -3,8 +3,12 @@
 README.md
 CONTRIBUTING.md
 LICENSE
-scripts
+pipelines/
+scripts/
 src/Core/Pagination/CustomPager.php
 src/Core/Pagination/PayrocPager.php
 src/SentryIntegration.php
 tests/Integration/
+.previewignore
+SECURITY.md
+.github/CODEOWNERS

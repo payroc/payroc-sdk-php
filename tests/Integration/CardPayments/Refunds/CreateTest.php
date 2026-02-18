@@ -16,6 +16,9 @@ use Payroc\Types\PlainTextKeyedDataFormat;
 use Payroc\Types\Device;
 use Payroc\Types\DeviceModel;
 
+/**
+ * @group smoke
+ */
 class CreateTest extends IntegrationTestCase
 {
     public function testSmokeTest(): void
@@ -38,7 +41,7 @@ class CreateTest extends IntegrationTestCase
                             'serialNumber' => '1850010868',
                         ]),
                         'cardNumber' => '4539858876047062',
-                        'expiryDate' => '1225',
+                        'expiryDate' => '1230',
                     ])),
                 ])),
             ])),

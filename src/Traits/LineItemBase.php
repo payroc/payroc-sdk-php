@@ -12,7 +12,7 @@ use Payroc\Core\Json\JsonProperty;
  * @property ?string $productCode
  * @property ?string $description
  * @property ?value-of<UnitOfMeasure> $unitOfMeasure
- * @property float $unitPrice
+ * @property int $unitPrice
  * @property float $quantity
  * @property ?float $discountRate
  */
@@ -43,10 +43,10 @@ trait LineItemBase
     public ?string $unitOfMeasure;
 
     /**
-     * @var float $unitPrice Price of each unit.
+     * @var int $unitPrice Price of each unit.
      */
     #[JsonProperty('unitPrice')]
-    public float $unitPrice;
+    public int $unitPrice;
 
     /**
      * @var float $quantity Number of units.

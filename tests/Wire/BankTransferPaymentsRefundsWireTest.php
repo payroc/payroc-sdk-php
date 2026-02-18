@@ -83,7 +83,7 @@ class BankTransferPaymentsRefundsWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'bank_transfer_payments.refunds.list_.0';
-        $this->client->bankTransferPayments->refunds->list(
+        $response = $this->client->bankTransferPayments->refunds->list(
             new ListRefundsRequest([
                 'processingTerminalId' => '1234001',
                 'orderId' => 'OrderRef6543',
@@ -103,6 +103,9 @@ class BankTransferPaymentsRefundsWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",

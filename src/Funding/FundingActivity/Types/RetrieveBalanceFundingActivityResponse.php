@@ -22,8 +22,8 @@ class RetrieveBalanceFundingActivityResponse extends JsonSerializableType
     /**
      * @param array{
      *   data: array<MerchantBalance>,
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      * } $values

@@ -154,7 +154,7 @@ class EventSubscriptionsClient
      *
      * In your request, include the subscriptionId that we sent to you when we created the event subscription.
      *
-     * **Note:** If you don't know the subscriptionId of the event subscription, go to [List event subscriptions](#listEventSubscriptions).
+     * **Note:** If you don't know the subscriptionId of the event subscription, go to [List event subscriptions](https://docs.payroc.com/api/schema/notifications/event-subscriptions/list).
      *
      * Unique identifier that we assigned to the event subscription.
      * **Note:** Our gateway returned the subscriptionId in the id field in the response of the [Create Event Subscription](https://docs.payroc.com/api/schema/notifications/event-subscriptions/create) method.

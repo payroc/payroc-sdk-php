@@ -70,13 +70,23 @@ class CreateProcessingAccount extends JsonSerializableType
     public string $timezone;
 
     /**
-     * @var Address $address
+     * @var Address $address Polymorphic object that contains address information for the processing account.
      */
     #[JsonProperty('address')]
     public Address $address;
 
     /**
-     * @var array<ContactMethod> $contactMethods Array of contactMethod objects. One contact method must be an email address.
+     * Array of polymorphic objects, which contain contact information.
+     *
+     * **Note:** You must provide an email address.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`email` - Email address
+     * -	`phone` - Phone number
+     * -	`mobile` - Mobile number
+     * -	`fax` - Fax number.
+     *
+     * @var array<ContactMethod> $contactMethods
      */
     #[JsonProperty('contactMethods'), ArrayType([ContactMethod::class])]
     public array $contactMethods;

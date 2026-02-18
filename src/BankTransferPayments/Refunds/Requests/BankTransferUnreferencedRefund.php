@@ -36,7 +36,13 @@ class BankTransferUnreferencedRefund extends JsonSerializableType
     public ?BankTransferCustomer $customer;
 
     /**
-     * @var BankTransferUnreferencedRefundRefundMethod $refundMethod Object that contains information about how the merchant refunds the customer.
+     * Polymorphic object that contains payment details for the refund.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	`ach` - Automated Clearing House (ACH) details
+     * -	`secureToken` - Secure token details
+     *
+     * @var BankTransferUnreferencedRefundRefundMethod $refundMethod
      */
     #[JsonProperty('refundMethod')]
     public BankTransferUnreferencedRefundRefundMethod $refundMethod;

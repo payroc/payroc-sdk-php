@@ -23,7 +23,7 @@ class HostConfiguration extends JsonSerializableType
     public ?string $processingAccountId;
 
     /**
-     * @var HostConfigurationConfiguration $configuration Object that contains the host processor configuration.
+     * @var HostConfigurationConfiguration $configuration Polymorphic object that contains the host processor configuration.
      */
     #[JsonProperty('configuration')]
     public HostConfigurationConfiguration $configuration;

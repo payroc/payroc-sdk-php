@@ -22,8 +22,8 @@ class DigitalWalletPayload extends JsonSerializableType
 
     /**
      * Provider of the digital wallet. Send one of the following values:
-     * - `apple` - For more information about how to integrate with Apple Pay, go to [Apple Pay®](https://docs.payroc.com/guides/integrate/apple-pay).
-     * - `google` - For more information about how to integrate with google Pay, go to [Google Pay®](https://docs.payroc.com/guides/integrate/google-pay).
+     * - `apple` - For more information about how to integrate with Apple Pay, go to [Apple Pay®](https://docs.payroc.com/guides/take-payments/apple-pay).
+     * - `google` - For more information about how to integrate with google Pay, go to [Google Pay®](https://docs.payroc.com/guides/take-payments/google-pay).
      *
      * @var value-of<DigitalWalletPayloadServiceProvider> $serviceProvider
      */

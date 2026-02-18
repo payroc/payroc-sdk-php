@@ -17,7 +17,13 @@ class Tiered3Fees extends JsonSerializableType
     public QualRates $mastercardVisaDiscover;
 
     /**
-     * @var ?Tiered3FeesAmex $amex Object that contains the fees for American Express transactions.
+     * Polymorphic object that contains fees for American Express transactions.
+     *
+     * The value of the type field determines which variant you should use:
+     * -	`optBlue` - Amex OptBlue pricing program.
+     * -	`direct` - Amex Direct pricing program.
+     *
+     * @var ?Tiered3FeesAmex $amex
      */
     #[JsonProperty('amex')]
     public ?Tiered3FeesAmex $amex;

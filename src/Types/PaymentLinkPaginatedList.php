@@ -12,15 +12,21 @@ class PaymentLinkPaginatedList extends JsonSerializableType
     use PaginatedList;
 
     /**
-     * @var ?array<PaymentLinkPaginatedListDataItem> $data Array of payment links.
+     * Array of polymorphic objects that contains payment link information.
+     *
+     * The value of the type parameter determines which variant you should use:
+     * -	'multiUse' - Create a link that the merchant can use to take multiple payments.
+     * -	'singleUse' - Create a link that the merchant can use for only one payment.
+     *
+     * @var ?array<PaymentLinkPaginatedListDataItem> $data
      */
     #[JsonProperty('data'), ArrayType([PaymentLinkPaginatedListDataItem::class])]
     public ?array $data;
 
     /**
      * @param array{
-     *   limit?: ?float,
-     *   count?: ?float,
+     *   limit?: ?int,
+     *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
      *   data?: ?array<PaymentLinkPaginatedListDataItem>,

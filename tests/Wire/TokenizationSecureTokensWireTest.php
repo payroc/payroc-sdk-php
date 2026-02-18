@@ -42,7 +42,7 @@ class TokenizationSecureTokensWireTest extends WireMockTestCase
      */
     public function testList_(): void {
         $testId = 'tokenization.secure_tokens.list_.0';
-        $this->client->tokenization->secureTokens->list(
+        $response = $this->client->tokenization->secureTokens->list(
             '1234001',
             new ListSecureTokensRequest([
                 'secureTokenId' => 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa',
@@ -62,6 +62,9 @@ class TokenizationSecureTokensWireTest extends WireMockTestCase
                 ],
             ],
         );
+        foreach ($response as $item) {
+            break;
+        }
         $this->verifyRequestCount(
             $testId,
             "GET",
