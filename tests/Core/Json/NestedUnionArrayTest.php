@@ -4,6 +4,7 @@ namespace Payroc\Tests\Core\Json;
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
+use Payroc\Core\Json\JsonEncoder;
 use Payroc\Core\Json\JsonProperty;
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Core\Types\ArrayType;
@@ -55,7 +56,7 @@ class NestedUnionArrayTest extends TestCase
 {
     public function testNestedUnionArray(): void
     {
-        $expectedJson = json_encode(
+        $expectedJson = JsonEncoder::encode(
             [
                 'nested_array' => [
                     1 => [
@@ -69,7 +70,6 @@ class NestedUnionArrayTest extends TestCase
                     ]
                 ]
             ],
-            JSON_THROW_ON_ERROR
         );
 
         $object = NestedUnionArray::fromJson($expectedJson);

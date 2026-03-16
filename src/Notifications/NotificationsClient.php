@@ -3,7 +3,7 @@
 namespace Payroc\Notifications;
 
 use Payroc\Notifications\EventSubscriptions\EventSubscriptionsClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

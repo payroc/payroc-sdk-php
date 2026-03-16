@@ -13,10 +13,10 @@ use Payroc\Core\Types\Date;
 class BankTransferRefundOrder extends JsonSerializableType
 {
     /**
-     * @var ?string $orderId Unique identifier that the merchant assigned to the transaction.
+     * @var string $orderId Unique identifier that the merchant assigned to the transaction.
      */
     #[JsonProperty('orderId')]
-    public ?string $orderId;
+    public string $orderId;
 
     /**
      * @var ?DateTime $dateTime Date and time that we processed the transaction. We return this value in the ISO 8601 format.
@@ -25,40 +25,40 @@ class BankTransferRefundOrder extends JsonSerializableType
     public ?DateTime $dateTime;
 
     /**
-     * @var ?string $description Description of the refund.
+     * @var string $description Description of the refund.
      */
     #[JsonProperty('description')]
-    public ?string $description;
+    public string $description;
 
     /**
-     * @var ?int $amount Total amount of the transaction. The value is in the currency's lowest denomination, for example, cents.
+     * @var int $amount Total amount of the transaction. The value is in the currency's lowest denomination, for example, cents.
      */
     #[JsonProperty('amount')]
-    public ?int $amount;
+    public int $amount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * @param array{
-     *   orderId?: ?string,
+     *   orderId: string,
+     *   description: string,
+     *   amount: int,
+     *   currency: value-of<Currency>,
      *   dateTime?: ?DateTime,
-     *   description?: ?string,
-     *   amount?: ?int,
-     *   currency?: ?value-of<Currency>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->orderId = $values['orderId'] ?? null;
+        $this->orderId = $values['orderId'];
         $this->dateTime = $values['dateTime'] ?? null;
-        $this->description = $values['description'] ?? null;
-        $this->amount = $values['amount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
+        $this->description = $values['description'];
+        $this->amount = $values['amount'];
+        $this->currency = $values['currency'];
     }
 
     /**

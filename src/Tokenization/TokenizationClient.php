@@ -4,7 +4,7 @@ namespace Payroc\Tokenization;
 
 use Payroc\Tokenization\SecureTokens\SecureTokensClient;
 use Payroc\Tokenization\SingleUseTokens\SingleUseTokensClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

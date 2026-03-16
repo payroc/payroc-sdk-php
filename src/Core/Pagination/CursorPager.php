@@ -5,7 +5,7 @@ namespace Payroc\Core\Pagination;
 use Generator;
 
 /**
- * @template TRequest
+ * @template TRequest of object
  * @template TResponse
  * @template TItem
  * @template TCursor

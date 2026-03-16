@@ -10,6 +10,41 @@
           "processingTerminalId": {
             "equalTo": "1234001"
           }
+        },
+        "queryParameters": {
+          "merchantReference": {
+            "equalTo": "LinkRef6543"
+          },
+          "linkType": {
+            "equalTo": "multiUse"
+          },
+          "chargeType": {
+            "equalTo": "preset"
+          },
+          "status": {
+            "equalTo": "active"
+          },
+          "recipientName": {
+            "equalTo": "Sarah Hazel Hopper"
+          },
+          "recipientEmail": {
+            "equalTo": "sarah.hopper@example.com"
+          },
+          "createdOn": {
+            "equalTo": "2024-07-02"
+          },
+          "expiresOn": {
+            "equalTo": "2024-08-02"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
         }
       },
       "response": {
@@ -310,7 +345,45 @@
       "name": "List payments - default",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "processingTerminalId": {
+            "equalTo": "1234001"
+          },
+          "orderId": {
+            "equalTo": "OrderRef6543"
+          },
+          "nameOnAccount": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "last4": {
+            "equalTo": "7890"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-01T00:00:00Z"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-31T23:59:59Z"
+          },
+          "settlementState": {
+            "equalTo": "settled"
+          },
+          "settlementDate": {
+            "equalTo": "2024-07-15"
+          },
+          "paymentLinkId": {
+            "equalTo": "JZURRJBUPS"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -487,7 +560,42 @@
       "name": "List refunds - default",
       "request": {
         "urlPathTemplate": "/bank-transfer-refunds",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "processingTerminalId": {
+            "equalTo": "1234001"
+          },
+          "orderId": {
+            "equalTo": "OrderRef6543"
+          },
+          "nameOnAccount": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "last4": {
+            "equalTo": "7062"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-01T00:00:00Z"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-31T23:59:59Z"
+          },
+          "settlementState": {
+            "equalTo": "settled"
+          },
+          "settlementDate": {
+            "equalTo": "2024-07-15"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -695,11 +803,22 @@
       "name": "List pricing intents - default",
       "request": {
         "urlPathTemplate": "/pricing-intents",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"limit\": 1,\n  \"count\": 1,\n  \"hasMore\": true,\n  \"links\": [\n    {\n      \"rel\": \"previous\",\n      \"method\": \"get\",\n      \"href\": \"https://api.payroc.com/v1/pricing-intents?before=5&limit=1\"\n    },\n    {\n      \"rel\": \"next\",\n      \"method\": \"get\",\n      \"href\": \"https://api.payroc.com/v1/pricing-intents?after=5&limit=1\"\n    }\n  ],\n  \"data\": [\n    {\n      \"country\": \"US\",\n      \"version\": \"5.0\",\n      \"base\": {\n        \"addressVerification\": 5,\n        \"annualFee\": {\n          \"billInMonth\": \"june\",\n          \"amount\": 100\n        },\n        \"regulatoryAssistanceProgram\": 15,\n        \"pciNonCompliance\": 4995,\n        \"merchantAdvantage\": 10,\n        \"platinumSecurity\": {\n          \"amount\": 1295,\n          \"billingFrequency\": \"monthly\"\n        },\n        \"maintenance\": 500,\n        \"minimum\": 100,\n        \"voiceAuthorization\": 95,\n        \"chargeback\": 2500,\n        \"retrieval\": 1500,\n        \"batch\": 1000,\n        \"earlyTermination\": 57500\n      },\n      \"processor\": {\n        \"card\": {\n          \"fees\": {\n            \"mastercardVisaDiscover\": {\n              \"volume\": 1.25\n            },\n            \"amex\": {\n              \"volume\": 1.25,\n              \"transaction\": 1,\n              \"type\": \"optBlue\"\n            },\n            \"pinDebit\": {\n              \"additionalDiscount\": 1.25,\n              \"transaction\": 1,\n              \"monthlyAccess\": 1\n            },\n            \"enhancedInterchange\": {\n              \"enrollment\": 1,\n              \"creditToMerchant\": 1.25\n            }\n          },\n          \"planType\": \"interchangePlus\"\n        },\n        \"ach\": {\n          \"fees\": {\n            \"transaction\": 50,\n            \"batch\": 1000,\n            \"returns\": 400,\n            \"unauthorizedReturn\": 1999,\n            \"statement\": 800,\n            \"monthlyMinimum\": 20000,\n            \"accountVerification\": 100,\n            \"discountRateUnder10000\": 5.25,\n            \"discountRateAbove10000\": 10\n          }\n        }\n      },\n      \"gateway\": {\n        \"fees\": {\n          \"monthly\": 1000,\n          \"setup\": 25000,\n          \"perTransaction\": 0,\n          \"perDeviceMonthly\": 0\n        }\n      },\n      \"services\": [\n        {\n          \"enabled\": true,\n          \"name\": \"hardwareAdvantagePlan\"\n        }\n      ],\n      \"id\": \"5\",\n      \"createdDate\": \"2024-07-02T09:00:00Z\",\n      \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n      \"status\": \"pendingReview\",\n      \"key\": \"base\",\n      \"metadata\": {\n        \"yourCustomField\": \"abc123\"\n      }\n    }\n  ]\n}",
+        "body": "{\n  \"limit\": 1,\n  \"count\": 1,\n  \"hasMore\": true,\n  \"links\": [\n    {\n      \"rel\": \"previous\",\n      \"method\": \"get\",\n      \"href\": \"https://api.payroc.com/v1/pricing-intents?before=5&limit=1\"\n    },\n    {\n      \"rel\": \"next\",\n      \"method\": \"get\",\n      \"href\": \"https://api.payroc.com/v1/pricing-intents?after=5&limit=1\"\n    }\n  ],\n  \"data\": [\n    {\n      \"country\": \"US\",\n      \"version\": \"5.2\",\n      \"base\": {\n        \"addressVerification\": 5,\n        \"annualFee\": {\n          \"billInMonth\": \"june\",\n          \"amount\": 100\n        },\n        \"regulatoryAssistanceProgram\": 15,\n        \"pciNonCompliance\": 4995,\n        \"merchantAdvantage\": 10,\n        \"platinumSecurity\": {\n          \"amount\": 1295,\n          \"billingFrequency\": \"monthly\"\n        },\n        \"maintenance\": 500,\n        \"minimum\": 100,\n        \"voiceAuthorization\": 95,\n        \"chargeback\": 2500,\n        \"retrieval\": 1500,\n        \"batch\": 1000,\n        \"earlyTermination\": 57500\n      },\n      \"processor\": {\n        \"card\": {\n          \"fees\": {\n            \"mastercardVisaDiscover\": {\n              \"volume\": 1.25\n            },\n            \"amex\": {\n              \"volume\": 1.25,\n              \"transaction\": 1,\n              \"type\": \"optBlue\"\n            },\n            \"pinDebit\": {\n              \"additionalDiscount\": 1.25,\n              \"transaction\": 1,\n              \"monthlyAccess\": 1\n            }\n          },\n          \"planType\": \"interchangePlus\"\n        },\n        \"ach\": {\n          \"fees\": {\n            \"transaction\": 50,\n            \"batch\": 1000,\n            \"returns\": 400,\n            \"unauthorizedReturn\": 1999,\n            \"statement\": 800,\n            \"monthlyMinimum\": 20000,\n            \"accountVerification\": 100,\n            \"discountRateUnder10000\": 5.25,\n            \"discountRateAbove10000\": 10\n          }\n        }\n      },\n      \"gateway\": {\n        \"fees\": {\n          \"monthly\": 1000,\n          \"setup\": 25000,\n          \"perTransaction\": 0,\n          \"perDeviceMonthly\": 0\n        }\n      },\n      \"services\": [\n        {\n          \"enabled\": true,\n          \"name\": \"hardwareAdvantagePlan\"\n        }\n      ],\n      \"id\": \"5\",\n      \"createdDate\": \"2024-07-02T09:00:00Z\",\n      \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n      \"status\": \"pendingReview\",\n      \"key\": \"base\",\n      \"metadata\": {\n        \"yourCustomField\": \"abc123\"\n      }\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -726,7 +845,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.0\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        },\n        \"enhancedInterchange\": {\n          \"enrollment\": 1,\n          \"creditToMerchant\": 1.25\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
+        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.2\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0,\n      \"3dSecurePerTransaction\": 1,\n      \"tapToPayPerTransaction\": 1\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -757,7 +876,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.0\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        },\n        \"enhancedInterchange\": {\n          \"enrollment\": 1,\n          \"creditToMerchant\": 1.25\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
+        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.2\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0,\n      \"3dSecurePerTransaction\": 1,\n      \"tapToPayPerTransaction\": 1\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -850,7 +969,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.0\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        },\n        \"enhancedInterchange\": {\n          \"enrollment\": 1,\n          \"creditToMerchant\": 1.25\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
+        "body": "{\n  \"country\": \"US\",\n  \"version\": \"5.2\",\n  \"base\": {\n    \"addressVerification\": 5,\n    \"annualFee\": {\n      \"billInMonth\": \"june\",\n      \"amount\": 100\n    },\n    \"regulatoryAssistanceProgram\": 15,\n    \"pciNonCompliance\": 4995,\n    \"merchantAdvantage\": 10,\n    \"platinumSecurity\": {\n      \"amount\": 1295,\n      \"billingFrequency\": \"monthly\"\n    },\n    \"maintenance\": 500,\n    \"minimum\": 100,\n    \"voiceAuthorization\": 95,\n    \"chargeback\": 2500,\n    \"retrieval\": 1500,\n    \"batch\": 1000,\n    \"earlyTermination\": 57500\n  },\n  \"processor\": {\n    \"card\": {\n      \"fees\": {\n        \"mastercardVisaDiscover\": {\n          \"volume\": 1.25\n        },\n        \"amex\": {\n          \"volume\": 1.25,\n          \"transaction\": 1,\n          \"type\": \"optBlue\"\n        },\n        \"pinDebit\": {\n          \"additionalDiscount\": 1.25,\n          \"transaction\": 1,\n          \"monthlyAccess\": 1\n        }\n      },\n      \"planType\": \"interchangePlus\"\n    },\n    \"ach\": {\n      \"fees\": {\n        \"transaction\": 50,\n        \"batch\": 1000,\n        \"returns\": 400,\n        \"unauthorizedReturn\": 1999,\n        \"statement\": 800,\n        \"monthlyMinimum\": 20000,\n        \"accountVerification\": 100,\n        \"discountRateUnder10000\": 5.25,\n        \"discountRateAbove10000\": 10\n      }\n    }\n  },\n  \"gateway\": {\n    \"fees\": {\n      \"monthly\": 1000,\n      \"setup\": 25000,\n      \"perTransaction\": 0,\n      \"perDeviceMonthly\": 0,\n      \"3dSecurePerTransaction\": 1,\n      \"tapToPayPerTransaction\": 1\n    }\n  },\n  \"services\": [\n    {\n      \"enabled\": true,\n      \"name\": \"hardwareAdvantagePlan\"\n    }\n  ],\n  \"id\": \"5\",\n  \"createdDate\": \"2024-07-02T09:00:00Z\",\n  \"lastUpdatedDate\": \"2024-07-02T09:00:00Z\",\n  \"status\": \"pendingReview\",\n  \"key\": \"string\",\n  \"metadata\": {\n    \"yourCustomField\": \"abc123\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -872,7 +991,18 @@
       "name": "List merchant platforms - default",
       "request": {
         "urlPathTemplate": "/merchant-platforms",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -960,6 +1090,20 @@
         "pathParameters": {
           "merchantPlatformId": {
             "equalTo": "12345"
+          }
+        },
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "includeClosed": {
+            "equalTo": "true"
           }
         }
       },
@@ -1085,6 +1229,17 @@
           "processingAccountId": {
             "equalTo": "38765"
           }
+        },
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
         }
       },
       "response": {
@@ -1146,6 +1301,17 @@
         "pathParameters": {
           "processingAccountId": {
             "equalTo": "38765"
+          }
+        },
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
           }
         }
       },
@@ -1209,6 +1375,17 @@
           "processingAccountId": {
             "equalTo": "38765"
           }
+        },
+        "queryParameters": {
+          "status": {
+            "equalTo": "open"
+          },
+          "fromDateTime": {
+            "equalTo": "2024-09-08T12:00:00Z"
+          },
+          "toDateTime": {
+            "equalTo": "2024-12-08T11:00:00Z"
+          }
         }
       },
       "response": {
@@ -1270,6 +1447,17 @@
         "pathParameters": {
           "processingAccountId": {
             "equalTo": "38765"
+          }
+        },
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
           }
         }
       },
@@ -1483,7 +1671,54 @@
       "name": "List payments - default",
       "request": {
         "urlPathTemplate": "/payments",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "processingTerminalId": {
+            "equalTo": "1234001"
+          },
+          "orderId": {
+            "equalTo": "OrderRef6543"
+          },
+          "operator": {
+            "equalTo": "Jane"
+          },
+          "cardholderName": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "first6": {
+            "equalTo": "453985"
+          },
+          "last4": {
+            "equalTo": "7062"
+          },
+          "tender": {
+            "equalTo": "ebt"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-01T15:30:00Z"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-03T15:30:00Z"
+          },
+          "settlementState": {
+            "equalTo": "settled"
+          },
+          "settlementDate": {
+            "equalTo": "2024-07-02"
+          },
+          "paymentLinkId": {
+            "equalTo": "JZURRJBUPS"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -1691,7 +1926,51 @@
       "name": "List refunds - default",
       "request": {
         "urlPathTemplate": "/refunds",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "processingTerminalId": {
+            "equalTo": "1234001"
+          },
+          "orderId": {
+            "equalTo": "OrderRef6543"
+          },
+          "operator": {
+            "equalTo": "Jane"
+          },
+          "cardholderName": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "first6": {
+            "equalTo": "453985"
+          },
+          "last4": {
+            "equalTo": "7062"
+          },
+          "tender": {
+            "equalTo": "ebt"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-01T15:30:00Z"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-03T15:30:00Z"
+          },
+          "settlementState": {
+            "equalTo": "settled"
+          },
+          "settlementDate": {
+            "equalTo": "2024-07-02"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -1837,7 +2116,18 @@
       "name": "List funding recipients - default",
       "request": {
         "urlPathTemplate": "/funding-recipients",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2107,7 +2397,18 @@
       "name": "List funding accounts - default",
       "request": {
         "urlPathTemplate": "/funding-accounts",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2227,7 +2528,24 @@
       "name": "List funding instructions - default",
       "request": {
         "urlPathTemplate": "/funding-instructions",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-01"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-03"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2373,7 +2691,21 @@
       "name": "List funding balances - default",
       "request": {
         "urlPathTemplate": "/funding-balance",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2400,7 +2732,27 @@
       "name": "List funding activity - default",
       "request": {
         "urlPathTemplate": "/funding-activity",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "dateFrom": {
+            "equalTo": "2024-07-02"
+          },
+          "dateTo": {
+            "equalTo": "2024-07-03"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2427,7 +2779,15 @@
       "name": "List event subscriptions - default",
       "request": {
         "urlPathTemplate": "/event-subscriptions",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "status": {
+            "equalTo": "registered"
+          },
+          "event": {
+            "equalTo": "processingAccount.status.changed"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -2738,6 +3098,23 @@
         "pathParameters": {
           "paymentLinkId": {
             "equalTo": "JZURRJBUPS"
+          }
+        },
+        "queryParameters": {
+          "recipientName": {
+            "equalTo": "Sarah Hazel Hopper"
+          },
+          "recipientEmail": {
+            "equalTo": "sarah.hopper@example.com"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
           }
         }
       },
@@ -3111,6 +3488,17 @@
           "processingTerminalId": {
             "equalTo": "1234001"
           }
+        },
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          }
         }
       },
       "response": {
@@ -3274,6 +3662,38 @@
         "pathParameters": {
           "processingTerminalId": {
             "equalTo": "1234001"
+          }
+        },
+        "queryParameters": {
+          "customerName": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "last4": {
+            "equalTo": "7062"
+          },
+          "paymentPlan": {
+            "equalTo": "Premium%20Club"
+          },
+          "frequency": {
+            "equalTo": "weekly"
+          },
+          "status": {
+            "equalTo": "active"
+          },
+          "endDate": {
+            "equalTo": "2025-07-01"
+          },
+          "nextDueDate": {
+            "equalTo": "2024-08-01"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
           }
         }
       },
@@ -3502,7 +3922,24 @@
       "name": "List batches - default",
       "request": {
         "urlPathTemplate": "/batches",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2027-07-02"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3560,7 +3997,30 @@
       "name": "List transactions - default",
       "request": {
         "urlPathTemplate": "/transactions",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2024-07-02"
+          },
+          "batchId": {
+            "equalTo": "1"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          },
+          "transactionType": {
+            "equalTo": "Capture"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3618,7 +4078,27 @@
       "name": "List authorizations - default",
       "request": {
         "urlPathTemplate": "/authorizations",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2024-07-02"
+          },
+          "batchId": {
+            "equalTo": "1"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3676,7 +4156,24 @@
       "name": "List disputes - default",
       "request": {
         "urlPathTemplate": "/disputes",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2024-07-02"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3734,7 +4231,24 @@
       "name": "List ACH deposits - default",
       "request": {
         "urlPathTemplate": "/ach-deposits",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2024-07-02"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3792,7 +4306,27 @@
       "name": "List ACH deposit fees - default",
       "request": {
         "urlPathTemplate": "/ach-deposit-fees",
-        "method": "GET"
+        "method": "GET",
+        "queryParameters": {
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
+          },
+          "date": {
+            "equalTo": "2024-07-02"
+          },
+          "achDepositId": {
+            "equalTo": "1"
+          },
+          "merchantId": {
+            "equalTo": "4525644354"
+          }
+        }
       },
       "response": {
         "status": 200,
@@ -3823,6 +4357,38 @@
         "pathParameters": {
           "processingTerminalId": {
             "equalTo": "1234001"
+          }
+        },
+        "queryParameters": {
+          "secureTokenId": {
+            "equalTo": "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa"
+          },
+          "customerName": {
+            "equalTo": "Sarah%20Hazel%20Hopper"
+          },
+          "phone": {
+            "equalTo": "2025550165"
+          },
+          "email": {
+            "equalTo": "sarah.hopper@example.com"
+          },
+          "token": {
+            "equalTo": "296753123456"
+          },
+          "first6": {
+            "equalTo": "453985"
+          },
+          "last4": {
+            "equalTo": "7062"
+          },
+          "before": {
+            "equalTo": "2571"
+          },
+          "after": {
+            "equalTo": "8516"
+          },
+          "limit": {
+            "equalTo": "1"
           }
         }
       },

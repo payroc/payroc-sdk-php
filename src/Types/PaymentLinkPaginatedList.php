@@ -18,28 +18,28 @@ class PaymentLinkPaginatedList extends JsonSerializableType
      * -	'multiUse' - Create a link that the merchant can use to take multiple payments.
      * -	'singleUse' - Create a link that the merchant can use for only one payment.
      *
-     * @var ?array<PaymentLinkPaginatedListDataItem> $data
+     * @var array<PaymentLinkPaginatedListDataItem> $data
      */
     #[JsonProperty('data'), ArrayType([PaymentLinkPaginatedListDataItem::class])]
-    public ?array $data;
+    public array $data;
 
     /**
      * @param array{
+     *   data: array<PaymentLinkPaginatedListDataItem>,
      *   limit?: ?int,
      *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
-     *   data?: ?array<PaymentLinkPaginatedListDataItem>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->limit = $values['limit'] ?? null;
         $this->count = $values['count'] ?? null;
         $this->hasMore = $values['hasMore'] ?? null;
         $this->links = $values['links'] ?? null;
-        $this->data = $values['data'] ?? null;
+        $this->data = $values['data'];
     }
 
     /**

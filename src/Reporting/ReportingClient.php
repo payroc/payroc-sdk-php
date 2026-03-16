@@ -3,7 +3,7 @@
 namespace Payroc\Reporting;
 
 use Payroc\Reporting\Settlement\SettlementClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

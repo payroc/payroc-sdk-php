@@ -5,7 +5,7 @@ namespace Payroc\Types;
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Core\Json\JsonProperty;
 
-class BaseUsMonthly extends JsonSerializableType
+class PlatinumSecurityMonthly extends JsonSerializableType
 {
     /**
      * @var ?int $amount Fee for Platinum Security. The value is in the currency's lowest denomination, for example, cents.

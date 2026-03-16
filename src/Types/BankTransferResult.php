@@ -32,10 +32,10 @@ class BankTransferResult extends JsonSerializableType
     public ?int $authorizedAmount;
 
     /**
-     * @var value-of<Currency> $currency
+     * @var ?value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public string $currency;
+    public ?string $currency;
 
     /**
      * Response from the processor.
@@ -63,9 +63,9 @@ class BankTransferResult extends JsonSerializableType
      * @param array{
      *   type: value-of<BankTransferResultType>,
      *   status: value-of<BankTransferResultStatus>,
-     *   currency: value-of<Currency>,
      *   responseCode: string,
      *   authorizedAmount?: ?int,
+     *   currency?: ?value-of<Currency>,
      *   responseMessage?: ?string,
      *   processorResponseCode?: ?string,
      * } $values
@@ -76,7 +76,7 @@ class BankTransferResult extends JsonSerializableType
         $this->type = $values['type'];
         $this->status = $values['status'];
         $this->authorizedAmount = $values['authorizedAmount'] ?? null;
-        $this->currency = $values['currency'];
+        $this->currency = $values['currency'] ?? null;
         $this->responseCode = $values['responseCode'];
         $this->responseMessage = $values['responseMessage'] ?? null;
         $this->processorResponseCode = $values['processorResponseCode'] ?? null;

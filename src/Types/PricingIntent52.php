@@ -4,31 +4,31 @@ namespace Payroc\Types;
 
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Traits\BaseIntent;
-use Payroc\Traits\PricingAgreementUs50;
+use Payroc\Traits\PricingAgreementUs52;
 use DateTime;
 
 /**
- * Object that contains information about a pricing intent for Merchant Processing Agreement (MPA) 5.0.
+ * Object that contains information about a pricing intent for Merchant Processing Agreement (MPA) 5.2.
  */
-class PricingIntent50 extends JsonSerializableType
+class PricingIntent52 extends JsonSerializableType
 {
     use BaseIntent;
-    use PricingAgreementUs50;
+    use PricingAgreementUs52;
 
 
     /**
      * @param array{
      *   key: string,
-     *   country: value-of<PricingAgreementUs50Country>,
-     *   version: value-of<PricingAgreementUs50Version>,
+     *   country: value-of<PricingAgreementUs52Country>,
+     *   version: value-of<PricingAgreementUs52Version>,
      *   base: BaseUs,
      *   id?: ?string,
      *   createdDate?: ?DateTime,
      *   lastUpdatedDate?: ?DateTime,
      *   status?: ?value-of<BaseIntentStatus>,
      *   metadata?: ?array<string, string>,
-     *   processor?: ?PricingAgreementUs50Processor,
-     *   gateway?: ?GatewayUs50,
+     *   processor?: ?PricingAgreementUs52Processor,
+     *   gateway?: ?GatewayUs52,
      *   services?: ?array<ServiceUs50>,
      * } $values
      */

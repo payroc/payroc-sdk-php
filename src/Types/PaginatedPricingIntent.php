@@ -15,9 +15,9 @@ class PaginatedPricingIntent extends JsonSerializableType
     use PaginatedList;
 
     /**
-     * @var ?array<PricingIntent50> $data Array of pricing intent objects.
+     * @var ?array<PricingIntent52> $data Array of pricing intent objects.
      */
-    #[JsonProperty('data'), ArrayType([PricingIntent50::class])]
+    #[JsonProperty('data'), ArrayType([PricingIntent52::class])]
     public ?array $data;
 
     /**
@@ -26,7 +26,7 @@ class PaginatedPricingIntent extends JsonSerializableType
      *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
-     *   data?: ?array<PricingIntent50>,
+     *   data?: ?array<PricingIntent52>,
      * } $values
      */
     public function __construct(

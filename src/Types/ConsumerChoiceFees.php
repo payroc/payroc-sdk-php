@@ -41,12 +41,19 @@ class ConsumerChoiceFees extends JsonSerializableType
     public ?SpecialityCards $specialityCards;
 
     /**
+     * @var ?float $merchantChargePercentage Percentage of the total transaction amount that the processor charges the merchant.
+     */
+    #[JsonProperty('merchantChargePercentage')]
+    public ?float $merchantChargePercentage;
+
+    /**
      * @param array{
      *   monthlySubscription: int,
      *   volume: float,
      *   pinDebit?: ?PinDebit,
      *   electronicBenefitsTransfer?: ?ElectronicBenefitsTransfer,
      *   specialityCards?: ?SpecialityCards,
+     *   merchantChargePercentage?: ?float,
      * } $values
      */
     public function __construct(
@@ -57,6 +64,7 @@ class ConsumerChoiceFees extends JsonSerializableType
         $this->pinDebit = $values['pinDebit'] ?? null;
         $this->electronicBenefitsTransfer = $values['electronicBenefitsTransfer'] ?? null;
         $this->specialityCards = $values['specialityCards'] ?? null;
+        $this->merchantChargePercentage = $values['merchantChargePercentage'] ?? null;
     }
 
     /**

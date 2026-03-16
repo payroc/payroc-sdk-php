@@ -12,28 +12,28 @@ class BankTransferPaymentPaginatedList extends JsonSerializableType
     use PaginatedList;
 
     /**
-     * @var ?array<BankTransferPayment> $data Array of payments.
+     * @var array<BankTransferPayment> $data Array of payments.
      */
     #[JsonProperty('data'), ArrayType([BankTransferPayment::class])]
-    public ?array $data;
+    public array $data;
 
     /**
      * @param array{
+     *   data: array<BankTransferPayment>,
      *   limit?: ?int,
      *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
-     *   data?: ?array<BankTransferPayment>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->limit = $values['limit'] ?? null;
         $this->count = $values['count'] ?? null;
         $this->hasMore = $values['hasMore'] ?? null;
         $this->links = $values['links'] ?? null;
-        $this->data = $values['data'] ?? null;
+        $this->data = $values['data'];
     }
 
     /**

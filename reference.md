@@ -2397,7 +2397,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;create($request) -> PricingIntent50</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;create($request) -> PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2440,9 +2440,9 @@ In the response, our gateway returns information about the pricing intent and th
 $client->boarding->pricingIntents->create(
     new CreatePricingIntentsRequest([
         'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
-        'body' => new PricingIntent50([
-            'country' => PricingAgreementUs50Country::Us->value,
-            'version' => PricingAgreementUs50Version::Five0->value,
+        'body' => new PricingIntent52([
+            'country' => PricingAgreementUs52Country::Us->value,
+            'version' => PricingAgreementUs52Version::Five2->value,
             'base' => new BaseUs([
                 'addressVerification' => 5,
                 'annualFee' => new BaseUsAnnualFee([
@@ -2452,7 +2452,7 @@ $client->boarding->pricingIntents->create(
                 'regulatoryAssistanceProgram' => 15,
                 'pciNonCompliance' => 4995,
                 'merchantAdvantage' => 10,
-                'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new BaseUsMonthly([])),
+                'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new PlatinumSecurityMonthly([])),
                 'maintenance' => 500,
                 'minimum' => 100,
                 'voiceAuthorization' => 95,
@@ -2461,9 +2461,9 @@ $client->boarding->pricingIntents->create(
                 'batch' => 1500,
                 'earlyTermination' => 57500,
             ]),
-            'processor' => new PricingAgreementUs50Processor([
-                'card' => PricingAgreementUs50ProcessorCard::interchangePlus(new InterchangePlus([
-                    'fees' => new InterchangePlusFees([
+            'processor' => new PricingAgreementUs52Processor([
+                'card' => PricingAgreementUs52ProcessorCard::interchangePlus(new InterchangePlusUs52([
+                    'fees' => new InterchangePlusUs52Fees([
                         'mastercardVisaDiscover' => new ProcessorFee([]),
                     ]),
                 ])),
@@ -2502,7 +2502,7 @@ $client->boarding->pricingIntents->create(
 <dl>
 <dd>
 
-**$request:** `PricingIntent50` 
+**$request:** `PricingIntent52` 
     
 </dd>
 </dl>
@@ -2514,7 +2514,7 @@ $client->boarding->pricingIntents->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;retrieve($pricingIntentId) -> PricingIntent50</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;retrieve($pricingIntentId) -> PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2619,9 +2619,9 @@ You can update the following details about a pricing intent:
 $client->boarding->pricingIntents->update(
     '5',
     new UpdatePricingIntentsRequest([
-        'body' => new PricingIntent50([
-            'country' => PricingAgreementUs50Country::Us->value,
-            'version' => PricingAgreementUs50Version::Five0->value,
+        'body' => new PricingIntent52([
+            'country' => PricingAgreementUs52Country::Us->value,
+            'version' => PricingAgreementUs52Version::Five2->value,
             'base' => new BaseUs([
                 'addressVerification' => 5,
                 'annualFee' => new BaseUsAnnualFee([
@@ -2631,7 +2631,7 @@ $client->boarding->pricingIntents->update(
                 'regulatoryAssistanceProgram' => 15,
                 'pciNonCompliance' => 4995,
                 'merchantAdvantage' => 10,
-                'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new BaseUsMonthly([])),
+                'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new PlatinumSecurityMonthly([])),
                 'maintenance' => 500,
                 'minimum' => 100,
                 'voiceAuthorization' => 95,
@@ -2640,9 +2640,9 @@ $client->boarding->pricingIntents->update(
                 'batch' => 1500,
                 'earlyTermination' => 57500,
             ]),
-            'processor' => new PricingAgreementUs50Processor([
-                'card' => PricingAgreementUs50ProcessorCard::interchangePlus(new InterchangePlus([
-                    'fees' => new InterchangePlusFees([
+            'processor' => new PricingAgreementUs52Processor([
+                'card' => PricingAgreementUs52ProcessorCard::interchangePlus(new InterchangePlusUs52([
+                    'fees' => new InterchangePlusUs52Fees([
                         'mastercardVisaDiscover' => new ProcessorFee([]),
                     ]),
                 ])),
@@ -2660,8 +2660,8 @@ $client->boarding->pricingIntents->update(
                     ]),
                 ]),
             ]),
-            'gateway' => new GatewayUs50([
-                'fees' => new GatewayUs50Fees([
+            'gateway' => new GatewayUs52([
+                'fees' => new GatewayUs52Fees([
                     'monthly' => 2000,
                     'setup' => 5000,
                     'perTransaction' => 2000,
@@ -2702,7 +2702,7 @@ $client->boarding->pricingIntents->update(
 <dl>
 <dd>
 
-**$request:** `PricingIntent50` 
+**$request:** `PricingIntent52` 
     
 </dd>
 </dl>
@@ -2776,7 +2776,7 @@ $client->boarding->pricingIntents->delete(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;partiallyUpdate($pricingIntentId, $request) -> PricingIntent50</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;partiallyUpdate($pricingIntentId, $request) -> PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -13743,3 +13743,4 @@ The value of the type parameter determines which variant you should use:
 </dd>
 </dl>
 </details>
+

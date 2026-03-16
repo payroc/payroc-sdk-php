@@ -11,26 +11,26 @@ class SignatureInstruction extends JsonSerializableType
     use DeviceInstruction;
 
     /**
-     * @var ?string $signatureInstructionId Unique identifier that our gateway assigned to the instruction.
+     * @var string $signatureInstructionId Unique identifier that our gateway assigned to the instruction.
      */
     #[JsonProperty('signatureInstructionId')]
-    public ?string $signatureInstructionId;
+    public string $signatureInstructionId;
 
     /**
      * @param array{
+     *   signatureInstructionId: string,
      *   status?: ?value-of<DeviceInstructionStatus>,
      *   errorMessage?: ?string,
      *   link?: ?Link,
-     *   signatureInstructionId?: ?string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->status = $values['status'] ?? null;
         $this->errorMessage = $values['errorMessage'] ?? null;
         $this->link = $values['link'] ?? null;
-        $this->signatureInstructionId = $values['signatureInstructionId'] ?? null;
+        $this->signatureInstructionId = $values['signatureInstructionId'];
     }
 
     /**

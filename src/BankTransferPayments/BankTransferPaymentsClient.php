@@ -4,7 +4,7 @@ namespace Payroc\BankTransferPayments;
 
 use Payroc\BankTransferPayments\Payments\PaymentsClient;
 use Payroc\BankTransferPayments\Refunds\RefundsClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

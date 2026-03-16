@@ -11,26 +11,26 @@ class PaymentInstruction extends JsonSerializableType
     use DeviceInstruction;
 
     /**
-     * @var ?string $paymentInstructionId Unique identifier that we assigned to the payment instruction.
+     * @var string $paymentInstructionId Unique identifier that we assigned to the payment instruction.
      */
     #[JsonProperty('paymentInstructionId')]
-    public ?string $paymentInstructionId;
+    public string $paymentInstructionId;
 
     /**
      * @param array{
+     *   paymentInstructionId: string,
      *   status?: ?value-of<DeviceInstructionStatus>,
      *   errorMessage?: ?string,
      *   link?: ?Link,
-     *   paymentInstructionId?: ?string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->status = $values['status'] ?? null;
         $this->errorMessage = $values['errorMessage'] ?? null;
         $this->link = $values['link'] ?? null;
-        $this->paymentInstructionId = $values['paymentInstructionId'] ?? null;
+        $this->paymentInstructionId = $values['paymentInstructionId'];
     }
 
     /**

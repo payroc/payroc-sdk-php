@@ -6,26 +6,26 @@ use Payroc\Tests\Wire\WireMockTestCase;
 use Payroc\PayrocClient;
 use Payroc\Boarding\PricingIntents\Requests\ListPricingIntentsRequest;
 use Payroc\Boarding\PricingIntents\Requests\CreatePricingIntentsRequest;
-use Payroc\Types\PricingIntent50;
-use Payroc\Types\PricingAgreementUs50Country;
-use Payroc\Types\PricingAgreementUs50Version;
+use Payroc\Types\PricingIntent52;
+use Payroc\Types\PricingAgreementUs52Country;
+use Payroc\Types\PricingAgreementUs52Version;
 use Payroc\Types\BaseUs;
 use Payroc\Types\BaseUsAnnualFee;
 use Payroc\Types\BaseUsAnnualFeeBillInMonth;
 use Payroc\Types\BaseUsPlatinumSecurity;
-use Payroc\Types\BaseUsMonthly;
-use Payroc\Types\PricingAgreementUs50Processor;
-use Payroc\Types\PricingAgreementUs50ProcessorCard;
-use Payroc\Types\InterchangePlus;
-use Payroc\Types\InterchangePlusFees;
+use Payroc\Types\PlatinumSecurityMonthly;
+use Payroc\Types\PricingAgreementUs52Processor;
+use Payroc\Types\PricingAgreementUs52ProcessorCard;
+use Payroc\Types\InterchangePlusUs52;
+use Payroc\Types\InterchangePlusUs52Fees;
 use Payroc\Types\ProcessorFee;
 use Payroc\Types\ServiceUs50;
 use Payroc\Types\HardwareAdvantagePlan;
 use Payroc\Boarding\PricingIntents\Requests\UpdatePricingIntentsRequest;
 use Payroc\Types\Ach;
 use Payroc\Types\AchFees;
-use Payroc\Types\GatewayUs50;
-use Payroc\Types\GatewayUs50Fees;
+use Payroc\Types\GatewayUs52;
+use Payroc\Types\GatewayUs52Fees;
 use Payroc\Boarding\PricingIntents\Requests\PartiallyUpdatePricingIntentsRequest;
 use Payroc\Types\PatchDocument;
 use Payroc\Types\PatchRemove;
@@ -73,9 +73,9 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
         $this->client->boarding->pricingIntents->create(
             new CreatePricingIntentsRequest([
                 'idempotencyKey' => '8e03978e-40d5-43e8-bc93-6894a57f9324',
-                'body' => new PricingIntent50([
-                    'country' => PricingAgreementUs50Country::Us->value,
-                    'version' => PricingAgreementUs50Version::Five0->value,
+                'body' => new PricingIntent52([
+                    'country' => PricingAgreementUs52Country::Us->value,
+                    'version' => PricingAgreementUs52Version::Five2->value,
                     'base' => new BaseUs([
                         'addressVerification' => 5,
                         'annualFee' => new BaseUsAnnualFee([
@@ -85,7 +85,7 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                         'regulatoryAssistanceProgram' => 15,
                         'pciNonCompliance' => 4995,
                         'merchantAdvantage' => 10,
-                        'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new BaseUsMonthly([])),
+                        'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new PlatinumSecurityMonthly([])),
                         'maintenance' => 500,
                         'minimum' => 100,
                         'voiceAuthorization' => 95,
@@ -94,9 +94,9 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                         'batch' => 1500,
                         'earlyTermination' => 57500,
                     ]),
-                    'processor' => new PricingAgreementUs50Processor([
-                        'card' => PricingAgreementUs50ProcessorCard::interchangePlus(new InterchangePlus([
-                            'fees' => new InterchangePlusFees([
+                    'processor' => new PricingAgreementUs52Processor([
+                        'card' => PricingAgreementUs52ProcessorCard::interchangePlus(new InterchangePlusUs52([
+                            'fees' => new InterchangePlusUs52Fees([
                                 'mastercardVisaDiscover' => new ProcessorFee([]),
                             ]),
                         ])),
@@ -155,9 +155,9 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
         $this->client->boarding->pricingIntents->update(
             '5',
             new UpdatePricingIntentsRequest([
-                'body' => new PricingIntent50([
-                    'country' => PricingAgreementUs50Country::Us->value,
-                    'version' => PricingAgreementUs50Version::Five0->value,
+                'body' => new PricingIntent52([
+                    'country' => PricingAgreementUs52Country::Us->value,
+                    'version' => PricingAgreementUs52Version::Five2->value,
                     'base' => new BaseUs([
                         'addressVerification' => 5,
                         'annualFee' => new BaseUsAnnualFee([
@@ -167,7 +167,7 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                         'regulatoryAssistanceProgram' => 15,
                         'pciNonCompliance' => 4995,
                         'merchantAdvantage' => 10,
-                        'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new BaseUsMonthly([])),
+                        'platinumSecurity' => BaseUsPlatinumSecurity::monthly(new PlatinumSecurityMonthly([])),
                         'maintenance' => 500,
                         'minimum' => 100,
                         'voiceAuthorization' => 95,
@@ -176,9 +176,9 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                         'batch' => 1500,
                         'earlyTermination' => 57500,
                     ]),
-                    'processor' => new PricingAgreementUs50Processor([
-                        'card' => PricingAgreementUs50ProcessorCard::interchangePlus(new InterchangePlus([
-                            'fees' => new InterchangePlusFees([
+                    'processor' => new PricingAgreementUs52Processor([
+                        'card' => PricingAgreementUs52ProcessorCard::interchangePlus(new InterchangePlusUs52([
+                            'fees' => new InterchangePlusUs52Fees([
                                 'mastercardVisaDiscover' => new ProcessorFee([]),
                             ]),
                         ])),
@@ -196,8 +196,8 @@ class BoardingPricingIntentsWireTest extends WireMockTestCase
                             ]),
                         ]),
                     ]),
-                    'gateway' => new GatewayUs50([
-                        'fees' => new GatewayUs50Fees([
+                    'gateway' => new GatewayUs52([
+                        'fees' => new GatewayUs52Fees([
                             'monthly' => 2000,
                             'setup' => 5000,
                             'perTransaction' => 2000,

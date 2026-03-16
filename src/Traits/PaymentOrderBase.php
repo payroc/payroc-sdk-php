@@ -12,21 +12,21 @@ use Payroc\Core\Types\Date;
 /**
  * Object that contains information about the payment.
  *
- * @property ?string $orderId
+ * @property string $orderId
  * @property ?DateTime $dateTime
  * @property ?string $description
- * @property ?int $amount
- * @property ?value-of<Currency> $currency
+ * @property int $amount
+ * @property value-of<Currency> $currency
  * @property ?DccOffer $dccOffer
  * @property ?StandingInstructions $standingInstructions
  */
 trait PaymentOrderBase
 {
     /**
-     * @var ?string $orderId A unique identifier assigned by the merchant.
+     * @var string $orderId A unique identifier assigned by the merchant.
      */
     #[JsonProperty('orderId')]
-    public ?string $orderId;
+    public string $orderId;
 
     /**
      * @var ?DateTime $dateTime Date and time that the processor processed the transaction. Our gateway returns this value in the ISO 8601 format.
@@ -41,16 +41,16 @@ trait PaymentOrderBase
     public ?string $description;
 
     /**
-     * @var ?int $amount Total amount of the transaction. The value is in the currency’s lowest denomination, for example, cents.
+     * @var int $amount Total amount of the transaction. The value is in the currency’s lowest denomination, for example, cents.
      */
     #[JsonProperty('amount')]
-    public ?int $amount;
+    public int $amount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * @var ?DccOffer $dccOffer

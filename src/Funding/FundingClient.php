@@ -6,7 +6,7 @@ use Payroc\Funding\FundingRecipients\FundingRecipientsClient;
 use Payroc\Funding\FundingAccounts\FundingAccountsClient;
 use Payroc\Funding\FundingInstructions\FundingInstructionsClient;
 use Payroc\Funding\FundingActivity\FundingActivityClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

@@ -9,7 +9,7 @@ use Payroc\Boarding\ProcessingAccounts\ProcessingAccountsClient;
 use Payroc\Boarding\ProcessingTerminals\ProcessingTerminalsClient;
 use Payroc\Boarding\Contacts\ContactsClient;
 use Payroc\Boarding\TerminalOrders\TerminalOrdersClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

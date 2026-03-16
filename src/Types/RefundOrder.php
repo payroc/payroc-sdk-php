@@ -13,10 +13,10 @@ use Payroc\Core\Types\Date;
 class RefundOrder extends JsonSerializableType
 {
     /**
-     * @var ?string $orderId A unique identifier assigned by the merchant.
+     * @var string $orderId A unique identifier assigned by the merchant.
      */
     #[JsonProperty('orderId')]
-    public ?string $orderId;
+    public string $orderId;
 
     /**
      * @var ?DateTime $dateTime Date and time that our gateway processed the refund. The value follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard.
@@ -25,22 +25,22 @@ class RefundOrder extends JsonSerializableType
     public ?DateTime $dateTime;
 
     /**
-     * @var ?string $description Description of the transaction.
+     * @var string $description Description of the transaction.
      */
     #[JsonProperty('description')]
-    public ?string $description;
+    public string $description;
 
     /**
-     * @var ?int $amount Amount of the refund. The value is in the currency's lowest denomination, for example, cents.
+     * @var int $amount Amount of the refund. The value is in the currency's lowest denomination, for example, cents.
      */
     #[JsonProperty('amount')]
-    public ?int $amount;
+    public int $amount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * @var ?DccOffer $dccOffer
@@ -50,22 +50,22 @@ class RefundOrder extends JsonSerializableType
 
     /**
      * @param array{
-     *   orderId?: ?string,
+     *   orderId: string,
+     *   description: string,
+     *   amount: int,
+     *   currency: value-of<Currency>,
      *   dateTime?: ?DateTime,
-     *   description?: ?string,
-     *   amount?: ?int,
-     *   currency?: ?value-of<Currency>,
      *   dccOffer?: ?DccOffer,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->orderId = $values['orderId'] ?? null;
+        $this->orderId = $values['orderId'];
         $this->dateTime = $values['dateTime'] ?? null;
-        $this->description = $values['description'] ?? null;
-        $this->amount = $values['amount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
+        $this->description = $values['description'];
+        $this->amount = $values['amount'];
+        $this->currency = $values['currency'];
         $this->dccOffer = $values['dccOffer'] ?? null;
     }
 
