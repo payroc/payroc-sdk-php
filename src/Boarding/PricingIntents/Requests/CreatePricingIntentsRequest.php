@@ -3,7 +3,7 @@
 namespace Payroc\Boarding\PricingIntents\Requests;
 
 use Payroc\Core\Json\JsonSerializableType;
-use Payroc\Types\PricingIntent50;
+use Payroc\Types\PricingIntent52;
 
 class CreatePricingIntentsRequest extends JsonSerializableType
 {
@@ -13,14 +13,14 @@ class CreatePricingIntentsRequest extends JsonSerializableType
     public string $idempotencyKey;
 
     /**
-     * @var PricingIntent50 $body
+     * @var PricingIntent52 $body
      */
-    public PricingIntent50 $body;
+    public PricingIntent52 $body;
 
     /**
      * @param array{
      *   idempotencyKey: string,
-     *   body: PricingIntent50,
+     *   body: PricingIntent52,
      * } $values
      */
     public function __construct(

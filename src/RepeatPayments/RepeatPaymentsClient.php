@@ -4,7 +4,7 @@ namespace Payroc\RepeatPayments;
 
 use Payroc\RepeatPayments\PaymentPlans\PaymentPlansClient;
 use Payroc\RepeatPayments\Subscriptions\SubscriptionsClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

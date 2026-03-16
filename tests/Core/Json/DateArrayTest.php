@@ -4,6 +4,7 @@ namespace Payroc\Tests\Core\Json;
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
+use Payroc\Core\Json\JsonEncoder;
 use Payroc\Core\Json\JsonProperty;
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Core\Types\ArrayType;
@@ -33,11 +34,10 @@ class DateArrayTest extends TestCase
 {
     public function testDateTimeInArrays(): void
     {
-        $expectedJson = json_encode(
+        $expectedJson = JsonEncoder::encode(
             [
                 'dates' => ['2023-01-01', '2023-02-01', '2023-03-01']
             ],
-            JSON_THROW_ON_ERROR
         );
 
         $object = DateArray::fromJson($expectedJson);

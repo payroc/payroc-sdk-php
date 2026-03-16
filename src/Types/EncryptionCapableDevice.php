@@ -14,19 +14,19 @@ class EncryptionCapableDevice extends JsonSerializableType
     use Device;
 
     /**
-     * @var ?string $dataKsn Key serial number.
+     * @var string $dataKsn Key serial number.
      */
     #[JsonProperty('dataKsn')]
-    public ?string $dataKsn;
+    public string $dataKsn;
 
     /**
      * @param array{
      *   model: value-of<DeviceModel>,
      *   serialNumber: string,
+     *   dataKsn: string,
      *   category?: ?value-of<DeviceCategory>,
      *   firmwareVersion?: ?string,
      *   config?: ?DeviceConfig,
-     *   dataKsn?: ?string,
      * } $values
      */
     public function __construct(
@@ -37,7 +37,7 @@ class EncryptionCapableDevice extends JsonSerializableType
         $this->serialNumber = $values['serialNumber'];
         $this->firmwareVersion = $values['firmwareVersion'] ?? null;
         $this->config = $values['config'] ?? null;
-        $this->dataKsn = $values['dataKsn'] ?? null;
+        $this->dataKsn = $values['dataKsn'];
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Payroc\CardPayments;
 
 use Payroc\CardPayments\Payments\PaymentsClient;
 use Payroc\CardPayments\Refunds\RefundsClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

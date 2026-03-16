@@ -2,7 +2,7 @@
 
 namespace Payroc\BankTransferPayments\Payments;
 
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 use Payroc\BankTransferPayments\Payments\Requests\ListPaymentsRequest;
@@ -15,7 +15,6 @@ use Payroc\Exceptions\PayrocApiException;
 use Payroc\Core\Json\JsonApiRequest;
 use Payroc\Core\Client\HttpMethod;
 use JsonException;
-use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Payroc\BankTransferPayments\Payments\Requests\Representment;
 use Payroc\Types\BankTransferPaymentPaginatedList;
@@ -139,16 +138,6 @@ class PaymentsClient
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -206,16 +195,6 @@ class PaymentsClient
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -274,16 +253,6 @@ class PaymentsClient
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -383,16 +352,6 @@ class PaymentsClient
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }

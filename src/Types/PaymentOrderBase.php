@@ -13,10 +13,10 @@ use Payroc\Core\Types\Date;
 class PaymentOrderBase extends JsonSerializableType
 {
     /**
-     * @var ?string $orderId A unique identifier assigned by the merchant.
+     * @var string $orderId A unique identifier assigned by the merchant.
      */
     #[JsonProperty('orderId')]
-    public ?string $orderId;
+    public string $orderId;
 
     /**
      * @var ?DateTime $dateTime Date and time that the processor processed the transaction. Our gateway returns this value in the ISO 8601 format.
@@ -31,16 +31,16 @@ class PaymentOrderBase extends JsonSerializableType
     public ?string $description;
 
     /**
-     * @var ?int $amount Total amount of the transaction. The value is in the currency’s lowest denomination, for example, cents.
+     * @var int $amount Total amount of the transaction. The value is in the currency’s lowest denomination, for example, cents.
      */
     #[JsonProperty('amount')]
-    public ?int $amount;
+    public int $amount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * @var ?DccOffer $dccOffer
@@ -56,23 +56,23 @@ class PaymentOrderBase extends JsonSerializableType
 
     /**
      * @param array{
-     *   orderId?: ?string,
+     *   orderId: string,
+     *   amount: int,
+     *   currency: value-of<Currency>,
      *   dateTime?: ?DateTime,
      *   description?: ?string,
-     *   amount?: ?int,
-     *   currency?: ?value-of<Currency>,
      *   dccOffer?: ?DccOffer,
      *   standingInstructions?: ?StandingInstructions,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->orderId = $values['orderId'] ?? null;
+        $this->orderId = $values['orderId'];
         $this->dateTime = $values['dateTime'] ?? null;
         $this->description = $values['description'] ?? null;
-        $this->amount = $values['amount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
+        $this->amount = $values['amount'];
+        $this->currency = $values['currency'];
         $this->dccOffer = $values['dccOffer'] ?? null;
         $this->standingInstructions = $values['standingInstructions'] ?? null;
     }

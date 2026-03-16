@@ -51,10 +51,10 @@ class BankTransferRefund extends JsonSerializableType
     public ?PaymentSummary $payment;
 
     /**
-     * @var BankTransferResult $transactionResult
+     * @var ?BankTransferResult $transactionResult
      */
     #[JsonProperty('transactionResult')]
-    public BankTransferResult $transactionResult;
+    public ?BankTransferResult $transactionResult;
 
     /**
      * @var ?array<CustomField> $customFields Array of customField objects.
@@ -68,9 +68,9 @@ class BankTransferRefund extends JsonSerializableType
      *   processingTerminalId: string,
      *   order: BankTransferRefundOrder,
      *   bankAccount: BankTransferRefundBankAccount,
-     *   transactionResult: BankTransferResult,
      *   customer?: ?BankTransferCustomer,
      *   payment?: ?PaymentSummary,
+     *   transactionResult?: ?BankTransferResult,
      *   customFields?: ?array<CustomField>,
      * } $values
      */
@@ -83,7 +83,7 @@ class BankTransferRefund extends JsonSerializableType
         $this->customer = $values['customer'] ?? null;
         $this->bankAccount = $values['bankAccount'];
         $this->payment = $values['payment'] ?? null;
-        $this->transactionResult = $values['transactionResult'];
+        $this->transactionResult = $values['transactionResult'] ?? null;
         $this->customFields = $values['customFields'] ?? null;
     }
 

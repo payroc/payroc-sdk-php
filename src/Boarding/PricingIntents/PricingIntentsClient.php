@@ -2,12 +2,12 @@
 
 namespace Payroc\Boarding\PricingIntents;
 
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 use Payroc\Boarding\PricingIntents\Requests\ListPricingIntentsRequest;
 use Payroc\Core\Pagination\Pager;
-use Payroc\Types\PricingIntent50;
+use Payroc\Types\PricingIntent52;
 use Payroc\Core\Pagination\PayrocPager;
 use Payroc\Boarding\PricingIntents\Requests\CreatePricingIntentsRequest;
 use Payroc\Exceptions\PayrocException;
@@ -15,7 +15,6 @@ use Payroc\Exceptions\PayrocApiException;
 use Payroc\Core\Json\JsonApiRequest;
 use Payroc\Core\Client\HttpMethod;
 use JsonException;
-use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Payroc\Boarding\PricingIntents\Requests\UpdatePricingIntentsRequest;
 use Payroc\Boarding\PricingIntents\Requests\PartiallyUpdatePricingIntentsRequest;
@@ -76,7 +75,7 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Pager<PricingIntent50>
+     * @return Pager<PricingIntent52>
      */
     public function list(ListPricingIntentsRequest $request = new ListPricingIntentsRequest(), ?array $options = null): Pager
     {
@@ -108,11 +107,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent50
+     * @return PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreatePricingIntentsRequest $request, ?array $options = null): PricingIntent50
+    public function create(CreatePricingIntentsRequest $request, ?array $options = null): PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -131,20 +130,10 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
-                return PricingIntent50::fromJson($json);
+                return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -175,11 +164,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent50
+     * @return PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $pricingIntentId, ?array $options = null): PricingIntent50
+    public function retrieve(string $pricingIntentId, ?array $options = null): PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -194,20 +183,10 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
-                return PricingIntent50::fromJson($json);
+                return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -260,16 +239,6 @@ class PricingIntentsClient
             if ($statusCode >= 200 && $statusCode < 400) {
                 return;
             }
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -316,16 +285,6 @@ class PricingIntentsClient
             if ($statusCode >= 200 && $statusCode < 400) {
                 return;
             }
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -360,11 +319,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent50
+     * @return PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $pricingIntentId, PartiallyUpdatePricingIntentsRequest $request, ?array $options = null): PricingIntent50
+    public function partiallyUpdate(string $pricingIntentId, PartiallyUpdatePricingIntentsRequest $request, ?array $options = null): PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -383,20 +342,10 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
-                return PricingIntent50::fromJson($json);
+                return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }
@@ -461,16 +410,6 @@ class PricingIntentsClient
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            if ($response === null) {
-                throw new PayrocException(message: $e->getMessage(), previous: $e);
-            }
-            throw new PayrocApiException(
-                message: "API request failed",
-                statusCode: $response->getStatusCode(),
-                body: $response->getBody()->getContents(),
-            );
         } catch (ClientExceptionInterface $e) {
             throw new PayrocException(message: $e->getMessage(), previous: $e);
         }

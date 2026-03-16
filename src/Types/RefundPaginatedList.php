@@ -15,28 +15,28 @@ class RefundPaginatedList extends JsonSerializableType
     use PaginatedList;
 
     /**
-     * @var ?array<RetrievedRefund> $data Array of refund objects.
+     * @var array<RetrievedRefund> $data Array of refund objects.
      */
     #[JsonProperty('data'), ArrayType([RetrievedRefund::class])]
-    public ?array $data;
+    public array $data;
 
     /**
      * @param array{
+     *   data: array<RetrievedRefund>,
      *   limit?: ?int,
      *   count?: ?int,
      *   hasMore?: ?bool,
      *   links?: ?array<Link>,
-     *   data?: ?array<RetrievedRefund>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->limit = $values['limit'] ?? null;
         $this->count = $values['count'] ?? null;
         $this->hasMore = $values['hasMore'] ?? null;
         $this->links = $values['links'] ?? null;
-        $this->data = $values['data'] ?? null;
+        $this->data = $values['data'];
     }
 
     /**

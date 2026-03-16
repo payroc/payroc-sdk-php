@@ -22,22 +22,22 @@ class BankTransferPaymentRequestOrder extends JsonSerializableType
 
     /**
      * @param array{
-     *   orderId?: ?string,
+     *   orderId: string,
+     *   amount: int,
+     *   currency: value-of<Currency>,
      *   dateTime?: ?DateTime,
      *   description?: ?string,
-     *   amount?: ?int,
-     *   currency?: ?value-of<Currency>,
      *   breakdown?: ?BankTransferRequestBreakdown,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->orderId = $values['orderId'] ?? null;
+        $this->orderId = $values['orderId'];
         $this->dateTime = $values['dateTime'] ?? null;
         $this->description = $values['description'] ?? null;
-        $this->amount = $values['amount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
+        $this->amount = $values['amount'];
+        $this->currency = $values['currency'];
         $this->breakdown = $values['breakdown'] ?? null;
     }
 

@@ -3,6 +3,7 @@
 namespace Payroc\Tests\Core\Json;
 
 use PHPUnit\Framework\TestCase;
+use Payroc\Core\Json\JsonEncoder;
 use Payroc\Core\Json\JsonProperty;
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Core\Types\ArrayType;
@@ -33,11 +34,10 @@ class NullableArrayTest extends TestCase
 {
     public function testNullableArray(): void
     {
-        $expectedJson = json_encode(
+        $expectedJson = JsonEncoder::encode(
             [
                 'nullable_string_array' => ['one', null, 'three']
             ],
-            JSON_THROW_ON_ERROR
         );
 
         $object = NullableArray::fromJson($expectedJson);

@@ -13,10 +13,10 @@ use Payroc\Core\Types\Date;
 class BankTransferPaymentOrderBase extends JsonSerializableType
 {
     /**
-     * @var ?string $orderId A unique identifier assigned by the merchant.
+     * @var string $orderId A unique identifier assigned by the merchant.
      */
     #[JsonProperty('orderId')]
-    public ?string $orderId;
+    public string $orderId;
 
     /**
      * @var ?DateTime $dateTime The processing date and time of the transaction represented as per [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
@@ -31,34 +31,34 @@ class BankTransferPaymentOrderBase extends JsonSerializableType
     public ?string $description;
 
     /**
-     * @var ?int $amount The total amount in the currency's lowest denomination. For example, cents.
+     * @var int $amount The total amount in the currency's lowest denomination. For example, cents.
      */
     #[JsonProperty('amount')]
-    public ?int $amount;
+    public int $amount;
 
     /**
-     * @var ?value-of<Currency> $currency
+     * @var value-of<Currency> $currency
      */
     #[JsonProperty('currency')]
-    public ?string $currency;
+    public string $currency;
 
     /**
      * @param array{
-     *   orderId?: ?string,
+     *   orderId: string,
+     *   amount: int,
+     *   currency: value-of<Currency>,
      *   dateTime?: ?DateTime,
      *   description?: ?string,
-     *   amount?: ?int,
-     *   currency?: ?value-of<Currency>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->orderId = $values['orderId'] ?? null;
+        $this->orderId = $values['orderId'];
         $this->dateTime = $values['dateTime'] ?? null;
         $this->description = $values['description'] ?? null;
-        $this->amount = $values['amount'] ?? null;
-        $this->currency = $values['currency'] ?? null;
+        $this->amount = $values['amount'];
+        $this->currency = $values['currency'];
     }
 
     /**

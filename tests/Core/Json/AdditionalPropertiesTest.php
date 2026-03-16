@@ -3,6 +3,7 @@
 namespace Payroc\Tests\Core\Json;
 
 use PHPUnit\Framework\TestCase;
+use Payroc\Core\Json\JsonEncoder;
 use Payroc\Core\Json\JsonProperty;
 use Payroc\Core\Json\JsonSerializableType;
 
@@ -54,13 +55,12 @@ class AdditionalPropertiesTest extends TestCase
 {
     public function testExtraProperties(): void
     {
-        $expectedJson = json_encode(
+        $expectedJson = JsonEncoder::encode(
             [
                 'name' => 'john.doe',
                 'email' => 'john.doe@example.com',
                 'age' => 42
             ],
-            JSON_THROW_ON_ERROR
         );
 
         $person = Person::fromJson($expectedJson);

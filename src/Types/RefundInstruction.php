@@ -11,26 +11,26 @@ class RefundInstruction extends JsonSerializableType
     use DeviceInstruction;
 
     /**
-     * @var ?string $refundInstructionId Unique identifier that we assigned to the refund instruction.
+     * @var string $refundInstructionId Unique identifier that we assigned to the refund instruction.
      */
     #[JsonProperty('refundInstructionId')]
-    public ?string $refundInstructionId;
+    public string $refundInstructionId;
 
     /**
      * @param array{
+     *   refundInstructionId: string,
      *   status?: ?value-of<DeviceInstructionStatus>,
      *   errorMessage?: ?string,
      *   link?: ?Link,
-     *   refundInstructionId?: ?string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->status = $values['status'] ?? null;
         $this->errorMessage = $values['errorMessage'] ?? null;
         $this->link = $values['link'] ?? null;
-        $this->refundInstructionId = $values['refundInstructionId'] ?? null;
+        $this->refundInstructionId = $values['refundInstructionId'];
     }
 
     /**

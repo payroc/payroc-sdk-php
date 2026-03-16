@@ -17,7 +17,7 @@ use Payroc\PayrocCloud\PayrocCloudClient;
 use Payroc\RepeatPayments\RepeatPaymentsClient;
 use Payroc\Reporting\ReportingClient;
 use Payroc\Tokenization\TokenizationClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Core\InferredAuthProvider;
 
@@ -141,8 +141,8 @@ class PayrocClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Payroc',
-            'X-Fern-SDK-Version' => '0.0.3816',
-            'User-Agent' => 'payroc/payroc-sdk-php/0.0.3816',
+            'X-Fern-SDK-Version' => '0.0.379',
+            'User-Agent' => 'payroc/payroc-sdk-php/0.0.379',
         ];
         if ($apiKey != null) {
             $defaultHeaders['x-api-key'] = $apiKey;

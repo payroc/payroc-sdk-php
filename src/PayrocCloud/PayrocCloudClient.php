@@ -6,7 +6,7 @@ use Payroc\PayrocCloud\PaymentInstructions\PaymentInstructionsClient;
 use Payroc\PayrocCloud\RefundInstructions\RefundInstructionsClient;
 use Payroc\PayrocCloud\SignatureInstructions\SignatureInstructionsClient;
 use Payroc\PayrocCloud\Signatures\SignaturesClient;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
 

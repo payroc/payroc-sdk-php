@@ -41,7 +41,13 @@ abstract class IntegrationTestCase extends TestCase
     private static function getEnv(string $name): string
     {
         $value = getenv($name);
-        if ($value === false) {
+        if ($value === false || $value === '') {
+            if (str_starts_with($name, 'PAYROC_API_KEY_')) {
+                $fallbackValue = getenv('PAYROC_API_KEY');
+                if ($fallbackValue !== false && $fallbackValue !== '') {
+                    return $fallbackValue;
+                }
+            }
             throw new \RuntimeException("Environment variable '{$name}' is not set.");
         }
         return $value;

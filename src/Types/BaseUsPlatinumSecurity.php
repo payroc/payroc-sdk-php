@@ -26,8 +26,8 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
 
     /**
      * @var (
-     *    BaseUsMonthly
-     *   |BaseUsAnnual
+     *    PlatinumSecurityMonthly
+     *   |PlatinumSecurityAnnual
      *   |mixed
      * ) $value
      */
@@ -41,8 +41,8 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
      *   |'_unknown'
      * ),
      *   value: (
-     *    BaseUsMonthly
-     *   |BaseUsAnnual
+     *    PlatinumSecurityMonthly
+     *   |PlatinumSecurityAnnual
      *   |mixed
      * ),
      * } $values
@@ -55,10 +55,10 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
     }
 
     /**
-     * @param BaseUsMonthly $monthly
+     * @param PlatinumSecurityMonthly $monthly
      * @return BaseUsPlatinumSecurity
      */
-    public static function monthly(BaseUsMonthly $monthly): BaseUsPlatinumSecurity
+    public static function monthly(PlatinumSecurityMonthly $monthly): BaseUsPlatinumSecurity
     {
         return new BaseUsPlatinumSecurity([
             'billingFrequency' => 'monthly',
@@ -67,10 +67,10 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
     }
 
     /**
-     * @param BaseUsAnnual $annual
+     * @param PlatinumSecurityAnnual $annual
      * @return BaseUsPlatinumSecurity
      */
-    public static function annual(BaseUsAnnual $annual): BaseUsPlatinumSecurity
+    public static function annual(PlatinumSecurityAnnual $annual): BaseUsPlatinumSecurity
     {
         return new BaseUsPlatinumSecurity([
             'billingFrequency' => 'annual',
@@ -83,15 +83,15 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
      */
     public function isMonthly(): bool
     {
-        return $this->value instanceof BaseUsMonthly && $this->billingFrequency === 'monthly';
+        return $this->value instanceof PlatinumSecurityMonthly && $this->billingFrequency === 'monthly';
     }
 
     /**
-     * @return BaseUsMonthly
+     * @return PlatinumSecurityMonthly
      */
-    public function asMonthly(): BaseUsMonthly
+    public function asMonthly(): PlatinumSecurityMonthly
     {
-        if (!($this->value instanceof BaseUsMonthly && $this->billingFrequency === 'monthly')) {
+        if (!($this->value instanceof PlatinumSecurityMonthly && $this->billingFrequency === 'monthly')) {
             throw new Exception(
                 "Expected monthly; got " . $this->billingFrequency . " with value of type " . get_debug_type($this->value),
             );
@@ -105,15 +105,15 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
      */
     public function isAnnual(): bool
     {
-        return $this->value instanceof BaseUsAnnual && $this->billingFrequency === 'annual';
+        return $this->value instanceof PlatinumSecurityAnnual && $this->billingFrequency === 'annual';
     }
 
     /**
-     * @return BaseUsAnnual
+     * @return PlatinumSecurityAnnual
      */
-    public function asAnnual(): BaseUsAnnual
+    public function asAnnual(): PlatinumSecurityAnnual
     {
-        if (!($this->value instanceof BaseUsAnnual && $this->billingFrequency === 'annual')) {
+        if (!($this->value instanceof PlatinumSecurityAnnual && $this->billingFrequency === 'annual')) {
             throw new Exception(
                 "Expected annual; got " . $this->billingFrequency . " with value of type " . get_debug_type($this->value),
             );
@@ -199,10 +199,10 @@ class BaseUsPlatinumSecurity extends JsonSerializableType
         $args['billingFrequency'] = $billingFrequency;
         switch ($billingFrequency) {
             case 'monthly':
-                $args['value'] = BaseUsMonthly::jsonDeserialize($data);
+                $args['value'] = PlatinumSecurityMonthly::jsonDeserialize($data);
                 break;
             case 'annual':
-                $args['value'] = BaseUsAnnual::jsonDeserialize($data);
+                $args['value'] = PlatinumSecurityAnnual::jsonDeserialize($data);
                 break;
             case '_unknown':
             default:

@@ -3,6 +3,7 @@
 namespace Payroc\Tests\Core\Json;
 
 use PHPUnit\Framework\TestCase;
+use Payroc\Core\Json\JsonEncoder;
 use Payroc\Core\Json\JsonSerializableType;
 use Payroc\Core\Json\JsonProperty;
 
@@ -31,11 +32,10 @@ class InvalidTest extends TestCase
     public function testInvalidJsonThrowsException(): void
     {
         $this->expectException(\TypeError::class);
-        $json = json_encode(
+        $json = JsonEncoder::encode(
             [
                 'integer_property' => 'not_an_integer'
             ],
-            JSON_THROW_ON_ERROR
         );
         Invalid::fromJson($json);
     }

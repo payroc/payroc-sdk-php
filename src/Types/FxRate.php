@@ -47,10 +47,10 @@ class FxRate extends JsonSerializableType
     public ?DccOffer $dccOffer;
 
     /**
-     * @var CardInfo $cardInfo
+     * @var ?CardInfo $cardInfo
      */
     #[JsonProperty('cardInfo')]
-    public CardInfo $cardInfo;
+    public ?CardInfo $cardInfo;
 
     /**
      * @param array{
@@ -58,9 +58,9 @@ class FxRate extends JsonSerializableType
      *   baseAmount: int,
      *   baseCurrency: value-of<Currency>,
      *   inquiryResult: FxRateInquiryResult,
-     *   cardInfo: CardInfo,
      *   operator?: ?string,
      *   dccOffer?: ?DccOffer,
+     *   cardInfo?: ?CardInfo,
      * } $values
      */
     public function __construct(
@@ -72,7 +72,7 @@ class FxRate extends JsonSerializableType
         $this->baseCurrency = $values['baseCurrency'];
         $this->inquiryResult = $values['inquiryResult'];
         $this->dccOffer = $values['dccOffer'] ?? null;
-        $this->cardInfo = $values['cardInfo'];
+        $this->cardInfo = $values['cardInfo'] ?? null;
     }
 
     /**
