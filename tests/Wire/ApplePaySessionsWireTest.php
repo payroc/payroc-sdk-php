@@ -43,9 +43,10 @@ class ApplePaySessionsWireTest extends WireMockTestCase
      */
     protected function setUp(): void {
         parent::setUp();
+        $wiremockUrl = getenv('WIREMOCK_URL') ?: 'http://localhost:8080';
         $this->client = new PayrocClient(
             apiKey: 'test-apiKey',
-            environment: Environments::custom('http://localhost:8080', 'http://localhost:8080'),
+            environment: Environments::custom($wiremockUrl, $wiremockUrl),
         );
     }
 }

@@ -1,5 +1,7 @@
 # Payroc API PHP SDK
 
+[![php shield](https://img.shields.io/badge/php-packagist-pink)](https://packagist.org/packages/payroc/payroc-sdk-php)
+
 The Payroc API PHP SDK provides convenient access to the Payroc API from PHP.
 
 ## Contents
