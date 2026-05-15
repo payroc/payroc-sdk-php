@@ -34,6 +34,8 @@ class SecureTokenPayload extends JsonSerializableType
      * - `ccd` – Corporate credit card or debit card transaction.
      * - `ppd` – Pre-arranged transaction.
      *
+     * **Note:** This field is mandatory when the secure token represents ACH bank account details.
+     *
      * @var ?value-of<SecureTokenPayloadSecCode> $secCode
      */
     #[JsonProperty('secCode')]

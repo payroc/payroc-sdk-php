@@ -28,6 +28,8 @@ class AchPayload extends JsonSerializableType
      * - `ccd` – Corporate credit card or debit card transaction.
      * - `ppd` – Pre-arranged transaction.
      *
+     * **Note:** This field is mandatory for ACH payments and unreferenced refunds.
+     *
      * @var ?value-of<AchPayloadSecCode> $secCode
      */
     #[JsonProperty('secCode')]

@@ -52,6 +52,8 @@ class SingleUseTokenPayload extends JsonSerializableType
      * - `ccd` – Corporate credit card or debit card transaction.
      * - `ppd` – Pre-arranged transaction.
      *
+     * **Note:** This field is mandatory when the single-use token represents ACH bank account details.
+     *
      * @var ?value-of<SingleUseTokenPayloadSecCode> $secCode
      */
     #[JsonProperty('secCode')]
