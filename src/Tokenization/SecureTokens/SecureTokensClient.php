@@ -110,11 +110,11 @@ class SecureTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SecureToken
+     * @return ?SecureToken
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, TokenizationRequest $request, ?array $options = null): SecureToken
+    public function create(string $processingTerminalId, TokenizationRequest $request, ?array $options = null): ?SecureToken
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -133,6 +133,9 @@ class SecureTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SecureToken::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -169,11 +172,11 @@ class SecureTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SecureTokenWithAccountType
+     * @return ?SecureTokenWithAccountType
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $processingTerminalId, string $secureTokenId, ?array $options = null): SecureTokenWithAccountType
+    public function retrieve(string $processingTerminalId, string $secureTokenId, ?array $options = null): ?SecureTokenWithAccountType
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -188,6 +191,9 @@ class SecureTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SecureTokenWithAccountType::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -286,11 +292,11 @@ class SecureTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SecureToken
+     * @return ?SecureToken
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $processingTerminalId, string $secureTokenId, PartiallyUpdateSecureTokensRequest $request, ?array $options = null): SecureToken
+    public function partiallyUpdate(string $processingTerminalId, string $secureTokenId, PartiallyUpdateSecureTokensRequest $request, ?array $options = null): ?SecureToken
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -309,6 +315,9 @@ class SecureTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SecureToken::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -338,11 +347,11 @@ class SecureTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SecureToken
+     * @return ?SecureToken
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function updateAccount(string $processingTerminalId, string $secureTokenId, UpdateAccountSecureTokensRequest $request, ?array $options = null): SecureToken
+    public function updateAccount(string $processingTerminalId, string $secureTokenId, UpdateAccountSecureTokensRequest $request, ?array $options = null): ?SecureToken
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -361,6 +370,9 @@ class SecureTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SecureToken::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -399,11 +411,11 @@ class SecureTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SecureTokenPaginatedListWithAccountType
+     * @return ?SecureTokenPaginatedListWithAccountType
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(string $processingTerminalId, ListSecureTokensRequest $request = new ListSecureTokensRequest(), ?array $options = null): SecureTokenPaginatedListWithAccountType
+    private function _list(string $processingTerminalId, ListSecureTokensRequest $request = new ListSecureTokensRequest(), ?array $options = null): ?SecureTokenPaginatedListWithAccountType
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -450,6 +462,9 @@ class SecureTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SecureTokenPaginatedListWithAccountType::fromJson($json);
             }
         } catch (JsonException $e) {

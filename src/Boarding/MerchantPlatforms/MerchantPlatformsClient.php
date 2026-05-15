@@ -109,11 +109,11 @@ class MerchantPlatformsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return MerchantPlatform
+     * @return ?MerchantPlatform
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreateMerchantAccount $request, ?array $options = null): MerchantPlatform
+    public function create(CreateMerchantAccount $request, ?array $options = null): ?MerchantPlatform
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -132,6 +132,9 @@ class MerchantPlatformsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return MerchantPlatform::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -166,11 +169,11 @@ class MerchantPlatformsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return MerchantPlatform
+     * @return ?MerchantPlatform
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $merchantPlatformId, ?array $options = null): MerchantPlatform
+    public function retrieve(string $merchantPlatformId, ?array $options = null): ?MerchantPlatform
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -185,6 +188,9 @@ class MerchantPlatformsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return MerchantPlatform::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -257,11 +263,11 @@ class MerchantPlatformsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ProcessingAccount
+     * @return ?ProcessingAccount
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createProcessingAccount(string $merchantPlatformId, CreateProcessingAccountMerchantPlatformsRequest $request, ?array $options = null): ProcessingAccount
+    public function createProcessingAccount(string $merchantPlatformId, CreateProcessingAccountMerchantPlatformsRequest $request, ?array $options = null): ?ProcessingAccount
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -280,6 +286,9 @@ class MerchantPlatformsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ProcessingAccount::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -314,11 +323,11 @@ class MerchantPlatformsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedMerchants
+     * @return ?PaginatedMerchants
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListMerchantPlatformsRequest $request = new ListMerchantPlatformsRequest(), ?array $options = null): PaginatedMerchants
+    private function _list(ListMerchantPlatformsRequest $request = new ListMerchantPlatformsRequest(), ?array $options = null): ?PaginatedMerchants
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -344,6 +353,9 @@ class MerchantPlatformsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedMerchants::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -383,11 +395,11 @@ class MerchantPlatformsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedProcessingAccounts
+     * @return ?PaginatedProcessingAccounts
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listProcessingAccounts(string $merchantPlatformId, ListBoardingMerchantPlatformProcessingAccountsRequest $request = new ListBoardingMerchantPlatformProcessingAccountsRequest(), ?array $options = null): PaginatedProcessingAccounts
+    private function _listProcessingAccounts(string $merchantPlatformId, ListBoardingMerchantPlatformProcessingAccountsRequest $request = new ListBoardingMerchantPlatformProcessingAccountsRequest(), ?array $options = null): ?PaginatedProcessingAccounts
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -416,6 +428,9 @@ class MerchantPlatformsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedProcessingAccounts::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -22,20 +22,36 @@ abstract class IntegrationTestCase extends TestCase
             'verify' => false,
         ]);
 
+        $environment = self::getCustomEnvironment();
+
         self::$paymentsClient = new PayrocClient(
             apiKey: self::getEnv('PAYROC_API_KEY_PAYMENTS'),
-            environment: Environments::Uat(),
+            environment: $environment,
             options: ['client' => $httpClient]
         );
 
         self::$genericClient = new PayrocClient(
             apiKey: self::getEnv('PAYROC_API_KEY_GENERIC'),
-            environment: Environments::Uat(),
+            environment: $environment,
             options: ['client' => $httpClient]
         );
 
         self::$terminalIdAvs = self::getEnv('TERMINAL_ID_AVS');
         self::$terminalIdNoAvs = self::getEnv('TERMINAL_ID_NO_AVS');
+    }
+
+    private static function getCustomEnvironment(): Environments
+    {
+        $apiBaseUrl = getenv('PAYROC_API_BASE_URL');
+        $identityBaseUrl = getenv('PAYROC_IDENTITY_BASE_URL');
+
+        // If custom URLs are provided, use them
+        if ($apiBaseUrl !== false && $apiBaseUrl !== '' && $identityBaseUrl !== false && $identityBaseUrl !== '') {
+            return Environments::custom($apiBaseUrl, $identityBaseUrl);
+        }
+
+        // Otherwise, fall back to UAT
+        return Environments::Uat();
     }
 
     private static function getEnv(string $name): string

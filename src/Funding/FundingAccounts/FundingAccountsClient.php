@@ -101,11 +101,11 @@ class FundingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return FundingAccount
+     * @return ?FundingAccount
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $fundingAccountId, ?array $options = null): FundingAccount
+    public function retrieve(int $fundingAccountId, ?array $options = null): ?FundingAccount
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -120,6 +120,9 @@ class FundingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return FundingAccount::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -253,11 +256,11 @@ class FundingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListFundingAccounts
+     * @return ?ListFundingAccounts
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListFundingAccountsRequest $request = new ListFundingAccountsRequest(), ?array $options = null): ListFundingAccounts
+    private function _list(ListFundingAccountsRequest $request = new ListFundingAccountsRequest(), ?array $options = null): ?ListFundingAccounts
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -283,6 +286,9 @@ class FundingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListFundingAccounts::fromJson($json);
             }
         } catch (JsonException $e) {

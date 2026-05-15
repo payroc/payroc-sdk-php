@@ -69,11 +69,11 @@ class ContactsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Contact
+     * @return ?Contact
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $contactId, ?array $options = null): Contact
+    public function retrieve(int $contactId, ?array $options = null): ?Contact
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -88,6 +88,9 @@ class ContactsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Contact::fromJson($json);
             }
         } catch (JsonException $e) {

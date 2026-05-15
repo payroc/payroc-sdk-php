@@ -64,11 +64,11 @@ class SignaturesClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrieveSignaturesResponse
+     * @return ?RetrieveSignaturesResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $signatureId, ?array $options = null): RetrieveSignaturesResponse
+    public function retrieve(string $signatureId, ?array $options = null): ?RetrieveSignaturesResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -83,6 +83,9 @@ class SignaturesClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrieveSignaturesResponse::fromJson($json);
             }
         } catch (JsonException $e) {

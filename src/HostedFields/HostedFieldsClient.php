@@ -67,11 +67,11 @@ class HostedFieldsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return HostedFieldsCreateSessionResponse
+     * @return ?HostedFieldsCreateSessionResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, HostedFieldsCreateSessionRequest $request, ?array $options = null): HostedFieldsCreateSessionResponse
+    public function create(string $processingTerminalId, HostedFieldsCreateSessionRequest $request, ?array $options = null): ?HostedFieldsCreateSessionResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -90,6 +90,9 @@ class HostedFieldsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return HostedFieldsCreateSessionResponse::fromJson($json);
             }
         } catch (JsonException $e) {

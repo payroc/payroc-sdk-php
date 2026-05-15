@@ -117,11 +117,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Batch
+     * @return ?Batch
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveBatch(int $batchId, ?array $options = null): Batch
+    public function retrieveBatch(int $batchId, ?array $options = null): ?Batch
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -136,6 +136,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Batch::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -202,11 +205,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Transaction
+     * @return ?Transaction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveTransaction(int $transactionId, ?array $options = null): Transaction
+    public function retrieveTransaction(int $transactionId, ?array $options = null): ?Transaction
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -221,6 +224,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Transaction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -283,11 +289,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Authorization
+     * @return ?Authorization
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveAuthorization(int $authorizationId, ?array $options = null): Authorization
+    public function retrieveAuthorization(int $authorizationId, ?array $options = null): ?Authorization
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -302,6 +308,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Authorization::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -358,11 +367,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return array<DisputeStatus>
+     * @return ?array<DisputeStatus>
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listDisputesStatuses(int $disputeId, ?array $options = null): array
+    public function listDisputesStatuses(int $disputeId, ?array $options = null): ?array
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -377,6 +386,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeArray($json, [DisputeStatus::class]); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -440,11 +452,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return AchDeposit
+     * @return ?AchDeposit
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveAchDeposit(int $achDepositId, ?array $options = null): AchDeposit
+    public function retrieveAchDeposit(int $achDepositId, ?array $options = null): ?AchDeposit
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -459,6 +471,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return AchDeposit::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -515,11 +530,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListBatchesSettlementResponse
+     * @return ?ListBatchesSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listBatches(ListReportingSettlementBatchesRequest $request, ?array $options = null): ListBatchesSettlementResponse
+    private function _listBatches(ListReportingSettlementBatchesRequest $request, ?array $options = null): ?ListBatchesSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -549,6 +564,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListBatchesSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -587,11 +605,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListTransactionsSettlementResponse
+     * @return ?ListTransactionsSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listTransactions(ListReportingSettlementTransactionsRequest $request = new ListReportingSettlementTransactionsRequest(), ?array $options = null): ListTransactionsSettlementResponse
+    private function _listTransactions(ListReportingSettlementTransactionsRequest $request = new ListReportingSettlementTransactionsRequest(), ?array $options = null): ?ListTransactionsSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -629,6 +647,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListTransactionsSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -664,11 +685,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListAuthorizationsSettlementResponse
+     * @return ?ListAuthorizationsSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listAuthorizations(ListReportingSettlementAuthorizationsRequest $request = new ListReportingSettlementAuthorizationsRequest(), ?array $options = null): ListAuthorizationsSettlementResponse
+    private function _listAuthorizations(ListReportingSettlementAuthorizationsRequest $request = new ListReportingSettlementAuthorizationsRequest(), ?array $options = null): ?ListAuthorizationsSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -703,6 +724,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListAuthorizationsSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -736,11 +760,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListDisputesSettlementResponse
+     * @return ?ListDisputesSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listDisputes(ListReportingSettlementDisputesRequest $request, ?array $options = null): ListDisputesSettlementResponse
+    private function _listDisputes(ListReportingSettlementDisputesRequest $request, ?array $options = null): ?ListDisputesSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -770,6 +794,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListDisputesSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -806,11 +833,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListAchDepositsSettlementResponse
+     * @return ?ListAchDepositsSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listAchDeposits(ListReportingSettlementAchDepositsRequest $request, ?array $options = null): ListAchDepositsSettlementResponse
+    private function _listAchDeposits(ListReportingSettlementAchDepositsRequest $request, ?array $options = null): ?ListAchDepositsSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -840,6 +867,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListAchDepositsSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -867,11 +897,11 @@ class SettlementClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListAchDepositFeesSettlementResponse
+     * @return ?ListAchDepositFeesSettlementResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listAchDepositFees(ListReportingSettlementAchDepositFeesRequest $request = new ListReportingSettlementAchDepositFeesRequest(), ?array $options = null): ListAchDepositFeesSettlementResponse
+    private function _listAchDepositFees(ListReportingSettlementAchDepositFeesRequest $request = new ListReportingSettlementAchDepositFeesRequest(), ?array $options = null): ?ListAchDepositFeesSettlementResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -906,6 +936,9 @@ class SettlementClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListAchDepositFeesSettlementResponse::fromJson($json);
             }
         } catch (JsonException $e) {

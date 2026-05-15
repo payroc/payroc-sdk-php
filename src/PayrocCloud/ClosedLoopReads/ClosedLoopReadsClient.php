@@ -1,12 +1,11 @@
 <?php
 
-namespace Payroc\PaymentFeatures\Bank;
+namespace Payroc\PayrocCloud\ClosedLoopReads;
 
 use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
-use Payroc\PaymentFeatures\Bank\Requests\BankAccountVerificationRequest;
-use Payroc\Types\BankAccountVerificationResult;
+use Payroc\Types\ClosedLoopResponse;
 use Payroc\Exceptions\PayrocException;
 use Payroc\Exceptions\PayrocApiException;
 use Payroc\Core\Json\JsonApiRequest;
@@ -14,7 +13,7 @@ use Payroc\Core\Client\HttpMethod;
 use JsonException;
 use Psr\Http\Client\ClientExceptionInterface;
 
-class BankClient
+class ClosedLoopReadsClient
 {
     /**
      * @var array{
@@ -50,16 +49,15 @@ class BankClient
     }
 
     /**
-     * Use this method to verify a customer's bank account details.
+     * Use this method to retrieve information that a payment device captured from a closed-loop card.
      *
-     * In the request, send the customer's bank account details. Our gateway can verify the following types of bank details:
-     * - Automated Clearing House (ACH) details
-     * - Pre-Authorized Debit (PAD) details
+     * A closed-loop card is a type of card that a customer can use only with a specific merchant. Each time a payment device captures information from a closed-loop card, we store the information as a closed-loop read.
      *
-     * In the response, our gateway indicates if the account details are valid and if you should use them in follow-on actions.
+     * Our gateway returns the following information from a closed-loop read:
+     * -	Date that the payment device captured the information.
+     * -	Unstructured payload from the card.
      *
-     *
-     * @param BankAccountVerificationRequest $request
+     * @param string $closedLoopReadId Unique identifier that we assigned to the closed-loop read.
      * @param ?array{
      *   maxRetries?: int,
      *   timeout?: float,
@@ -67,23 +65,19 @@ class BankClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ?BankAccountVerificationResult
+     * @return ?ClosedLoopResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function verify(BankAccountVerificationRequest $request, ?array $options = null): ?BankAccountVerificationResult
+    public function retrieve(string $closedLoopReadId, ?array $options = null): ?ClosedLoopResponse
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        $headers['Idempotency-Key'] = $request->idempotencyKey;
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $this->environment->api,
-                    path: "bank-accounts/verify",
-                    method: HttpMethod::POST,
-                    headers: $headers,
-                    body: $request,
+                    path: "closed-loop-reads/{$closedLoopReadId}",
+                    method: HttpMethod::GET,
                 ),
                 $options,
             );
@@ -93,7 +87,7 @@ class BankClient
                 if (empty($json)) {
                     return null;
                 }
-                return BankAccountVerificationResult::fromJson($json);
+                return ClosedLoopResponse::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new PayrocException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);

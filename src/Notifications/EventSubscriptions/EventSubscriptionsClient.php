@@ -101,11 +101,11 @@ class EventSubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return EventSubscription
+     * @return ?EventSubscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreateEventSubscriptionsRequest $request, ?array $options = null): EventSubscription
+    public function create(CreateEventSubscriptionsRequest $request, ?array $options = null): ?EventSubscription
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -124,6 +124,9 @@ class EventSubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return EventSubscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -156,11 +159,11 @@ class EventSubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return EventSubscription
+     * @return ?EventSubscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $subscriptionId, ?array $options = null): EventSubscription
+    public function retrieve(int $subscriptionId, ?array $options = null): ?EventSubscription
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -175,6 +178,9 @@ class EventSubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return EventSubscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -317,11 +323,11 @@ class EventSubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return EventSubscription
+     * @return ?EventSubscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(int $subscriptionId, PartiallyUpdateEventSubscriptionsRequest $request, ?array $options = null): EventSubscription
+    public function partiallyUpdate(int $subscriptionId, PartiallyUpdateEventSubscriptionsRequest $request, ?array $options = null): ?EventSubscription
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -340,6 +346,9 @@ class EventSubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return EventSubscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -377,11 +386,11 @@ class EventSubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedEventSubscriptions
+     * @return ?PaginatedEventSubscriptions
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListEventSubscriptionsRequest $request = new ListEventSubscriptionsRequest(), ?array $options = null): PaginatedEventSubscriptions
+    private function _list(ListEventSubscriptionsRequest $request = new ListEventSubscriptionsRequest(), ?array $options = null): ?PaginatedEventSubscriptions
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -404,6 +413,9 @@ class EventSubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedEventSubscriptions::fromJson($json);
             }
         } catch (JsonException $e) {

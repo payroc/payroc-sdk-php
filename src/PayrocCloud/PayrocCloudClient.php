@@ -6,6 +6,7 @@ use Payroc\PayrocCloud\PaymentInstructions\PaymentInstructionsClient;
 use Payroc\PayrocCloud\RefundInstructions\RefundInstructionsClient;
 use Payroc\PayrocCloud\SignatureInstructions\SignatureInstructionsClient;
 use Payroc\PayrocCloud\Signatures\SignaturesClient;
+use Payroc\PayrocCloud\ClosedLoopReads\ClosedLoopReadsClient;
 use Psr\Http\Client\ClientInterface;
 use Payroc\Core\Client\RawClient;
 use Payroc\Environments;
@@ -31,6 +32,11 @@ class PayrocCloudClient
      * @var SignaturesClient $signatures
      */
     public SignaturesClient $signatures;
+
+    /**
+     * @var ClosedLoopReadsClient $closedLoopReads
+     */
+    public ClosedLoopReadsClient $closedLoopReads;
 
     /**
      * @var array{
@@ -67,5 +73,6 @@ class PayrocCloudClient
         $this->refundInstructions = new RefundInstructionsClient($this->client, $this->environment);
         $this->signatureInstructions = new SignatureInstructionsClient($this->client, $this->environment);
         $this->signatures = new SignaturesClient($this->client, $this->environment);
+        $this->closedLoopReads = new ClosedLoopReadsClient($this->client, $this->environment);
     }
 }

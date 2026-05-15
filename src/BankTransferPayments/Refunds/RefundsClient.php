@@ -76,11 +76,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPayment
+     * @return ?BankTransferPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function reversePayment(string $paymentId, ReversePaymentRefundsRequest $request, ?array $options = null): BankTransferPayment
+    public function reversePayment(string $paymentId, ReversePaymentRefundsRequest $request, ?array $options = null): ?BankTransferPayment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -98,6 +98,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -134,11 +137,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPayment
+     * @return ?BankTransferPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function refund(string $paymentId, BankTransferReferencedRefund $request, ?array $options = null): BankTransferPayment
+    public function refund(string $paymentId, BankTransferReferencedRefund $request, ?array $options = null): ?BankTransferPayment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -157,6 +160,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -221,11 +227,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferRefund
+     * @return ?BankTransferRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(BankTransferUnreferencedRefund $request, ?array $options = null): BankTransferRefund
+    public function create(BankTransferUnreferencedRefund $request, ?array $options = null): ?BankTransferRefund
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -244,6 +250,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -280,11 +289,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferRefund
+     * @return ?BankTransferRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $refundId, ?array $options = null): BankTransferRefund
+    public function retrieve(string $refundId, ?array $options = null): ?BankTransferRefund
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -299,6 +308,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -331,11 +343,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferRefund
+     * @return ?BankTransferRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function reverseRefund(string $refundId, ReverseRefundRefundsRequest $request, ?array $options = null): BankTransferRefund
+    public function reverseRefund(string $refundId, ReverseRefundRefundsRequest $request, ?array $options = null): ?BankTransferRefund
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -353,6 +365,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -389,11 +404,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferRefundPaginatedList
+     * @return ?BankTransferRefundPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListRefundsRequest $request, ?array $options = null): BankTransferRefundPaginatedList
+    private function _list(ListRefundsRequest $request, ?array $options = null): ?BankTransferRefundPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -447,6 +462,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferRefundPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

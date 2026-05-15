@@ -65,11 +65,11 @@ class ApplePaySessionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ApplePayResponseSession
+     * @return ?ApplePayResponseSession
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, ApplePaySessions $request, ?array $options = null): ApplePayResponseSession
+    public function create(string $processingTerminalId, ApplePaySessions $request, ?array $options = null): ?ApplePayResponseSession
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -85,6 +85,9 @@ class ApplePaySessionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ApplePayResponseSession::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -73,11 +73,11 @@ class AttachmentsClient
      *   headers?: array<string, string>,
      *   queryParameters?: array<string, mixed>,
      * } $options
-     * @return Attachment
+     * @return ?Attachment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function uploadToProcessingAccount(string $processingAccountId, UploadAttachment $request, ?array $options = null): Attachment
+    public function uploadToProcessingAccount(string $processingAccountId, UploadAttachment $request, ?array $options = null): ?Attachment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -99,6 +99,9 @@ class AttachmentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Attachment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -116,11 +119,11 @@ class AttachmentsClient
     /**
      * Use this method to retrieve the details of an attachment.
      *
-     * To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the method that you used to upload the attachment.
+     * To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the [Upload Attachment to Processing Account](https://docs.payroc.com/api/schema/boarding/processing-accounts/upload-to-processing-account) method.
      *
      * Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.
      *
-     * @param string $attachmentId Unique identifier of the attachment
+     * @param string $attachmentId Unique identifier of the attachment.
      * @param ?array{
      *   maxRetries?: int,
      *   timeout?: float,
@@ -128,11 +131,11 @@ class AttachmentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Attachment
+     * @return ?Attachment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $attachmentId, ?array $options = null): Attachment
+    public function retrieve(string $attachmentId, ?array $options = null): ?Attachment
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -147,6 +150,9 @@ class AttachmentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Attachment::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -111,11 +111,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPayment
+     * @return ?BankTransferPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(BankTransferPaymentRequest $request, ?array $options = null): BankTransferPayment
+    public function create(BankTransferPaymentRequest $request, ?array $options = null): ?BankTransferPayment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -134,6 +134,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -172,11 +175,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPayment
+     * @return ?BankTransferPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $paymentId, ?array $options = null): BankTransferPayment
+    public function retrieve(string $paymentId, ?array $options = null): ?BankTransferPayment
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -191,6 +194,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -226,11 +232,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPayment
+     * @return ?BankTransferPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function represent(string $paymentId, Representment $request, ?array $options = null): BankTransferPayment
+    public function represent(string $paymentId, Representment $request, ?array $options = null): ?BankTransferPayment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -249,6 +255,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -287,11 +296,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return BankTransferPaymentPaginatedList
+     * @return ?BankTransferPaymentPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListPaymentsRequest $request, ?array $options = null): BankTransferPaymentPaginatedList
+    private function _list(ListPaymentsRequest $request, ?array $options = null): ?BankTransferPaymentPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -348,6 +357,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return BankTransferPaymentPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -74,11 +74,11 @@ class ProcessingTerminalsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ProcessingTerminal
+     * @return ?ProcessingTerminal
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $processingTerminalId, ?array $options = null): ProcessingTerminal
+    public function retrieve(string $processingTerminalId, ?array $options = null): ?ProcessingTerminal
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -93,6 +93,9 @@ class ProcessingTerminalsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ProcessingTerminal::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -120,11 +123,11 @@ class ProcessingTerminalsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return HostConfiguration
+     * @return ?HostConfiguration
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveHostConfiguration(string $processingTerminalId, ?array $options = null): HostConfiguration
+    public function retrieveHostConfiguration(string $processingTerminalId, ?array $options = null): ?HostConfiguration
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -139,6 +142,9 @@ class ProcessingTerminalsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return HostConfiguration::fromJson($json);
             }
         } catch (JsonException $e) {

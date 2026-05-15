@@ -1,6 +1,6 @@
 # Reference
 ## Payment links
-<details><summary><code>$client-&gt;paymentLinks-&gt;list($processingTerminalId, $request) -> PaymentLinkPaginatedList</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;list($processingTerminalId, $request) -> ?PaymentLinkPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -182,7 +182,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentLinks-&gt;create($processingTerminalId, $request) -> CreatePaymentLinksResponse</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;create($processingTerminalId, $request) -> ?CreatePaymentLinksResponse</code></summary>
 <dl>
 <dd>
 
@@ -279,7 +279,7 @@ $client->paymentLinks->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentLinks-&gt;retrieve($paymentLinkId) -> RetrievePaymentLinksResponse</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;retrieve($paymentLinkId) -> ?RetrievePaymentLinksResponse</code></summary>
 <dl>
 <dd>
 
@@ -346,7 +346,7 @@ $client->paymentLinks->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentLinks-&gt;partiallyUpdate($paymentLinkId, $request) -> PartiallyUpdatePaymentLinksResponse</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;partiallyUpdate($paymentLinkId, $request) -> ?PartiallyUpdatePaymentLinksResponse</code></summary>
 <dl>
 <dd>
 
@@ -446,7 +446,7 @@ $client->paymentLinks->partiallyUpdate(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentLinks-&gt;deactivate($paymentLinkId) -> DeactivatePaymentLinksResponse</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;deactivate($paymentLinkId) -> ?DeactivatePaymentLinksResponse</code></summary>
 <dl>
 <dd>
 
@@ -509,7 +509,7 @@ $client->paymentLinks->deactivate(
 </details>
 
 ## Hosted Fields
-<details><summary><code>$client-&gt;hostedFields-&gt;create($processingTerminalId, $request) -> HostedFieldsCreateSessionResponse</code></summary>
+<details><summary><code>$client-&gt;hostedFields-&gt;create($processingTerminalId, $request) -> ?HostedFieldsCreateSessionResponse</code></summary>
 <dl>
 <dd>
 
@@ -584,7 +584,7 @@ $client->hostedFields->create(
 
 Version of the Hosted Fields JavaScript library that you are using.  
 
-The current production version is `1.6.0.172441`.
+The current production version is `1.7.0.261471`.
     
 </dd>
 </dl>
@@ -622,7 +622,7 @@ If a merchant wants to update a customer's payment details that are linked to a 
 </details>
 
 ## ApplePaySessions
-<details><summary><code>$client-&gt;applePaySessions-&gt;create($processingTerminalId, $request) -> ApplePayResponseSession</code></summary>
+<details><summary><code>$client-&gt;applePaySessions-&gt;create($processingTerminalId, $request) -> ?ApplePayResponseSession</code></summary>
 <dl>
 <dd>
 
@@ -703,7 +703,7 @@ $client->applePaySessions->create(
 </details>
 
 ## Attachments
-<details><summary><code>$client-&gt;attachments-&gt;uploadToProcessingAccount($processingAccountId, $request) -> Attachment</code></summary>
+<details><summary><code>$client-&gt;attachments-&gt;uploadToProcessingAccount($processingAccountId, $request) -> ?Attachment</code></summary>
 <dl>
 <dd>
 
@@ -785,7 +785,7 @@ $client->attachments->uploadToProcessingAccount(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;attachments-&gt;retrieve($attachmentId) -> Attachment</code></summary>
+<details><summary><code>$client-&gt;attachments-&gt;retrieve($attachmentId) -> ?Attachment</code></summary>
 <dl>
 <dd>
 
@@ -799,9 +799,9 @@ $client->attachments->uploadToProcessingAccount(
 
 Use this method to retrieve the details of an attachment.  
 
-To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the method that you used to upload the attachment.  
+To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the [Upload Attachment to Processing Account](https://docs.payroc.com/api/schema/boarding/processing-accounts/upload-to-processing-account) method.  
 
-Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.
+Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.  
 </dd>
 </dl>
 </dd>
@@ -833,7 +833,7 @@ $client->attachments->retrieve(
 <dl>
 <dd>
 
-**$attachmentId:** `string` — Unique identifier of the attachment
+**$attachmentId:** `string` — Unique identifier of the attachment.
     
 </dd>
 </dl>
@@ -846,7 +846,7 @@ $client->attachments->retrieve(
 </details>
 
 ## Auth
-<details><summary><code>$client-&gt;auth-&gt;retrieveToken($request) -> GetTokenResponse</code></summary>
+<details><summary><code>$client-&gt;auth-&gt;retrieveToken($request) -> ?GetTokenResponse</code></summary>
 <dl>
 <dd>
 
@@ -905,7 +905,7 @@ $client->auth->retrieveToken(
 </details>
 
 ## BankTransferPayments Payments
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;list($request) -> BankTransferPaymentPaginatedList</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;list($request) -> ?BankTransferPaymentPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -951,6 +951,12 @@ $client->bankTransferPayments->payments->list(
         'orderId' => 'OrderRef6543',
         'nameOnAccount' => 'Sarah%20Hazel%20Hopper',
         'last4' => '7890',
+        'type' => [
+            ListPaymentsRequestTypeItem::Payment->value,
+        ],
+        'status' => [
+            ListPaymentsRequestStatusItem::Ready->value,
+        ],
         'dateFrom' => new DateTime('2024-07-01T00:00:00Z'),
         'dateTo' => new DateTime('2024-07-31T23:59:59Z'),
         'settlementState' => ListPaymentsRequestSettlementState::Settled->value,
@@ -1099,7 +1105,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;create($request) -> BankTransferPayment</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;create($request) -> ?BankTransferPayment</code></summary>
 <dl>
 <dd>
 
@@ -1269,7 +1275,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;retrieve($paymentId) -> BankTransferPayment</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;retrieve($paymentId) -> ?BankTransferPayment</code></summary>
 <dl>
 <dd>
 
@@ -1338,7 +1344,7 @@ $client->bankTransferPayments->payments->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;represent($paymentId, $request) -> BankTransferPayment</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;payments-&gt;represent($paymentId, $request) -> ?BankTransferPayment</code></summary>
 <dl>
 <dd>
 
@@ -1434,7 +1440,7 @@ The value of the type parameter determines which variant you should use:
 </details>
 
 ## BankTransferPayments Refunds
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;reversePayment($paymentId, $request) -> BankTransferPayment</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;reversePayment($paymentId, $request) -> ?BankTransferPayment</code></summary>
 <dl>
 <dd>
 
@@ -1507,7 +1513,7 @@ $client->bankTransferPayments->refunds->reversePayment(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;refund($paymentId, $request) -> BankTransferPayment</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;refund($paymentId, $request) -> ?BankTransferPayment</code></summary>
 <dl>
 <dd>
 
@@ -1602,7 +1608,7 @@ $client->bankTransferPayments->refunds->refund(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;list($request) -> BankTransferRefundPaginatedList</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;list($request) -> ?BankTransferRefundPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -1646,6 +1652,12 @@ $client->bankTransferPayments->refunds->list(
         'orderId' => 'OrderRef6543',
         'nameOnAccount' => 'Sarah%20Hazel%20Hopper',
         'last4' => '7062',
+        'type' => [
+            ListRefundsRequestTypeItem::Refund->value,
+        ],
+        'status' => [
+            ListRefundsRequestStatusItem::Ready->value,
+        ],
         'dateFrom' => new DateTime('2024-07-01T00:00:00Z'),
         'dateTo' => new DateTime('2024-07-31T23:59:59Z'),
         'settlementState' => ListRefundsRequestSettlementState::Settled->value,
@@ -1785,7 +1797,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;create($request) -> BankTransferRefund</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;create($request) -> ?BankTransferRefund</code></summary>
 <dl>
 <dd>
 
@@ -1924,7 +1936,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;retrieve($refundId) -> BankTransferRefund</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;retrieve($refundId) -> ?BankTransferRefund</code></summary>
 <dl>
 <dd>
 
@@ -1991,7 +2003,7 @@ $client->bankTransferPayments->refunds->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;reverseRefund($refundId, $request) -> BankTransferRefund</code></summary>
+<details><summary><code>$client-&gt;bankTransferPayments-&gt;refunds-&gt;reverseRefund($refundId, $request) -> ?BankTransferRefund</code></summary>
 <dl>
 <dd>
 
@@ -2065,7 +2077,7 @@ $client->bankTransferPayments->refunds->reverseRefund(
 </details>
 
 ## Boarding Owners
-<details><summary><code>$client-&gt;boarding-&gt;owners-&gt;retrieve($ownerId) -> Owner</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;owners-&gt;retrieve($ownerId) -> ?Owner</code></summary>
 <dl>
 <dd>
 
@@ -2304,7 +2316,7 @@ $client->boarding->owners->delete(
 </details>
 
 ## Boarding PricingIntents
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;list($request) -> PaginatedPricingIntent</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;list($request) -> ?PaginatedPricingIntent</code></summary>
 <dl>
 <dd>
 
@@ -2397,7 +2409,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;create($request) -> PricingIntent52</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;create($request) -> ?PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2514,7 +2526,7 @@ $client->boarding->pricingIntents->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;retrieve($pricingIntentId) -> PricingIntent52</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;retrieve($pricingIntentId) -> ?PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2776,7 +2788,7 @@ $client->boarding->pricingIntents->delete(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;partiallyUpdate($pricingIntentId, $request) -> PricingIntent52</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;pricingIntents-&gt;partiallyUpdate($pricingIntentId, $request) -> ?PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2875,7 +2887,7 @@ $client->boarding->pricingIntents->partiallyUpdate(
 </details>
 
 ## Boarding MerchantPlatforms
-<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;list($request) -> PaginatedMerchants</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;list($request) -> ?PaginatedMerchants</code></summary>
 <dl>
 <dd>
 
@@ -2968,7 +2980,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;create($request) -> MerchantPlatform</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;create($request) -> ?MerchantPlatform</code></summary>
 <dl>
 <dd>
 
@@ -3254,7 +3266,7 @@ $client->boarding->merchantPlatforms->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;retrieve($merchantPlatformId) -> MerchantPlatform</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;retrieve($merchantPlatformId) -> ?MerchantPlatform</code></summary>
 <dl>
 <dd>
 
@@ -3319,7 +3331,7 @@ $client->boarding->merchantPlatforms->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;listProcessingAccounts($merchantPlatformId, $request) -> PaginatedProcessingAccounts</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;listProcessingAccounts($merchantPlatformId, $request) -> ?PaginatedProcessingAccounts</code></summary>
 <dl>
 <dd>
 
@@ -3437,7 +3449,7 @@ Indicates if you want to return closed processing accounts. This includes proces
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;createProcessingAccount($merchantPlatformId, $request) -> ProcessingAccount</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;merchantPlatforms-&gt;createProcessingAccount($merchantPlatformId, $request) -> ?ProcessingAccount</code></summary>
 <dl>
 <dd>
 
@@ -3689,7 +3701,7 @@ $client->boarding->merchantPlatforms->createProcessingAccount(
 </details>
 
 ## Boarding ProcessingAccounts
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;retrieve($processingAccountId) -> ProcessingAccount</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;retrieve($processingAccountId) -> ?ProcessingAccount</code></summary>
 <dl>
 <dd>
 
@@ -3756,7 +3768,7 @@ $client->boarding->processingAccounts->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listProcessingAccountFundingAccounts($processingAccountId) -> array</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listProcessingAccountFundingAccounts($processingAccountId) -> ?array</code></summary>
 <dl>
 <dd>
 
@@ -3820,7 +3832,7 @@ $client->boarding->processingAccounts->listProcessingAccountFundingAccounts(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listContacts($processingAccountId, $request) -> PaginatedContacts</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listContacts($processingAccountId, $request) -> ?PaginatedContacts</code></summary>
 <dl>
 <dd>
 
@@ -3924,7 +3936,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;getProcessingAccountPricingAgreement($processingAccountId) -> PricingAgreementUs40|PricingAgreementUs50</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;getProcessingAccountPricingAgreement($processingAccountId) -> PricingAgreementUs40|PricingAgreementUs50|null</code></summary>
 <dl>
 <dd>
 
@@ -3991,7 +4003,7 @@ $client->boarding->processingAccounts->getProcessingAccountPricingAgreement(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listOwners($processingAccountId, $request) -> PaginatedOwners</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listOwners($processingAccountId, $request) -> ?PaginatedOwners</code></summary>
 <dl>
 <dd>
 
@@ -4094,7 +4106,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;createReminder($processingAccountId, $request) -> CreateReminderProcessingAccountsResponse</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;createReminder($processingAccountId, $request) -> ?CreateReminderProcessingAccountsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4178,7 +4190,7 @@ $client->boarding->processingAccounts->createReminder(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listTerminalOrders($processingAccountId, $request) -> array</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listTerminalOrders($processingAccountId, $request) -> ?array</code></summary>
 <dl>
 <dd>
 
@@ -4278,7 +4290,7 @@ $client->boarding->processingAccounts->listTerminalOrders(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;createTerminalOrder($processingAccountId, $request) -> TerminalOrder</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;createTerminalOrder($processingAccountId, $request) -> ?TerminalOrder</code></summary>
 <dl>
 <dd>
 
@@ -4440,7 +4452,7 @@ $client->boarding->processingAccounts->createTerminalOrder(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listProcessingTerminals($processingAccountId, $request) -> PaginatedProcessingTerminals</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingAccounts-&gt;listProcessingTerminals($processingAccountId, $request) -> ?PaginatedProcessingTerminals</code></summary>
 <dl>
 <dd>
 
@@ -4547,7 +4559,7 @@ You can’t send the after parameter in the same request as the before parameter
 </details>
 
 ## Boarding ProcessingTerminals
-<details><summary><code>$client-&gt;boarding-&gt;processingTerminals-&gt;retrieve($processingTerminalId) -> ProcessingTerminal</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingTerminals-&gt;retrieve($processingTerminalId) -> ?ProcessingTerminal</code></summary>
 <dl>
 <dd>
 
@@ -4617,7 +4629,7 @@ $client->boarding->processingTerminals->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;boarding-&gt;processingTerminals-&gt;retrieveHostConfiguration($processingTerminalId) -> HostConfiguration</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;processingTerminals-&gt;retrieveHostConfiguration($processingTerminalId) -> ?HostConfiguration</code></summary>
 <dl>
 <dd>
 
@@ -4676,7 +4688,7 @@ $client->boarding->processingTerminals->retrieveHostConfiguration(
 </details>
 
 ## Boarding Contacts
-<details><summary><code>$client-&gt;boarding-&gt;contacts-&gt;retrieve($contactId) -> Contact</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;contacts-&gt;retrieve($contactId) -> ?Contact</code></summary>
 <dl>
 <dd>
 
@@ -4896,7 +4908,7 @@ $client->boarding->contacts->delete(
 </details>
 
 ## Boarding TerminalOrders
-<details><summary><code>$client-&gt;boarding-&gt;terminalOrders-&gt;retrieve($terminalOrderId) -> TerminalOrder</code></summary>
+<details><summary><code>$client-&gt;boarding-&gt;terminalOrders-&gt;retrieve($terminalOrderId) -> ?TerminalOrder</code></summary>
 <dl>
 <dd>
 
@@ -4965,7 +4977,7 @@ $client->boarding->terminalOrders->retrieve(
 </details>
 
 ## CardPayments Payments
-<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;list($request) -> PaymentPaginatedListForRead</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;list($request) -> ?PaymentPaginatedListForRead</code></summary>
 <dl>
 <dd>
 
@@ -5014,6 +5026,19 @@ $client->cardPayments->payments->list(
         'first6' => '453985',
         'last4' => '7062',
         'tender' => ListPaymentsRequestTender::Ebt->value,
+        'tipMode' => [
+            ListPaymentsRequestTipModeItem::NoTip->value,
+            ListPaymentsRequestTipModeItem::Prompted->value,
+        ],
+        'type' => [
+            ListPaymentsRequestTypeItem::Sale->value,
+            ListPaymentsRequestTypeItem::PreAuthorization->value,
+        ],
+        'status' => [
+            ListPaymentsRequestStatusItem::Accepted->value,
+            ListPaymentsRequestStatusItem::Ready->value,
+            ListPaymentsRequestStatusItem::Complete->value,
+        ],
         'dateFrom' => new DateTime('2024-07-01T15:30:00Z'),
         'dateTo' => new DateTime('2024-07-03T15:30:00Z'),
         'settlementState' => ListPaymentsRequestSettlementState::Settled->value,
@@ -5194,7 +5219,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;create($request) -> Payment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;create($request) -> ?Payment</code></summary>
 <dl>
 <dd>
 
@@ -5457,7 +5482,7 @@ Indicates if we should immediately settle the sale transaction. The merchant can
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;retrieve($paymentId) -> RetrievedPayment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;retrieve($paymentId) -> ?RetrievedPayment</code></summary>
 <dl>
 <dd>
 
@@ -5526,7 +5551,7 @@ $client->cardPayments->payments->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;adjust($paymentId, $request) -> Payment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;adjust($paymentId, $request) -> ?Payment</code></summary>
 <dl>
 <dd>
 
@@ -5635,7 +5660,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;capture($paymentId, $request) -> Payment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;payments-&gt;capture($paymentId, $request) -> ?Payment</code></summary>
 <dl>
 <dd>
 
@@ -5765,7 +5790,7 @@ Amount that the merchant wants to capture. The value is in the currency's lowest
 </details>
 
 ## CardPayments Refunds
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;reverse($paymentId, $request) -> Payment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;reverse($paymentId, $request) -> ?Payment</code></summary>
 <dl>
 <dd>
 
@@ -5858,7 +5883,7 @@ Amount of the payment that the merchant wants to reverse. The value is in the cu
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;createReferencedRefund($paymentId, $request) -> Payment</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;createReferencedRefund($paymentId, $request) -> ?Payment</code></summary>
 <dl>
 <dd>
 
@@ -5962,7 +5987,7 @@ $client->cardPayments->refunds->createReferencedRefund(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;list($request) -> RefundPaginatedList</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;list($request) -> ?RefundPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -6008,6 +6033,11 @@ $client->cardPayments->refunds->list(
         'first6' => '453985',
         'last4' => '7062',
         'tender' => ListRefundsRequestTender::Ebt->value,
+        'status' => [
+            ListRefundsRequestStatusItem::Accepted->value,
+            ListRefundsRequestStatusItem::Ready->value,
+            ListRefundsRequestStatusItem::Complete->value,
+        ],
         'dateFrom' => new DateTime('2024-07-01T15:30:00Z'),
         'dateTo' => new DateTime('2024-07-03T15:30:00Z'),
         'settlementState' => ListRefundsRequestSettlementState::Settled->value,
@@ -6163,7 +6193,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;createUnreferencedRefund($request) -> RetrievedRefund</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;createUnreferencedRefund($request) -> ?RetrievedRefund</code></summary>
 <dl>
 <dd>
 
@@ -6324,7 +6354,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;retrieve($refundId) -> RetrievedRefund</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;retrieve($refundId) -> ?RetrievedRefund</code></summary>
 <dl>
 <dd>
 
@@ -6391,7 +6421,7 @@ $client->cardPayments->refunds->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;adjust($refundId, $request) -> RetrievedRefund</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;adjust($refundId, $request) -> ?RetrievedRefund</code></summary>
 <dl>
 <dd>
 
@@ -6499,7 +6529,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;reverseRefund($refundId, $request) -> RetrievedRefund</code></summary>
+<details><summary><code>$client-&gt;cardPayments-&gt;refunds-&gt;reverseRefund($refundId, $request) -> ?RetrievedRefund</code></summary>
 <dl>
 <dd>
 
@@ -6573,7 +6603,7 @@ $client->cardPayments->refunds->reverseRefund(
 </details>
 
 ## Funding FundingRecipients
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;list($request) -> PaginatedFundRecipients</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;list($request) -> ?PaginatedFundRecipients</code></summary>
 <dl>
 <dd>
 
@@ -6666,7 +6696,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;create($request) -> FundingRecipient</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;create($request) -> ?FundingRecipient</code></summary>
 <dl>
 <dd>
 
@@ -6884,7 +6914,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;retrieve($recipientId) -> FundingRecipient</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;retrieve($recipientId) -> ?FundingRecipient</code></summary>
 <dl>
 <dd>
 
@@ -7131,7 +7161,7 @@ $client->funding->fundingRecipients->delete(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;listAccounts($recipientId) -> array</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;listAccounts($recipientId) -> ?array</code></summary>
 <dl>
 <dd>
 
@@ -7198,7 +7228,7 @@ $client->funding->fundingRecipients->listAccounts(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;createAccount($recipientId, $request) -> FundingAccount</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;createAccount($recipientId, $request) -> ?FundingAccount</code></summary>
 <dl>
 <dd>
 
@@ -7295,7 +7325,7 @@ $client->funding->fundingRecipients->createAccount(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;listOwners($recipientId) -> array</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;listOwners($recipientId) -> ?array</code></summary>
 <dl>
 <dd>
 
@@ -7362,7 +7392,7 @@ $client->funding->fundingRecipients->listOwners(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;createOwner($recipientId, $request) -> Owner</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingRecipients-&gt;createOwner($recipientId, $request) -> ?Owner</code></summary>
 <dl>
 <dd>
 
@@ -7483,7 +7513,7 @@ $client->funding->fundingRecipients->createOwner(
 </details>
 
 ## Funding FundingAccounts
-<details><summary><code>$client-&gt;funding-&gt;fundingAccounts-&gt;list($request) -> ListFundingAccounts</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingAccounts-&gt;list($request) -> ?ListFundingAccounts</code></summary>
 <dl>
 <dd>
 
@@ -7576,7 +7606,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingAccounts-&gt;retrieve($fundingAccountId) -> FundingAccount</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingAccounts-&gt;retrieve($fundingAccountId) -> ?FundingAccount</code></summary>
 <dl>
 <dd>
 
@@ -7792,7 +7822,7 @@ $client->funding->fundingAccounts->delete(
 </details>
 
 ## Funding FundingInstructions
-<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;list($request) -> ListFundingInstructionsResponse</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;list($request) -> ?ListFundingInstructionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -7904,7 +7934,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;create($request) -> Instruction</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;create($request) -> ?Instruction</code></summary>
 <dl>
 <dd>
 
@@ -8002,7 +8032,7 @@ $client->funding->fundingInstructions->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;retrieve($instructionId) -> Instruction</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingInstructions-&gt;retrieve($instructionId) -> ?Instruction</code></summary>
 <dl>
 <dd>
 
@@ -8229,7 +8259,7 @@ $client->funding->fundingInstructions->delete(
 </details>
 
 ## Funding FundingActivity
-<details><summary><code>$client-&gt;funding-&gt;fundingActivity-&gt;retrieveBalance($request) -> RetrieveBalanceFundingActivityResponse</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingActivity-&gt;retrieveBalance($request) -> ?RetrieveBalanceFundingActivityResponse</code></summary>
 <dl>
 <dd>
 
@@ -8329,7 +8359,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;funding-&gt;fundingActivity-&gt;list($request) -> ListFundingActivityResponse</code></summary>
+<details><summary><code>$client-&gt;funding-&gt;fundingActivity-&gt;list($request) -> ?ListFundingActivityResponse</code></summary>
 <dl>
 <dd>
 
@@ -8448,7 +8478,7 @@ You can’t send the after parameter in the same request as the before parameter
 </details>
 
 ## Notifications EventSubscriptions
-<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;list($request) -> PaginatedEventSubscriptions</code></summary>
+<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;list($request) -> ?PaginatedEventSubscriptions</code></summary>
 <dl>
 <dd>
 
@@ -8527,7 +8557,7 @@ $client->notifications->eventSubscriptions->list(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;create($request) -> EventSubscription</code></summary>
+<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;create($request) -> ?EventSubscription</code></summary>
 <dl>
 <dd>
 
@@ -8613,7 +8643,7 @@ $client->notifications->eventSubscriptions->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;retrieve($subscriptionId) -> EventSubscription</code></summary>
+<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;retrieve($subscriptionId) -> ?EventSubscription</code></summary>
 <dl>
 <dd>
 
@@ -8836,7 +8866,7 @@ Unique identifier that we assigned to the event subscription.
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;partiallyUpdate($subscriptionId, $request) -> EventSubscription</code></summary>
+<details><summary><code>$client-&gt;notifications-&gt;eventSubscriptions-&gt;partiallyUpdate($subscriptionId, $request) -> ?EventSubscription</code></summary>
 <dl>
 <dd>
 
@@ -8929,7 +8959,7 @@ Unique identifier that we assigned to the event subscription.
 </details>
 
 ## PaymentFeatures Cards
-<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;verifyCard($request) -> CardVerificationResult</code></summary>
+<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;verifyCard($request) -> ?CardVerificationResult</code></summary>
 <dl>
 <dd>
 
@@ -9034,7 +9064,7 @@ $client->paymentFeatures->cards->verifyCard(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;viewEbtBalance($request) -> Balance</code></summary>
+<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;viewEbtBalance($request) -> ?Balance</code></summary>
 <dl>
 <dd>
 
@@ -9143,7 +9173,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;lookupBin($request) -> CardInfo</code></summary>
+<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;lookupBin($request) -> ?CardInfo</code></summary>
 <dl>
 <dd>
 
@@ -9248,7 +9278,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;retrieveFxRates($request) -> FxRate</code></summary>
+<details><summary><code>$client-&gt;paymentFeatures-&gt;cards-&gt;retrieveFxRates($request) -> ?FxRate</code></summary>
 <dl>
 <dd>
 
@@ -9382,7 +9412,7 @@ The value of the type parameter determines which variant you should use:
 </details>
 
 ## PaymentFeatures Bank
-<details><summary><code>$client-&gt;paymentFeatures-&gt;bank-&gt;verify($request) -> BankAccountVerificationResult</code></summary>
+<details><summary><code>$client-&gt;paymentFeatures-&gt;bank-&gt;verify($request) -> ?BankAccountVerificationResult</code></summary>
 <dl>
 <dd>
 
@@ -9477,7 +9507,7 @@ The value of the type field determines which variant you should use:
 </details>
 
 ## PaymentLinks SharingEvents
-<details><summary><code>$client-&gt;paymentLinks-&gt;sharingEvents-&gt;list($paymentLinkId, $request) -> SharingEventPaginatedList</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;sharingEvents-&gt;list($paymentLinkId, $request) -> ?SharingEventPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -9598,7 +9628,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;paymentLinks-&gt;sharingEvents-&gt;share($paymentLinkId, $request) -> PaymentLinkEmailShareEvent</code></summary>
+<details><summary><code>$client-&gt;paymentLinks-&gt;sharingEvents-&gt;share($paymentLinkId, $request) -> ?PaymentLinkEmailShareEvent</code></summary>
 <dl>
 <dd>
 
@@ -9699,7 +9729,7 @@ EOT,
 </details>
 
 ## PayrocCloud PaymentInstructions
-<details><summary><code>$client-&gt;payrocCloud-&gt;paymentInstructions-&gt;submit($serialNumber, $request) -> PaymentInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;paymentInstructions-&gt;submit($serialNumber, $request) -> ?PaymentInstruction</code></summary>
 <dl>
 <dd>
 
@@ -9865,7 +9895,7 @@ Indicates if we should immediately settle the sale transaction. The merchant can
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;payrocCloud-&gt;paymentInstructions-&gt;retrieve($paymentInstructionId) -> PaymentInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;paymentInstructions-&gt;retrieve($paymentInstructionId) -> ?PaymentInstruction</code></summary>
 <dl>
 <dd>
 
@@ -9986,7 +10016,7 @@ $client->payrocCloud->paymentInstructions->delete(
 </details>
 
 ## PayrocCloud RefundInstructions
-<details><summary><code>$client-&gt;payrocCloud-&gt;refundInstructions-&gt;submit($serialNumber, $request) -> RefundInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;refundInstructions-&gt;submit($serialNumber, $request) -> ?RefundInstruction</code></summary>
 <dl>
 <dd>
 
@@ -10118,7 +10148,7 @@ $client->payrocCloud->refundInstructions->submit(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;payrocCloud-&gt;refundInstructions-&gt;retrieve($refundInstructionId) -> RefundInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;refundInstructions-&gt;retrieve($refundInstructionId) -> ?RefundInstruction</code></summary>
 <dl>
 <dd>
 
@@ -10239,7 +10269,7 @@ $client->payrocCloud->refundInstructions->delete(
 </details>
 
 ## PayrocCloud SignatureInstructions
-<details><summary><code>$client-&gt;payrocCloud-&gt;signatureInstructions-&gt;submit($serialNumber, $request) -> SignatureInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;signatureInstructions-&gt;submit($serialNumber, $request) -> ?SignatureInstruction</code></summary>
 <dl>
 <dd>
 
@@ -10319,7 +10349,7 @@ $client->payrocCloud->signatureInstructions->submit(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;payrocCloud-&gt;signatureInstructions-&gt;retrieve($signatureInstructionId) -> SignatureInstruction</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;signatureInstructions-&gt;retrieve($signatureInstructionId) -> ?SignatureInstruction</code></summary>
 <dl>
 <dd>
 
@@ -10438,7 +10468,7 @@ $client->payrocCloud->signatureInstructions->delete(
 </details>
 
 ## PayrocCloud Signatures
-<details><summary><code>$client-&gt;payrocCloud-&gt;signatures-&gt;retrieve($signatureId) -> RetrieveSignaturesResponse</code></summary>
+<details><summary><code>$client-&gt;payrocCloud-&gt;signatures-&gt;retrieve($signatureId) -> ?RetrieveSignaturesResponse</code></summary>
 <dl>
 <dd>
 
@@ -10499,8 +10529,71 @@ $client->payrocCloud->signatures->retrieve(
 </dl>
 </details>
 
+## PayrocCloud ClosedLoopReads
+<details><summary><code>$client-&gt;payrocCloud-&gt;closedLoopReads-&gt;retrieve($closedLoopReadId) -> ?ClosedLoopResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this method to retrieve information that a payment device captured from a closed-loop card.  
+
+A closed-loop card is a type of card that a customer can use only with a specific merchant. Each time a payment device captures information from a closed-loop card, we store the information as a closed-loop read.  
+
+Our gateway returns the following information from a closed-loop read:  
+-	Date that the payment device captured the information.
+-	Unstructured payload from the card.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->payrocCloud->closedLoopReads->retrieve(
+    'JDN4ILZB0T',
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$closedLoopReadId:** `string` — Unique identifier that we assigned to the closed-loop read.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## RepeatPayments PaymentPlans
-<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;list($processingTerminalId, $request) -> PaymentPlanPaginatedList</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;list($processingTerminalId, $request) -> ?PaymentPlanPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -10604,7 +10697,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;create($processingTerminalId, $request) -> PaymentPlan</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;create($processingTerminalId, $request) -> ?PaymentPlan</code></summary>
 <dl>
 <dd>
 
@@ -10735,7 +10828,7 @@ $client->repeatPayments->paymentPlans->create(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;retrieve($processingTerminalId, $paymentPlanId) -> PaymentPlan</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;retrieve($processingTerminalId, $paymentPlanId) -> ?PaymentPlan</code></summary>
 <dl>
 <dd>
 
@@ -10887,7 +10980,7 @@ $client->repeatPayments->paymentPlans->delete(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;partiallyUpdate($processingTerminalId, $paymentPlanId, $request) -> PaymentPlan</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;paymentPlans-&gt;partiallyUpdate($processingTerminalId, $paymentPlanId, $request) -> ?PaymentPlan</code></summary>
 <dl>
 <dd>
 
@@ -10993,7 +11086,7 @@ $client->repeatPayments->paymentPlans->partiallyUpdate(
 </details>
 
 ## RepeatPayments Subscriptions
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;list($processingTerminalId, $request) -> SubscriptionPaginatedList</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;list($processingTerminalId, $request) -> ?SubscriptionPaginatedList</code></summary>
 <dl>
 <dd>
 
@@ -11169,7 +11262,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;create($processingTerminalId, $request) -> Subscription</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;create($processingTerminalId, $request) -> ?Subscription</code></summary>
 <dl>
 <dd>
 
@@ -11401,7 +11494,7 @@ For example, if the merchant wants to offer a free trial period.
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;retrieve($processingTerminalId, $subscriptionId) -> Subscription</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;retrieve($processingTerminalId, $subscriptionId) -> ?Subscription</code></summary>
 <dl>
 <dd>
 
@@ -11480,7 +11573,7 @@ $client->repeatPayments->subscriptions->retrieve(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;partiallyUpdate($processingTerminalId, $subscriptionId, $request) -> Subscription</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;partiallyUpdate($processingTerminalId, $subscriptionId, $request) -> ?Subscription</code></summary>
 <dl>
 <dd>
 
@@ -11592,7 +11685,7 @@ $client->repeatPayments->subscriptions->partiallyUpdate(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;deactivate($processingTerminalId, $subscriptionId) -> Subscription</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;deactivate($processingTerminalId, $subscriptionId) -> ?Subscription</code></summary>
 <dl>
 <dd>
 
@@ -11665,7 +11758,7 @@ $client->repeatPayments->subscriptions->deactivate(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;reactivate($processingTerminalId, $subscriptionId) -> Subscription</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;reactivate($processingTerminalId, $subscriptionId) -> ?Subscription</code></summary>
 <dl>
 <dd>
 
@@ -11738,7 +11831,7 @@ $client->repeatPayments->subscriptions->reactivate(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;pay($processingTerminalId, $subscriptionId, $request) -> SubscriptionPayment</code></summary>
+<details><summary><code>$client-&gt;repeatPayments-&gt;subscriptions-&gt;pay($processingTerminalId, $subscriptionId, $request) -> ?SubscriptionPayment</code></summary>
 <dl>
 <dd>
 
@@ -11853,7 +11946,7 @@ $client->repeatPayments->subscriptions->pay(
 </details>
 
 ## Reporting Settlement
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listBatches($request) -> ListBatchesSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listBatches($request) -> ?ListBatchesSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -11965,7 +12058,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveBatch($batchId) -> Batch</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveBatch($batchId) -> ?Batch</code></summary>
 <dl>
 <dd>
 
@@ -12028,7 +12121,7 @@ $client->reporting->settlement->retrieveBatch(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listTransactions($request) -> ListTransactionsSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listTransactions($request) -> ?ListTransactionsSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -12169,7 +12262,7 @@ You must provide either the batchId or the date.
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveTransaction($transactionId) -> Transaction</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveTransaction($transactionId) -> ?Transaction</code></summary>
 <dl>
 <dd>
 
@@ -12234,7 +12327,7 @@ $client->reporting->settlement->retrieveTransaction(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAuthorizations($request) -> ListAuthorizationsSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAuthorizations($request) -> ?ListAuthorizationsSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -12363,7 +12456,7 @@ You must provide either the batchId or the date.
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveAuthorization($authorizationId) -> Authorization</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveAuthorization($authorizationId) -> ?Authorization</code></summary>
 <dl>
 <dd>
 
@@ -12427,7 +12520,7 @@ $client->reporting->settlement->retrieveAuthorization(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listDisputes($request) -> ListDisputesSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listDisputes($request) -> ?ListDisputesSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -12537,7 +12630,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listDisputesStatuses($disputeId) -> array</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listDisputesStatuses($disputeId) -> ?array</code></summary>
 <dl>
 <dd>
 
@@ -12597,7 +12690,7 @@ $client->reporting->settlement->listDisputesStatuses(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAchDeposits($request) -> ListAchDepositsSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAchDeposits($request) -> ?ListAchDepositsSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -12710,7 +12803,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveAchDeposit($achDepositId) -> AchDeposit</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;retrieveAchDeposit($achDepositId) -> ?AchDeposit</code></summary>
 <dl>
 <dd>
 
@@ -12774,7 +12867,7 @@ $client->reporting->settlement->retrieveAchDeposit(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAchDepositFees($request) -> ListAchDepositFeesSettlementResponse</code></summary>
+<details><summary><code>$client-&gt;reporting-&gt;settlement-&gt;listAchDepositFees($request) -> ?ListAchDepositFeesSettlementResponse</code></summary>
 <dl>
 <dd>
 
@@ -12888,7 +12981,7 @@ You can’t send the after parameter in the same request as the before parameter
 </details>
 
 ## Tokenization SecureTokens
-<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;list($processingTerminalId, $request) -> SecureTokenPaginatedListWithAccountType</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;list($processingTerminalId, $request) -> ?SecureTokenPaginatedListWithAccountType</code></summary>
 <dl>
 <dd>
 
@@ -13056,7 +13149,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;create($processingTerminalId, $request) -> SecureToken</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;create($processingTerminalId, $request) -> ?SecureToken</code></summary>
 <dl>
 <dd>
 
@@ -13274,7 +13367,7 @@ The value of the type parameter determines which variant you should use:
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;retrieve($processingTerminalId, $secureTokenId) -> SecureTokenWithAccountType</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;retrieve($processingTerminalId, $secureTokenId) -> ?SecureTokenWithAccountType</code></summary>
 <dl>
 <dd>
 
@@ -13420,7 +13513,7 @@ $client->tokenization->secureTokens->delete(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;partiallyUpdate($processingTerminalId, $secureTokenId, $request) -> SecureToken</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;partiallyUpdate($processingTerminalId, $secureTokenId, $request) -> ?SecureToken</code></summary>
 <dl>
 <dd>
 
@@ -13539,7 +13632,7 @@ $client->tokenization->secureTokens->partiallyUpdate(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;updateAccount($processingTerminalId, $secureTokenId, $request) -> SecureToken</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;secureTokens-&gt;updateAccount($processingTerminalId, $secureTokenId, $request) -> ?SecureToken</code></summary>
 <dl>
 <dd>
 
@@ -13629,7 +13722,7 @@ $client->tokenization->secureTokens->updateAccount(
 </details>
 
 ## Tokenization SingleUseTokens
-<details><summary><code>$client-&gt;tokenization-&gt;singleUseTokens-&gt;create($processingTerminalId, $request) -> SingleUseToken</code></summary>
+<details><summary><code>$client-&gt;tokenization-&gt;singleUseTokens-&gt;create($processingTerminalId, $request) -> ?SingleUseToken</code></summary>
 <dl>
 <dd>
 

@@ -67,11 +67,11 @@ class SingleUseTokensClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SingleUseToken
+     * @return ?SingleUseToken
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, SingleUseTokenRequest $request, ?array $options = null): SingleUseToken
+    public function create(string $processingTerminalId, SingleUseTokenRequest $request, ?array $options = null): ?SingleUseToken
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -90,6 +90,9 @@ class SingleUseTokensClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SingleUseToken::fromJson($json);
             }
         } catch (JsonException $e) {
