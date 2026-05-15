@@ -28,9 +28,16 @@ class CustomizationOptions extends JsonSerializableType
     public ?string $entryMethod;
 
     /**
+     * @var ?CustomizationOptionsClosedLoopOptions $closedLoopOptions Polymorphic object that indicates the type of closed-loop card that the merchant accepts.
+     */
+    #[JsonProperty('closedLoopOptions')]
+    public ?CustomizationOptionsClosedLoopOptions $closedLoopOptions;
+
+    /**
      * @param array{
      *   ebtDetails?: ?EbtDetails,
      *   entryMethod?: ?value-of<CustomizationOptionsEntryMethod>,
+     *   closedLoopOptions?: ?CustomizationOptionsClosedLoopOptions,
      * } $values
      */
     public function __construct(
@@ -38,6 +45,7 @@ class CustomizationOptions extends JsonSerializableType
     ) {
         $this->ebtDetails = $values['ebtDetails'] ?? null;
         $this->entryMethod = $values['entryMethod'] ?? null;
+        $this->closedLoopOptions = $values['closedLoopOptions'] ?? null;
     }
 
     /**

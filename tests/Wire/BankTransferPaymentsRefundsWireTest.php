@@ -7,6 +7,8 @@ use Payroc\PayrocClient;
 use Payroc\BankTransferPayments\Refunds\Requests\ReversePaymentRefundsRequest;
 use Payroc\BankTransferPayments\Refunds\Requests\BankTransferReferencedRefund;
 use Payroc\BankTransferPayments\Refunds\Requests\ListRefundsRequest;
+use Payroc\BankTransferPayments\Refunds\Types\ListRefundsRequestTypeItem;
+use Payroc\BankTransferPayments\Refunds\Types\ListRefundsRequestStatusItem;
 use DateTime;
 use Payroc\BankTransferPayments\Refunds\Types\ListRefundsRequestSettlementState;
 use Payroc\BankTransferPayments\Refunds\Requests\BankTransferUnreferencedRefund;
@@ -89,6 +91,12 @@ class BankTransferPaymentsRefundsWireTest extends WireMockTestCase
                 'orderId' => 'OrderRef6543',
                 'nameOnAccount' => 'Sarah%20Hazel%20Hopper',
                 'last4' => '7062',
+                'type' => [
+                    ListRefundsRequestTypeItem::Refund->value,
+                ],
+                'status' => [
+                    ListRefundsRequestStatusItem::Ready->value,
+                ],
                 'dateFrom' => new DateTime('2024-07-01T00:00:00Z'),
                 'dateTo' => new DateTime('2024-07-31T23:59:59Z'),
                 'settlementState' => ListRefundsRequestSettlementState::Settled->value,
@@ -110,7 +118,7 @@ class BankTransferPaymentsRefundsWireTest extends WireMockTestCase
             $testId,
             "GET",
             "/bank-transfer-refunds",
-            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'nameOnAccount' => 'Sarah%20Hazel%20Hopper', 'last4' => '7062', 'dateFrom' => '2024-07-01T00:00:00Z', 'dateTo' => '2024-07-31T23:59:59Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-15', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
+            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'nameOnAccount' => 'Sarah%20Hazel%20Hopper', 'last4' => '7062', 'type' => 'refund', 'status' => 'ready', 'dateFrom' => '2024-07-01T00:00:00Z', 'dateTo' => '2024-07-31T23:59:59Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-15', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
             1
         );
     }

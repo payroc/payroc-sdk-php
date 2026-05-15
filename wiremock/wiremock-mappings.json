@@ -1,8 +1,8 @@
 {
   "mappings": [
     {
-      "id": "c079fb75-d088-48d9-b82c-e904a1af538b",
-      "name": "List payment links - default",
+      "id": "72c0b0ab-9cf6-4586-b708-6581abde9353",
+      "name": "List payment links - Payment links",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-links",
         "method": "GET",
@@ -54,7 +54,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c079fb75-d088-48d9-b82c-e904a1af538b",
+      "uuid": "72c0b0ab-9cf6-4586-b708-6581abde9353",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -67,8 +67,8 @@
       }
     },
     {
-      "id": "1690421e-5b9a-4f9c-a971-6dbad14132de",
-      "name": "Create payment link - default",
+      "id": "84bcab06-fbcc-4f56-b885-fcf77290b3c8",
+      "name": "Create payment link - Multi-use payment link.",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-links",
         "method": "POST",
@@ -85,7 +85,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1690421e-5b9a-4f9c-a971-6dbad14132de",
+      "uuid": "84bcab06-fbcc-4f56-b885-fcf77290b3c8",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -98,8 +98,8 @@
       }
     },
     {
-      "id": "1f168b2b-d275-4875-b687-bde084135540",
-      "name": "Retrieve payment link - default",
+      "id": "4664e81d-9bad-4422-a12a-e884f180abd2",
+      "name": "Retrieve payment link - Payment Link",
       "request": {
         "urlPathTemplate": "/payment-links/{paymentLinkId}",
         "method": "GET",
@@ -116,7 +116,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1f168b2b-d275-4875-b687-bde084135540",
+      "uuid": "4664e81d-9bad-4422-a12a-e884f180abd2",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -129,8 +129,8 @@
       }
     },
     {
-      "id": "4e4f3040-eb40-4e18-889f-8c9c5a07e072",
-      "name": "Partially update payment link - default",
+      "id": "3274ca55-36cb-4efb-acec-c93e4a435a75",
+      "name": "Partially update payment link - Partially update payment link",
       "request": {
         "urlPathTemplate": "/payment-links/{paymentLinkId}",
         "method": "PATCH",
@@ -147,7 +147,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4e4f3040-eb40-4e18-889f-8c9c5a07e072",
+      "uuid": "3274ca55-36cb-4efb-acec-c93e4a435a75",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -160,8 +160,8 @@
       }
     },
     {
-      "id": "93fcc5a6-19b0-4c51-b698-d22542221efc",
-      "name": "Deactivate payment link - default",
+      "id": "2bd6e391-700e-4377-b382-a8f043ea1b97",
+      "name": "Deactivate payment link - Payment link",
       "request": {
         "urlPathTemplate": "/payment-links/{paymentLinkId}/deactivate",
         "method": "POST",
@@ -178,7 +178,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "93fcc5a6-19b0-4c51-b698-d22542221efc",
+      "uuid": "2bd6e391-700e-4377-b382-a8f043ea1b97",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -191,8 +191,8 @@
       }
     },
     {
-      "id": "628bc1eb-689b-40e8-9199-fa868e79e4a8",
-      "name": "Create Hosted Fields session - default",
+      "id": "ba62fa65-a283-4dd5-a9ee-6346fb44d24c",
+      "name": "Create Hosted Fields session - Create session response",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/hosted-fields-sessions",
         "method": "POST",
@@ -209,7 +209,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "628bc1eb-689b-40e8-9199-fa868e79e4a8",
+      "uuid": "ba62fa65-a283-4dd5-a9ee-6346fb44d24c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -222,8 +222,8 @@
       }
     },
     {
-      "id": "9e240ceb-8ab1-407f-860c-594416d2acae",
-      "name": "Start Apple Pay session - default",
+      "id": "5412918d-377c-4b20-b2fa-cf5d0dd2a0aa",
+      "name": "Start Apple Pay session - Apple Pay session response",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/apple-pay-sessions",
         "method": "POST",
@@ -240,7 +240,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "9e240ceb-8ab1-407f-860c-594416d2acae",
+      "uuid": "5412918d-377c-4b20-b2fa-cf5d0dd2a0aa",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -284,8 +284,8 @@
       }
     },
     {
-      "id": "e0e75341-5eb6-448b-b881-c752d5e296dd",
-      "name": "Retrieve attachment - default",
+      "id": "96153919-d783-4ac1-abf5-115dc8442683",
+      "name": "Retrieve attachment - Upload Attachment",
       "request": {
         "urlPathTemplate": "/attachments/{attachmentId}",
         "method": "GET",
@@ -302,7 +302,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e0e75341-5eb6-448b-b881-c752d5e296dd",
+      "uuid": "96153919-d783-4ac1-abf5-115dc8442683",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -341,8 +341,8 @@
       }
     },
     {
-      "id": "c02c80bc-627b-44e6-bbe8-6dd75015b658",
-      "name": "List payments - default",
+      "id": "19956733-0aec-4979-a581-fd1de6b71674",
+      "name": "List payments - Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments",
         "method": "GET",
@@ -358,6 +358,20 @@
           },
           "last4": {
             "equalTo": "7890"
+          },
+          "type": {
+            "hasExactly": [
+              {
+                "equalTo": "payment"
+              }
+            ]
+          },
+          "status": {
+            "hasExactly": [
+              {
+                "equalTo": "ready"
+              }
+            ]
           },
           "dateFrom": {
             "equalTo": "2024-07-01T00:00:00Z"
@@ -392,7 +406,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c02c80bc-627b-44e6-bbe8-6dd75015b658",
+      "uuid": "19956733-0aec-4979-a581-fd1de6b71674",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -406,8 +420,8 @@
       "postServeActions": []
     },
     {
-      "id": "54a42fd6-b46e-45d6-8fda-91b236cb737f",
-      "name": "Create payment - default",
+      "id": "c832ccf3-e8ff-40b6-8a7b-c6d69cc2b1a0",
+      "name": "Create payment - Store Token Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments",
         "method": "POST"
@@ -419,7 +433,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "54a42fd6-b46e-45d6-8fda-91b236cb737f",
+      "uuid": "c832ccf3-e8ff-40b6-8a7b-c6d69cc2b1a0",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -432,8 +446,8 @@
       }
     },
     {
-      "id": "1b5b8991-c5c8-4fd4-a76d-8592816a4c84",
-      "name": "Retrieve payment - default",
+      "id": "d2d9f715-a3a2-41af-951c-abd7c8727393",
+      "name": "Retrieve payment - Store Token Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments/{paymentId}",
         "method": "GET",
@@ -450,7 +464,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1b5b8991-c5c8-4fd4-a76d-8592816a4c84",
+      "uuid": "d2d9f715-a3a2-41af-951c-abd7c8727393",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -463,8 +477,8 @@
       }
     },
     {
-      "id": "32fdaad6-d2e9-4e8c-b150-267450b01ec0",
-      "name": "Re-present payment - default",
+      "id": "c6b1eee2-9cd1-445c-b541-00ef6627f6d7",
+      "name": "Re-present payment - Store Token Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments/{paymentId}/represent",
         "method": "POST",
@@ -481,7 +495,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "32fdaad6-d2e9-4e8c-b150-267450b01ec0",
+      "uuid": "c6b1eee2-9cd1-445c-b541-00ef6627f6d7",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -494,8 +508,8 @@
       }
     },
     {
-      "id": "2de8c8b8-dcfa-4882-8ff5-1b00aab15717",
-      "name": "Reverse payment - default",
+      "id": "a4999ff8-aa97-4601-8ae3-022048ac9f71",
+      "name": "Reverse payment - Reverse Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments/{paymentId}/reverse",
         "method": "POST",
@@ -512,7 +526,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "2de8c8b8-dcfa-4882-8ff5-1b00aab15717",
+      "uuid": "a4999ff8-aa97-4601-8ae3-022048ac9f71",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -525,8 +539,8 @@
       }
     },
     {
-      "id": "e7d54213-d408-488b-a802-9d55a2dd610e",
-      "name": "Create referenced refund - default",
+      "id": "bb893738-ef48-4f8a-8173-7bf7263aeab8",
+      "name": "Create referenced refund - Reverse Bank Transfer Payment",
       "request": {
         "urlPathTemplate": "/bank-transfer-payments/{paymentId}/refund",
         "method": "POST",
@@ -543,7 +557,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e7d54213-d408-488b-a802-9d55a2dd610e",
+      "uuid": "bb893738-ef48-4f8a-8173-7bf7263aeab8",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -556,8 +570,8 @@
       }
     },
     {
-      "id": "62547a00-539d-47ee-ada0-3a9ea02c8b66",
-      "name": "List refunds - default",
+      "id": "1f702222-2a1c-4942-b4f6-94f00ee3e037",
+      "name": "List refunds - Paginated Bank Transfer Unreferenced Refund",
       "request": {
         "urlPathTemplate": "/bank-transfer-refunds",
         "method": "GET",
@@ -573,6 +587,20 @@
           },
           "last4": {
             "equalTo": "7062"
+          },
+          "type": {
+            "hasExactly": [
+              {
+                "equalTo": "refund"
+              }
+            ]
+          },
+          "status": {
+            "hasExactly": [
+              {
+                "equalTo": "ready"
+              }
+            ]
           },
           "dateFrom": {
             "equalTo": "2024-07-01T00:00:00Z"
@@ -604,7 +632,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "62547a00-539d-47ee-ada0-3a9ea02c8b66",
+      "uuid": "1f702222-2a1c-4942-b4f6-94f00ee3e037",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -618,8 +646,8 @@
       "postServeActions": []
     },
     {
-      "id": "cbbdc50b-b752-43e7-a9f9-0d92d93589c7",
-      "name": "Create unreferenced refund - default",
+      "id": "74424578-ccfc-4eda-8ed0-70e551781eb2",
+      "name": "Create unreferenced refund - Bank Transfer Unreferenced Refund",
       "request": {
         "urlPathTemplate": "/bank-transfer-refunds",
         "method": "POST"
@@ -631,7 +659,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "cbbdc50b-b752-43e7-a9f9-0d92d93589c7",
+      "uuid": "74424578-ccfc-4eda-8ed0-70e551781eb2",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -644,8 +672,8 @@
       }
     },
     {
-      "id": "77c303cf-6742-4f8a-876a-35c1b52b34fb",
-      "name": "Retrieve refund - default",
+      "id": "e23cde24-aba8-4afb-9421-7d39f08b081d",
+      "name": "Retrieve refund - Bank Transfer Unreferenced Refund",
       "request": {
         "urlPathTemplate": "/bank-transfer-refunds/{refundId}",
         "method": "GET",
@@ -662,7 +690,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "77c303cf-6742-4f8a-876a-35c1b52b34fb",
+      "uuid": "e23cde24-aba8-4afb-9421-7d39f08b081d",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -675,8 +703,8 @@
       }
     },
     {
-      "id": "f701d9e1-a20c-4836-80b6-5aaa58a11437",
-      "name": "Reverse refund - default",
+      "id": "a552ca10-e431-4984-9625-a83bd718c0a0",
+      "name": "Reverse refund - Bank Transfer Unreferenced Refund",
       "request": {
         "urlPathTemplate": "/bank-transfer-refunds/{refundId}/reverse",
         "method": "POST",
@@ -693,7 +721,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "f701d9e1-a20c-4836-80b6-5aaa58a11437",
+      "uuid": "a552ca10-e431-4984-9625-a83bd718c0a0",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -706,8 +734,8 @@
       }
     },
     {
-      "id": "a17268da-c187-45be-baa3-3718adbe4508",
-      "name": "Retrieve owner - default",
+      "id": "b4d270b4-45c0-488c-95d5-2e00d1f461ed",
+      "name": "Retrieve owner - Retrieve owner",
       "request": {
         "urlPathTemplate": "/owners/{ownerId}",
         "method": "GET",
@@ -724,7 +752,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a17268da-c187-45be-baa3-3718adbe4508",
+      "uuid": "b4d270b4-45c0-488c-95d5-2e00d1f461ed",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -737,8 +765,8 @@
       }
     },
     {
-      "id": "1479fb49-f8dd-4a12-bba2-e0cec7cca1a4",
-      "name": "Update owner - default",
+      "id": "37bdec27-bce8-4698-be6d-848096f49542",
+      "name": "Update owner - Update owner",
       "request": {
         "urlPathTemplate": "/owners/{ownerId}",
         "method": "PUT",
@@ -755,7 +783,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1479fb49-f8dd-4a12-bba2-e0cec7cca1a4",
+      "uuid": "37bdec27-bce8-4698-be6d-848096f49542",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -799,8 +827,8 @@
       }
     },
     {
-      "id": "5989e628-3047-49af-a1c1-c4c12f0e1629",
-      "name": "List pricing intents - default",
+      "id": "e669d5bf-184d-4ce3-bab6-35d6913555ef",
+      "name": "List pricing intents - Paginated pricing intent",
       "request": {
         "urlPathTemplate": "/pricing-intents",
         "method": "GET",
@@ -823,7 +851,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "5989e628-3047-49af-a1c1-c4c12f0e1629",
+      "uuid": "e669d5bf-184d-4ce3-bab6-35d6913555ef",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -837,8 +865,8 @@
       "postServeActions": []
     },
     {
-      "id": "1c81b8c1-8ded-41f9-a48c-683fb325984f",
-      "name": "Create pricing intent - default",
+      "id": "a364ed88-b728-415c-a7bf-0d75df8527de",
+      "name": "Create pricing intent - Interchange Plus",
       "request": {
         "urlPathTemplate": "/pricing-intents",
         "method": "POST"
@@ -850,7 +878,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1c81b8c1-8ded-41f9-a48c-683fb325984f",
+      "uuid": "a364ed88-b728-415c-a7bf-0d75df8527de",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -863,8 +891,8 @@
       }
     },
     {
-      "id": "8d254841-8a75-41fb-acd4-f29eaf037363",
-      "name": "Retrieve pricing intent - default",
+      "id": "73ee2e1b-e5b3-44ed-819f-e5ef3c6e896e",
+      "name": "Retrieve pricing intent - Pricing intent",
       "request": {
         "urlPathTemplate": "/pricing-intents/{pricingIntentId}",
         "method": "GET",
@@ -881,7 +909,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "8d254841-8a75-41fb-acd4-f29eaf037363",
+      "uuid": "73ee2e1b-e5b3-44ed-819f-e5ef3c6e896e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -894,8 +922,8 @@
       }
     },
     {
-      "id": "d74f2cf4-93a6-4441-9a98-964b93fb59c4",
-      "name": "Update pricing intent - default",
+      "id": "13025a87-a092-400e-8414-56a47be4e825",
+      "name": "Update pricing intent - Create pricing intent",
       "request": {
         "urlPathTemplate": "/pricing-intents/{pricingIntentId}",
         "method": "PUT",
@@ -912,7 +940,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "d74f2cf4-93a6-4441-9a98-964b93fb59c4",
+      "uuid": "13025a87-a092-400e-8414-56a47be4e825",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -956,8 +984,8 @@
       }
     },
     {
-      "id": "155e85dc-59b0-4e5f-be6e-9fea2948a6c1",
-      "name": "Partially update pricing intent - default",
+      "id": "8a345c51-035d-48c3-bff5-cbc07e6e9401",
+      "name": "Partially update pricing intent - Partially update pricing intent",
       "request": {
         "urlPathTemplate": "/pricing-intents/{pricingIntentId}",
         "method": "PATCH",
@@ -974,7 +1002,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "155e85dc-59b0-4e5f-be6e-9fea2948a6c1",
+      "uuid": "8a345c51-035d-48c3-bff5-cbc07e6e9401",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -987,8 +1015,8 @@
       }
     },
     {
-      "id": "e5ad4269-3e70-4da3-b97e-e492aeb1c58e",
-      "name": "List merchant platforms - default",
+      "id": "8441d0b5-ae68-4103-978d-38c4deab7e14",
+      "name": "List merchant platforms - Paginated list of merchant platforms",
       "request": {
         "urlPathTemplate": "/merchant-platforms",
         "method": "GET",
@@ -1011,7 +1039,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e5ad4269-3e70-4da3-b97e-e492aeb1c58e",
+      "uuid": "8441d0b5-ae68-4103-978d-38c4deab7e14",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1025,8 +1053,8 @@
       "postServeActions": []
     },
     {
-      "id": "b3a7d660-2821-4e94-b4bb-1b756fae83c0",
-      "name": "Create merchant platform - default",
+      "id": "628e4819-4189-439d-9845-6c8eed4bb0f6",
+      "name": "Create merchant platform - Created merchant platform",
       "request": {
         "urlPathTemplate": "/merchant-platforms",
         "method": "POST"
@@ -1038,7 +1066,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b3a7d660-2821-4e94-b4bb-1b756fae83c0",
+      "uuid": "628e4819-4189-439d-9845-6c8eed4bb0f6",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1051,8 +1079,8 @@
       }
     },
     {
-      "id": "8a9c0bc3-40fb-4f43-a3b3-6907a1896235",
-      "name": "Retrieve merchant platform - default",
+      "id": "b5f5776a-04f3-47ab-baa0-2302788df48b",
+      "name": "Retrieve merchant platform - Retrieve merchant platform",
       "request": {
         "urlPathTemplate": "/merchant-platforms/{merchantPlatformId}",
         "method": "GET",
@@ -1069,7 +1097,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "8a9c0bc3-40fb-4f43-a3b3-6907a1896235",
+      "uuid": "b5f5776a-04f3-47ab-baa0-2302788df48b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1082,8 +1110,8 @@
       }
     },
     {
-      "id": "074376e1-775f-4772-af28-f0d3da6eff87",
-      "name": "List merchant platform's processing accounts - default",
+      "id": "a8e04a08-c4c7-4cc9-818c-6e42a93113b7",
+      "name": "List merchant platform's processing accounts - Paginated list of processing account",
       "request": {
         "urlPathTemplate": "/merchant-platforms/{merchantPlatformId}/processing-accounts",
         "method": "GET",
@@ -1114,7 +1142,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "074376e1-775f-4772-af28-f0d3da6eff87",
+      "uuid": "a8e04a08-c4c7-4cc9-818c-6e42a93113b7",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1127,8 +1155,8 @@
       }
     },
     {
-      "id": "c3df2eac-02a4-4bce-b796-4dd15c7587f1",
-      "name": "Create processing account - default",
+      "id": "d8f63e69-2b99-40fe-a99b-98c101db43d1",
+      "name": "Create processing account - Retrieve merchant platform",
       "request": {
         "urlPathTemplate": "/merchant-platforms/{merchantPlatformId}/processing-accounts",
         "method": "POST",
@@ -1145,7 +1173,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c3df2eac-02a4-4bce-b796-4dd15c7587f1",
+      "uuid": "d8f63e69-2b99-40fe-a99b-98c101db43d1",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1158,8 +1186,8 @@
       }
     },
     {
-      "id": "e62bdb81-7b0d-4ee4-938f-3dc262d27192",
-      "name": "Retrieve processing account - default",
+      "id": "5609bd27-df15-4be8-92a2-2169a497ee99",
+      "name": "Retrieve processing account - Retrieve processing account",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}",
         "method": "GET",
@@ -1176,7 +1204,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e62bdb81-7b0d-4ee4-938f-3dc262d27192",
+      "uuid": "5609bd27-df15-4be8-92a2-2169a497ee99",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1189,8 +1217,8 @@
       }
     },
     {
-      "id": "0559196f-b4bc-433d-937f-bd22700c1771",
-      "name": "List processing account's funding accounts - default",
+      "id": "166e631c-a842-4b52-b9af-58c3e60098cc",
+      "name": "List processing account's funding accounts - List of funding accounts",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/funding-accounts",
         "method": "GET",
@@ -1207,7 +1235,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0559196f-b4bc-433d-937f-bd22700c1771",
+      "uuid": "166e631c-a842-4b52-b9af-58c3e60098cc",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1220,8 +1248,8 @@
       }
     },
     {
-      "id": "cae14f68-a991-497c-965a-0026abf06133",
-      "name": "List contacts - default",
+      "id": "12664396-6cd2-4a14-baa3-b129a40d7729",
+      "name": "List contacts - Paginated list of processing account contacts",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/contacts",
         "method": "GET",
@@ -1249,7 +1277,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "cae14f68-a991-497c-965a-0026abf06133",
+      "uuid": "12664396-6cd2-4a14-baa3-b129a40d7729",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1262,8 +1290,8 @@
       }
     },
     {
-      "id": "79530a94-a289-46c7-ba47-0603fb5d4c59",
-      "name": "Retrieve processing account pricing agreement - default",
+      "id": "9bd85494-3ff6-4882-b02e-d2631a3e7d4c",
+      "name": "Retrieve processing account pricing agreement - Get processing account pricing agreement",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/pricing",
         "method": "GET",
@@ -1280,7 +1308,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "79530a94-a289-46c7-ba47-0603fb5d4c59",
+      "uuid": "9bd85494-3ff6-4882-b02e-d2631a3e7d4c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1293,8 +1321,8 @@
       }
     },
     {
-      "id": "33a83f32-43d5-4d72-9b99-30528ae51048",
-      "name": "List owners - default",
+      "id": "0a20e168-5bae-4569-b95f-b17c3d9d6bb0",
+      "name": "List owners - Paginated list of processing account owners",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/owners",
         "method": "GET",
@@ -1322,7 +1350,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "33a83f32-43d5-4d72-9b99-30528ae51048",
+      "uuid": "0a20e168-5bae-4569-b95f-b17c3d9d6bb0",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1335,8 +1363,8 @@
       }
     },
     {
-      "id": "a487a07e-2d6b-4acd-99b6-e57a829f4254",
-      "name": "Create reminder for processing account - default",
+      "id": "4d38302f-6bdb-48ab-b5f9-998df763414c",
+      "name": "Create reminder for processing account - Reminder created",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/reminders",
         "method": "POST",
@@ -1353,7 +1381,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a487a07e-2d6b-4acd-99b6-e57a829f4254",
+      "uuid": "4d38302f-6bdb-48ab-b5f9-998df763414c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1366,8 +1394,8 @@
       }
     },
     {
-      "id": "116b3d68-796e-4311-b641-e51d8a85ad61",
-      "name": "List terminal orders - default",
+      "id": "77e53918-393c-418e-9b53-8672c3f6658e",
+      "name": "List terminal orders - Paginated list of Terminal Orders",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/terminal-orders",
         "method": "GET",
@@ -1395,7 +1423,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "116b3d68-796e-4311-b641-e51d8a85ad61",
+      "uuid": "77e53918-393c-418e-9b53-8672c3f6658e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1408,8 +1436,8 @@
       }
     },
     {
-      "id": "b3c80a4e-45e2-4ae4-8637-a5daa19d14fc",
-      "name": "Create terminal order - default",
+      "id": "9cafd69f-cda6-4506-afd5-d1f73ec78f5f",
+      "name": "Create terminal order - Terminal order",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/terminal-orders",
         "method": "POST",
@@ -1426,7 +1454,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b3c80a4e-45e2-4ae4-8637-a5daa19d14fc",
+      "uuid": "9cafd69f-cda6-4506-afd5-d1f73ec78f5f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1439,8 +1467,8 @@
       }
     },
     {
-      "id": "6f292a03-fe4d-4d7d-9329-4b41598c1a97",
-      "name": "List processing terminals - default",
+      "id": "7a666e96-bf1d-44fe-95e2-b623bf58ee66",
+      "name": "List processing terminals - Paginated list of processing terminals",
       "request": {
         "urlPathTemplate": "/processing-accounts/{processingAccountId}/processing-terminals",
         "method": "GET",
@@ -1468,7 +1496,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "6f292a03-fe4d-4d7d-9329-4b41598c1a97",
+      "uuid": "7a666e96-bf1d-44fe-95e2-b623bf58ee66",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1481,8 +1509,8 @@
       }
     },
     {
-      "id": "4c1bf17d-1a96-4f93-bb11-a33a6ab15fa2",
-      "name": "Retrieve processing terminal - default",
+      "id": "7fa2a0c9-5645-4eff-9272-a1647c6bcbb8",
+      "name": "Retrieve processing terminal - Retrieve processing terminal",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}",
         "method": "GET",
@@ -1499,7 +1527,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4c1bf17d-1a96-4f93-bb11-a33a6ab15fa2",
+      "uuid": "7fa2a0c9-5645-4eff-9272-a1647c6bcbb8",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1543,8 +1571,8 @@
       }
     },
     {
-      "id": "6ef27490-7f6d-4e92-b0ef-d253e89021d2",
-      "name": "Retrieve contact - default",
+      "id": "8829d2f0-fd24-44c2-a678-cb6817f20b0c",
+      "name": "Retrieve contact - Contact object",
       "request": {
         "urlPathTemplate": "/contacts/{contactId}",
         "method": "GET",
@@ -1561,7 +1589,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "6ef27490-7f6d-4e92-b0ef-d253e89021d2",
+      "uuid": "8829d2f0-fd24-44c2-a678-cb6817f20b0c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1574,8 +1602,8 @@
       }
     },
     {
-      "id": "1cd368ab-ac95-4221-990e-215159cfb825",
-      "name": "Update contact - default",
+      "id": "83185596-2d2b-4c3e-b062-761dcdfe8a3a",
+      "name": "Update contact - Update contact",
       "request": {
         "urlPathTemplate": "/contacts/{contactId}",
         "method": "PUT",
@@ -1592,7 +1620,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1cd368ab-ac95-4221-990e-215159cfb825",
+      "uuid": "83185596-2d2b-4c3e-b062-761dcdfe8a3a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1636,8 +1664,8 @@
       }
     },
     {
-      "id": "17057d60-8b81-402b-a428-0e09a905105f",
-      "name": "Retrieve terminal order - default",
+      "id": "81bcd00f-9d83-440e-80fa-6672f36e394a",
+      "name": "Retrieve terminal order - Terminal order",
       "request": {
         "urlPathTemplate": "/terminal-orders/{terminalOrderId}",
         "method": "GET",
@@ -1654,7 +1682,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "17057d60-8b81-402b-a428-0e09a905105f",
+      "uuid": "81bcd00f-9d83-440e-80fa-6672f36e394a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1667,8 +1695,8 @@
       }
     },
     {
-      "id": "f91f76bb-9335-410a-8a73-42dba965e656",
-      "name": "List payments - default",
+      "id": "2f38aa73-268b-4cee-8287-c879d8a72311",
+      "name": "List payments - Payment",
       "request": {
         "urlPathTemplate": "/payments",
         "method": "GET",
@@ -1693,6 +1721,39 @@
           },
           "tender": {
             "equalTo": "ebt"
+          },
+          "tipMode": {
+            "hasExactly": [
+              {
+                "equalTo": "noTip"
+              },
+              {
+                "equalTo": "prompted"
+              }
+            ]
+          },
+          "type": {
+            "hasExactly": [
+              {
+                "equalTo": "sale"
+              },
+              {
+                "equalTo": "preAuthorization"
+              }
+            ]
+          },
+          "status": {
+            "hasExactly": [
+              {
+                "equalTo": "accepted"
+              },
+              {
+                "equalTo": "ready"
+              },
+              {
+                "equalTo": "complete"
+              }
+            ]
           },
           "dateFrom": {
             "equalTo": "2024-07-01T15:30:00Z"
@@ -1727,7 +1788,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "f91f76bb-9335-410a-8a73-42dba965e656",
+      "uuid": "2f38aa73-268b-4cee-8287-c879d8a72311",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1741,8 +1802,8 @@
       "postServeActions": []
     },
     {
-      "id": "816e6443-2212-45eb-a2ed-fd3a2e9be76a",
-      "name": "Create payment - default",
+      "id": "20ab1570-0d3c-4b9a-a45d-94af2f2a43f6",
+      "name": "Create payment - Card Payment",
       "request": {
         "urlPathTemplate": "/payments",
         "method": "POST"
@@ -1754,7 +1815,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "816e6443-2212-45eb-a2ed-fd3a2e9be76a",
+      "uuid": "20ab1570-0d3c-4b9a-a45d-94af2f2a43f6",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1767,8 +1828,8 @@
       }
     },
     {
-      "id": "a06910ee-94cd-405c-b161-79ab95040e2e",
-      "name": "Retrieve payment - default",
+      "id": "51027283-b4de-441f-9d20-21cec308bd1e",
+      "name": "Retrieve payment - Payment",
       "request": {
         "urlPathTemplate": "/payments/{paymentId}",
         "method": "GET",
@@ -1785,7 +1846,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a06910ee-94cd-405c-b161-79ab95040e2e",
+      "uuid": "51027283-b4de-441f-9d20-21cec308bd1e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1798,8 +1859,8 @@
       }
     },
     {
-      "id": "28a58257-f754-4b7b-8fd7-5a37098ae686",
-      "name": "Adjust payment - default",
+      "id": "0ad41eb2-12fe-4e64-ba53-c9b95c3e14f8",
+      "name": "Adjust payment - Adjust Payment",
       "request": {
         "urlPathTemplate": "/payments/{paymentId}/adjust",
         "method": "POST",
@@ -1816,7 +1877,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "28a58257-f754-4b7b-8fd7-5a37098ae686",
+      "uuid": "0ad41eb2-12fe-4e64-ba53-c9b95c3e14f8",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1829,8 +1890,8 @@
       }
     },
     {
-      "id": "a135d9cc-ba95-45b3-96f1-c4d19c97ecaf",
-      "name": "Capture payment - default",
+      "id": "3f2a113a-19eb-4153-bbd6-94d948481c03",
+      "name": "Capture payment - Payment",
       "request": {
         "urlPathTemplate": "/payments/{paymentId}/capture",
         "method": "POST",
@@ -1847,7 +1908,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a135d9cc-ba95-45b3-96f1-c4d19c97ecaf",
+      "uuid": "3f2a113a-19eb-4153-bbd6-94d948481c03",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1860,8 +1921,8 @@
       }
     },
     {
-      "id": "09285cbe-669e-4c4e-89d3-a476cfab074e",
-      "name": "Reverse payment - default",
+      "id": "c107cac6-dea4-4fdb-a04a-f12247971027",
+      "name": "Reverse payment - Reversal Payment",
       "request": {
         "urlPathTemplate": "/payments/{paymentId}/reverse",
         "method": "POST",
@@ -1878,7 +1939,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "09285cbe-669e-4c4e-89d3-a476cfab074e",
+      "uuid": "c107cac6-dea4-4fdb-a04a-f12247971027",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1891,8 +1952,8 @@
       }
     },
     {
-      "id": "99f97535-daff-499b-b69e-3a1e5e70488a",
-      "name": "Create referenced refund - default",
+      "id": "26208263-e1f7-4c66-984b-651203d9fec0",
+      "name": "Create referenced refund - Refund Payment",
       "request": {
         "urlPathTemplate": "/payments/{paymentId}/refund",
         "method": "POST",
@@ -1909,7 +1970,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "99f97535-daff-499b-b69e-3a1e5e70488a",
+      "uuid": "26208263-e1f7-4c66-984b-651203d9fec0",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1922,8 +1983,8 @@
       }
     },
     {
-      "id": "c99a809c-0afe-4db6-b848-9120640bd194",
-      "name": "List refunds - default",
+      "id": "242abd3c-c607-4de8-b1ab-969c9edbcea9",
+      "name": "List refunds - Paginated Refund",
       "request": {
         "urlPathTemplate": "/refunds",
         "method": "GET",
@@ -1948,6 +2009,19 @@
           },
           "tender": {
             "equalTo": "ebt"
+          },
+          "status": {
+            "hasExactly": [
+              {
+                "equalTo": "accepted"
+              },
+              {
+                "equalTo": "ready"
+              },
+              {
+                "equalTo": "complete"
+              }
+            ]
           },
           "dateFrom": {
             "equalTo": "2024-07-01T15:30:00Z"
@@ -1979,7 +2053,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c99a809c-0afe-4db6-b848-9120640bd194",
+      "uuid": "242abd3c-c607-4de8-b1ab-969c9edbcea9",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -1993,8 +2067,8 @@
       "postServeActions": []
     },
     {
-      "id": "b23a3ae4-6149-4f44-abbb-c86f99100b3c",
-      "name": "Create unreferenced refund - default",
+      "id": "8d993b23-0ec6-4780-8c84-6a61ab068a3b",
+      "name": "Create unreferenced refund - Refund",
       "request": {
         "urlPathTemplate": "/refunds",
         "method": "POST"
@@ -2006,7 +2080,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b23a3ae4-6149-4f44-abbb-c86f99100b3c",
+      "uuid": "8d993b23-0ec6-4780-8c84-6a61ab068a3b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2019,8 +2093,8 @@
       }
     },
     {
-      "id": "36bfb6a7-02f8-460f-85e2-8fe89a9007e0",
-      "name": "Retrieve refund - default",
+      "id": "94a41887-a672-4686-afab-2aca4180af92",
+      "name": "Retrieve refund - Refund",
       "request": {
         "urlPathTemplate": "/refunds/{refundId}",
         "method": "GET",
@@ -2037,7 +2111,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "36bfb6a7-02f8-460f-85e2-8fe89a9007e0",
+      "uuid": "94a41887-a672-4686-afab-2aca4180af92",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2050,8 +2124,8 @@
       }
     },
     {
-      "id": "2fbcfd21-95ac-4042-8fc0-d7d27288c94b",
-      "name": "Adjust refund - default",
+      "id": "26043828-61fe-4e4a-804a-81a9091c664a",
+      "name": "Adjust refund - Adjust Refund",
       "request": {
         "urlPathTemplate": "/refunds/{refundId}/adjust",
         "method": "POST",
@@ -2068,7 +2142,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "2fbcfd21-95ac-4042-8fc0-d7d27288c94b",
+      "uuid": "26043828-61fe-4e4a-804a-81a9091c664a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2081,8 +2155,8 @@
       }
     },
     {
-      "id": "33a4ee7b-2f96-4603-88bf-17891d5f056a",
-      "name": "Reverse refund - default",
+      "id": "089fe9fd-9f5f-4ff2-8f55-3337e889b32a",
+      "name": "Reverse refund - Reverse Refund",
       "request": {
         "urlPathTemplate": "/refunds/{refundId}/reverse",
         "method": "POST",
@@ -2099,7 +2173,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "33a4ee7b-2f96-4603-88bf-17891d5f056a",
+      "uuid": "089fe9fd-9f5f-4ff2-8f55-3337e889b32a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2112,8 +2186,8 @@
       }
     },
     {
-      "id": "084ef2d5-52bb-4a8b-951b-dc3d8f982d25",
-      "name": "List funding recipients - default",
+      "id": "d12bc8e5-3107-4ca7-ac15-6d8314bafbf4",
+      "name": "List funding recipients - Paginated funding recipients.",
       "request": {
         "urlPathTemplate": "/funding-recipients",
         "method": "GET",
@@ -2136,7 +2210,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "084ef2d5-52bb-4a8b-951b-dc3d8f982d25",
+      "uuid": "d12bc8e5-3107-4ca7-ac15-6d8314bafbf4",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2150,8 +2224,8 @@
       "postServeActions": []
     },
     {
-      "id": "b568cd17-d728-4970-aa71-5ea4fd3ceadb",
-      "name": "Create funding recipient - default",
+      "id": "573c1ec5-ca0b-4f3f-8edb-bf9dd43613b3",
+      "name": "Create funding recipient - Create funding recipient",
       "request": {
         "urlPathTemplate": "/funding-recipients",
         "method": "POST"
@@ -2163,7 +2237,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b568cd17-d728-4970-aa71-5ea4fd3ceadb",
+      "uuid": "573c1ec5-ca0b-4f3f-8edb-bf9dd43613b3",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2176,8 +2250,8 @@
       }
     },
     {
-      "id": "e575c6cd-a1cf-43a9-97db-cdfaecf6503d",
-      "name": "Retrieve funding recipient - default",
+      "id": "b213b794-305c-4cd0-8287-db7ecaca20a4",
+      "name": "Retrieve funding recipient - Funding recipient.",
       "request": {
         "urlPathTemplate": "/funding-recipients/{recipientId}",
         "method": "GET",
@@ -2194,7 +2268,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e575c6cd-a1cf-43a9-97db-cdfaecf6503d",
+      "uuid": "b213b794-305c-4cd0-8287-db7ecaca20a4",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2207,8 +2281,8 @@
       }
     },
     {
-      "id": "d25e075c-652a-4562-bb98-e9ea95da6241",
-      "name": "Update funding recipient - default",
+      "id": "5c124c40-18a1-478d-9331-d16d3aa65a7e",
+      "name": "Update funding recipient - Update funding recipient",
       "request": {
         "urlPathTemplate": "/funding-recipients/{recipientId}",
         "method": "PUT",
@@ -2225,7 +2299,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "d25e075c-652a-4562-bb98-e9ea95da6241",
+      "uuid": "5c124c40-18a1-478d-9331-d16d3aa65a7e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2269,8 +2343,8 @@
       }
     },
     {
-      "id": "79dc228c-9d83-4441-a8fe-638586d7f286",
-      "name": "List funding recipient's funding accounts - default",
+      "id": "15e1c406-3ef6-42d7-ac19-2db36bfdae39",
+      "name": "List funding recipient's funding accounts - List of funding accounts",
       "request": {
         "urlPathTemplate": "/funding-recipients/{recipientId}/funding-accounts",
         "method": "GET",
@@ -2287,7 +2361,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "79dc228c-9d83-4441-a8fe-638586d7f286",
+      "uuid": "15e1c406-3ef6-42d7-ac19-2db36bfdae39",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2300,8 +2374,8 @@
       }
     },
     {
-      "id": "831c50b9-147e-4181-8446-479e571ba18e",
-      "name": "Create funding account - default",
+      "id": "7e2dc754-681a-4687-9bf4-e1d5f8b591a1",
+      "name": "Create funding account - Funding account",
       "request": {
         "urlPathTemplate": "/funding-recipients/{recipientId}/funding-accounts",
         "method": "POST",
@@ -2318,7 +2392,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "831c50b9-147e-4181-8446-479e571ba18e",
+      "uuid": "7e2dc754-681a-4687-9bf4-e1d5f8b591a1",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2362,8 +2436,8 @@
       }
     },
     {
-      "id": "7423127b-65e3-426e-90e6-521bb8a4d61e",
-      "name": "Create funding recipient owner - default",
+      "id": "0d79124f-b50c-401f-a044-2149eb68cb4e",
+      "name": "Create funding recipient owner - Create funding recipient owner",
       "request": {
         "urlPathTemplate": "/funding-recipients/{recipientId}/owners",
         "method": "POST",
@@ -2380,7 +2454,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "7423127b-65e3-426e-90e6-521bb8a4d61e",
+      "uuid": "0d79124f-b50c-401f-a044-2149eb68cb4e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2393,8 +2467,8 @@
       }
     },
     {
-      "id": "5cd15612-0d23-48ad-9267-0a70b60785fc",
-      "name": "List funding accounts - default",
+      "id": "25a1d60b-d483-40d4-98e9-aec19f598a1b",
+      "name": "List funding accounts - Paginated funding accounts",
       "request": {
         "urlPathTemplate": "/funding-accounts",
         "method": "GET",
@@ -2417,7 +2491,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "5cd15612-0d23-48ad-9267-0a70b60785fc",
+      "uuid": "25a1d60b-d483-40d4-98e9-aec19f598a1b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2431,8 +2505,8 @@
       "postServeActions": []
     },
     {
-      "id": "56ef734f-6a8d-466e-8ffe-7d6c45a71dcd",
-      "name": "Retrieve funding account - default",
+      "id": "af513f70-bb12-42b2-b7e1-f2001fdb69e4",
+      "name": "Retrieve funding account - Masked funding account example.",
       "request": {
         "urlPathTemplate": "/funding-accounts/{fundingAccountId}",
         "method": "GET",
@@ -2449,7 +2523,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "56ef734f-6a8d-466e-8ffe-7d6c45a71dcd",
+      "uuid": "af513f70-bb12-42b2-b7e1-f2001fdb69e4",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2462,8 +2536,8 @@
       }
     },
     {
-      "id": "0745fbf6-2f05-44b8-8d95-8177ec5bc0ee",
-      "name": "Update funding account - default",
+      "id": "5620b149-bafd-4241-969e-9d8dc30e527c",
+      "name": "Update funding account - Update funding account",
       "request": {
         "urlPathTemplate": "/funding-accounts/{fundingAccountId}",
         "method": "PUT",
@@ -2480,7 +2554,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0745fbf6-2f05-44b8-8d95-8177ec5bc0ee",
+      "uuid": "5620b149-bafd-4241-969e-9d8dc30e527c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2524,8 +2598,8 @@
       }
     },
     {
-      "id": "c70189a3-d71a-4dcd-95bd-42d32ed804df",
-      "name": "List funding instructions - default",
+      "id": "195282b6-d68c-4cdc-b83f-8d39160cbec1",
+      "name": "List funding instructions - Paginated instructions list",
       "request": {
         "urlPathTemplate": "/funding-instructions",
         "method": "GET",
@@ -2554,7 +2628,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c70189a3-d71a-4dcd-95bd-42d32ed804df",
+      "uuid": "195282b6-d68c-4cdc-b83f-8d39160cbec1",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2568,8 +2642,8 @@
       "postServeActions": []
     },
     {
-      "id": "977a88db-c429-43fe-8165-4819e9ac8951",
-      "name": "Create funding instruction - default",
+      "id": "0c78063e-165f-431e-a128-6e5595e7b15a",
+      "name": "Create funding instruction - Funding instruction",
       "request": {
         "urlPathTemplate": "/funding-instructions",
         "method": "POST"
@@ -2581,7 +2655,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "977a88db-c429-43fe-8165-4819e9ac8951",
+      "uuid": "0c78063e-165f-431e-a128-6e5595e7b15a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2625,8 +2699,8 @@
       }
     },
     {
-      "id": "4144c76a-9eb0-4d9a-834c-76c61f02ef59",
-      "name": "Update funding instruction - default",
+      "id": "4a6870e9-4a9a-41f8-9d51-ed799029cc43",
+      "name": "Update funding instruction - Update funding instruction",
       "request": {
         "urlPathTemplate": "/funding-instructions/{instructionId}",
         "method": "PUT",
@@ -2643,7 +2717,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4144c76a-9eb0-4d9a-834c-76c61f02ef59",
+      "uuid": "4a6870e9-4a9a-41f8-9d51-ed799029cc43",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2687,8 +2761,8 @@
       }
     },
     {
-      "id": "de51924c-aa52-4179-8ca1-8d858514338b",
-      "name": "List funding balances - default",
+      "id": "b43a179f-b676-478c-a47b-54e904e80a46",
+      "name": "List funding balances - Paginated list of merchant balances",
       "request": {
         "urlPathTemplate": "/funding-balance",
         "method": "GET",
@@ -2714,7 +2788,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "de51924c-aa52-4179-8ca1-8d858514338b",
+      "uuid": "b43a179f-b676-478c-a47b-54e904e80a46",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2728,8 +2802,8 @@
       "postServeActions": []
     },
     {
-      "id": "ae6f1229-0cbd-4593-bde9-945877fc7e64",
-      "name": "List funding activity - default",
+      "id": "8cc04f10-f7e1-40aa-98e4-51c4f81e965b",
+      "name": "List funding activity - Paginated activity records",
       "request": {
         "urlPathTemplate": "/funding-activity",
         "method": "GET",
@@ -2761,7 +2835,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ae6f1229-0cbd-4593-bde9-945877fc7e64",
+      "uuid": "8cc04f10-f7e1-40aa-98e4-51c4f81e965b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2775,8 +2849,8 @@
       "postServeActions": []
     },
     {
-      "id": "8fa69b1e-d16b-45b9-b379-8a85afe49123",
-      "name": "List event subscriptions - default",
+      "id": "9c9bf434-4885-4f9f-82a3-685f9d625af9",
+      "name": "List event subscriptions - Paginated list of Event subscriptions",
       "request": {
         "urlPathTemplate": "/event-subscriptions",
         "method": "GET",
@@ -2796,7 +2870,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "8fa69b1e-d16b-45b9-b379-8a85afe49123",
+      "uuid": "9c9bf434-4885-4f9f-82a3-685f9d625af9",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2810,8 +2884,8 @@
       "postServeActions": []
     },
     {
-      "id": "b803a0ae-cfc8-4710-bea2-dc600df0056f",
-      "name": "Create event subscription - default",
+      "id": "eff579ac-ae3a-4f0d-9755-0d249900b5a3",
+      "name": "Create event subscription - Create event subscription",
       "request": {
         "urlPathTemplate": "/event-subscriptions",
         "method": "POST"
@@ -2823,7 +2897,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b803a0ae-cfc8-4710-bea2-dc600df0056f",
+      "uuid": "eff579ac-ae3a-4f0d-9755-0d249900b5a3",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2836,8 +2910,8 @@
       }
     },
     {
-      "id": "0ec4c52f-e26b-4405-8e31-c715252a4223",
-      "name": "Retrieve event subscription - default",
+      "id": "b4ff90f9-b879-41ef-9ec9-bd350c3dc6c7",
+      "name": "Retrieve event subscription - Event subscription",
       "request": {
         "urlPathTemplate": "/event-subscriptions/{subscriptionId}",
         "method": "GET",
@@ -2854,7 +2928,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0ec4c52f-e26b-4405-8e31-c715252a4223",
+      "uuid": "b4ff90f9-b879-41ef-9ec9-bd350c3dc6c7",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2867,8 +2941,8 @@
       }
     },
     {
-      "id": "93a495f5-183f-4d1f-bec5-fc41d99215f9",
-      "name": "Update event subscription - default",
+      "id": "ddbc0b6a-f2bb-4bc9-8bfb-771d48dbe246",
+      "name": "Update event subscription - Update event subscription",
       "request": {
         "urlPathTemplate": "/event-subscriptions/{subscriptionId}",
         "method": "PUT",
@@ -2885,7 +2959,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "93a495f5-183f-4d1f-bec5-fc41d99215f9",
+      "uuid": "ddbc0b6a-f2bb-4bc9-8bfb-771d48dbe246",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2929,8 +3003,8 @@
       }
     },
     {
-      "id": "c7cae321-0591-422d-a519-56f2aa57fcf5",
-      "name": "Partially update event subscription - default",
+      "id": "1e21b2f1-9d6f-466e-8eaa-23db08322131",
+      "name": "Partially update event subscription - Partially update event subscription",
       "request": {
         "urlPathTemplate": "/event-subscriptions/{subscriptionId}",
         "method": "PATCH",
@@ -2947,7 +3021,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c7cae321-0591-422d-a519-56f2aa57fcf5",
+      "uuid": "1e21b2f1-9d6f-466e-8eaa-23db08322131",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2960,8 +3034,8 @@
       }
     },
     {
-      "id": "e6f3b30f-649b-4a84-af85-93de91da8635",
-      "name": "Verify card - default",
+      "id": "20fb6a42-86f3-4228-81b1-745150c3ef62",
+      "name": "Verify card - Card Verification",
       "request": {
         "urlPathTemplate": "/cards/verify",
         "method": "POST"
@@ -2973,7 +3047,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e6f3b30f-649b-4a84-af85-93de91da8635",
+      "uuid": "20fb6a42-86f3-4228-81b1-745150c3ef62",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2986,8 +3060,8 @@
       }
     },
     {
-      "id": "ba86f127-7efe-468c-92ce-72b8e1705990",
-      "name": "View EBT balance - default",
+      "id": "23802445-0b57-454a-bff4-52d6eaf8065e",
+      "name": "View EBT balance - Card Balance",
       "request": {
         "urlPathTemplate": "/cards/balance",
         "method": "POST"
@@ -2999,7 +3073,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ba86f127-7efe-468c-92ce-72b8e1705990",
+      "uuid": "23802445-0b57-454a-bff4-52d6eaf8065e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3012,8 +3086,8 @@
       }
     },
     {
-      "id": "fce9930f-ad5b-4577-9522-bff1512eabb6",
-      "name": "Look up BIN information - default",
+      "id": "1428ef3d-cce3-43b4-b3b0-9b2c0937736f",
+      "name": "Look up BIN information - BIN lookup",
       "request": {
         "urlPathTemplate": "/cards/bin-lookup",
         "method": "POST"
@@ -3025,7 +3099,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "fce9930f-ad5b-4577-9522-bff1512eabb6",
+      "uuid": "1428ef3d-cce3-43b4-b3b0-9b2c0937736f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3038,8 +3112,8 @@
       }
     },
     {
-      "id": "5fe49d45-64ea-4d71-9189-909888148de8",
-      "name": "Verify DCC eligibility - default",
+      "id": "cc71f912-4a32-4a18-a2ed-f60b5d7014e5",
+      "name": "Verify DCC eligibility - Fx-Rate",
       "request": {
         "urlPathTemplate": "/fx-rates",
         "method": "POST"
@@ -3051,7 +3125,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "5fe49d45-64ea-4d71-9189-909888148de8",
+      "uuid": "cc71f912-4a32-4a18-a2ed-f60b5d7014e5",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3064,8 +3138,8 @@
       }
     },
     {
-      "id": "4dc65311-d0d4-4c5c-9a47-3d09cf5b1d3c",
-      "name": "Verify bank account - default",
+      "id": "442313bb-507e-494b-a8af-22a66e6e6fd7",
+      "name": "Verify bank account - PAD Bank Account Verification Request",
       "request": {
         "urlPathTemplate": "/bank-accounts/verify",
         "method": "POST"
@@ -3077,7 +3151,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4dc65311-d0d4-4c5c-9a47-3d09cf5b1d3c",
+      "uuid": "442313bb-507e-494b-a8af-22a66e6e6fd7",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3090,8 +3164,8 @@
       }
     },
     {
-      "id": "b2987115-9a8d-413c-9048-e7fa2bc8baa0",
-      "name": "List payment link sharing events - default",
+      "id": "1624b8c0-9975-4034-a540-a7e58c9e350d",
+      "name": "List payment link sharing events - Sharing events",
       "request": {
         "urlPathTemplate": "/payment-links/{paymentLinkId}/sharing-events",
         "method": "GET",
@@ -3125,7 +3199,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b2987115-9a8d-413c-9048-e7fa2bc8baa0",
+      "uuid": "1624b8c0-9975-4034-a540-a7e58c9e350d",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3138,8 +3212,8 @@
       }
     },
     {
-      "id": "b13125ec-8738-48bf-9464-4753e5a632f9",
-      "name": "Share payment link - default",
+      "id": "2c2a96b0-89ff-49ca-bcc8-678bb4d1d9b1",
+      "name": "Share payment link - Payment link sharing event.",
       "request": {
         "urlPathTemplate": "/payment-links/{paymentLinkId}/sharing-events",
         "method": "POST",
@@ -3156,7 +3230,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b13125ec-8738-48bf-9464-4753e5a632f9",
+      "uuid": "2c2a96b0-89ff-49ca-bcc8-678bb4d1d9b1",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3169,8 +3243,8 @@
       }
     },
     {
-      "id": "7cdef73f-c8d6-464a-ae18-17ba2982dd19",
-      "name": "Submit payment instruction - default",
+      "id": "84412bc9-d6f6-4564-a9dc-ee1a59866e4b",
+      "name": "Submit payment instruction - Payment Instruction",
       "request": {
         "urlPathTemplate": "/devices/{serialNumber}/payment-instructions",
         "method": "POST",
@@ -3187,7 +3261,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "7cdef73f-c8d6-464a-ae18-17ba2982dd19",
+      "uuid": "84412bc9-d6f6-4564-a9dc-ee1a59866e4b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3200,8 +3274,8 @@
       }
     },
     {
-      "id": "4d3827d1-8570-449d-8ea7-63a33cb4ecf0",
-      "name": "Retrieve payment instruction - default",
+      "id": "acf4a9d7-f233-49ec-9454-5632a85eb6cc",
+      "name": "Retrieve payment instruction - Payment instruction",
       "request": {
         "urlPathTemplate": "/payment-instructions/{paymentInstructionId}",
         "method": "GET",
@@ -3218,7 +3292,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4d3827d1-8570-449d-8ea7-63a33cb4ecf0",
+      "uuid": "acf4a9d7-f233-49ec-9454-5632a85eb6cc",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3262,8 +3336,8 @@
       }
     },
     {
-      "id": "8d6bb513-e62f-4dfd-9082-eedc2dd540e8",
-      "name": "Submit refund instruction - default",
+      "id": "e5d87728-8d80-410b-955b-d2466b656f7a",
+      "name": "Submit refund instruction - Refund instruction",
       "request": {
         "urlPathTemplate": "/devices/{serialNumber}/refund-instructions",
         "method": "POST",
@@ -3280,7 +3354,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "8d6bb513-e62f-4dfd-9082-eedc2dd540e8",
+      "uuid": "e5d87728-8d80-410b-955b-d2466b656f7a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3293,8 +3367,8 @@
       }
     },
     {
-      "id": "59598b92-c229-4a21-884a-c7f040e7782d",
-      "name": "Retrieve refund instruction - default",
+      "id": "115869c2-d4fa-4c0b-9d97-27f237c83494",
+      "name": "Retrieve refund instruction - Refund instruction",
       "request": {
         "urlPathTemplate": "/refund-instructions/{refundInstructionId}",
         "method": "GET",
@@ -3311,7 +3385,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "59598b92-c229-4a21-884a-c7f040e7782d",
+      "uuid": "115869c2-d4fa-4c0b-9d97-27f237c83494",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3355,8 +3429,8 @@
       }
     },
     {
-      "id": "db51107b-2499-4ca3-98b6-642dedc6b5b9",
-      "name": "Submit signature instruction - default",
+      "id": "b8719368-4941-48a9-a8ff-75ff05b7b8c2",
+      "name": "Submit signature instruction - Signature instruction",
       "request": {
         "urlPathTemplate": "/devices/{serialNumber}/signature-instructions",
         "method": "POST",
@@ -3373,7 +3447,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "db51107b-2499-4ca3-98b6-642dedc6b5b9",
+      "uuid": "b8719368-4941-48a9-a8ff-75ff05b7b8c2",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3386,8 +3460,8 @@
       }
     },
     {
-      "id": "6b8eef5c-4c88-4011-a002-8892153c6b33",
-      "name": "Retrieve signature instruction - default",
+      "id": "b8ddb05c-668d-4451-9bbe-3aead5df378c",
+      "name": "Retrieve signature instruction - Signature instruction",
       "request": {
         "urlPathTemplate": "/signature-instructions/{signatureInstructionId}",
         "method": "GET",
@@ -3404,7 +3478,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "6b8eef5c-4c88-4011-a002-8892153c6b33",
+      "uuid": "b8ddb05c-668d-4451-9bbe-3aead5df378c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3448,8 +3522,8 @@
       }
     },
     {
-      "id": "6e7a8c92-ea1c-4e7f-a277-dd8958273ce0",
-      "name": "Retrieve signature - default",
+      "id": "4e28e44b-4e55-41a0-b6e7-329caabcca4b",
+      "name": "Retrieve signature - Signature",
       "request": {
         "urlPathTemplate": "/signatures/{signatureId}",
         "method": "GET",
@@ -3466,7 +3540,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "6e7a8c92-ea1c-4e7f-a277-dd8958273ce0",
+      "uuid": "4e28e44b-4e55-41a0-b6e7-329caabcca4b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3479,8 +3553,39 @@
       }
     },
     {
-      "id": "f002215a-81dd-4205-bc15-1b3d70962cb6",
-      "name": "List payment plans - default",
+      "id": "cf57444e-1d6e-4d32-98d0-ccec8f52ef93",
+      "name": "Retrieve closed loop read - Closed Loop Read",
+      "request": {
+        "urlPathTemplate": "/closed-loop-reads/{closedLoopReadId}",
+        "method": "GET",
+        "pathParameters": {
+          "closedLoopReadId": {
+            "equalTo": "JDN4ILZB0T"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"processingTerminalId\": \"1234001\",\n  \"closedLoopReadId\": \"KEO45MAC1U\",\n  \"readDate\": \"2024-07-02\",\n  \"data\": {\n    \"cardType\": \"MiFareClassic\",\n    \"uid\": \"04134ee21f1d80\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "cf57444e-1d6e-4d32-98d0-ccec8f52ef93",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9a41b26f-20ea-4cd2-8dbf-4225bf31f931",
+      "name": "List payment plans - Payment Plan",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-plans",
         "method": "GET",
@@ -3508,7 +3613,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "f002215a-81dd-4205-bc15-1b3d70962cb6",
+      "uuid": "9a41b26f-20ea-4cd2-8dbf-4225bf31f931",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3521,8 +3626,8 @@
       }
     },
     {
-      "id": "11d750da-f9e9-40bc-83ee-3a8c710d3c88",
-      "name": "Create payment plan - default",
+      "id": "93823255-685a-454b-8325-058a29898610",
+      "name": "Create payment plan - Payment Plan",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-plans",
         "method": "POST",
@@ -3539,7 +3644,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "11d750da-f9e9-40bc-83ee-3a8c710d3c88",
+      "uuid": "93823255-685a-454b-8325-058a29898610",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3552,8 +3657,8 @@
       }
     },
     {
-      "id": "a32b1eb4-d106-455f-a675-6ec96182872f",
-      "name": "Retrieve payment plan - default",
+      "id": "356ad051-69a8-46a6-90ce-5a5a3714d34f",
+      "name": "Retrieve payment plan - Payment Plan",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-plans/{paymentPlanId}",
         "method": "GET",
@@ -3573,7 +3678,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a32b1eb4-d106-455f-a675-6ec96182872f",
+      "uuid": "356ad051-69a8-46a6-90ce-5a5a3714d34f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3620,8 +3725,8 @@
       }
     },
     {
-      "id": "ec1895b9-6cc8-42f7-9fb9-bbe8449284a9",
-      "name": "Partially update payment plan - default",
+      "id": "bb0bc5b6-5094-4262-837d-4e91362e1eaf",
+      "name": "Partially update payment plan - Update payment plan",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/payment-plans/{paymentPlanId}",
         "method": "PATCH",
@@ -3641,7 +3746,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ec1895b9-6cc8-42f7-9fb9-bbe8449284a9",
+      "uuid": "bb0bc5b6-5094-4262-837d-4e91362e1eaf",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3654,8 +3759,8 @@
       }
     },
     {
-      "id": "ed547c27-6d2e-4935-a296-a7e720ee7350",
-      "name": "List subscriptions - default",
+      "id": "e7c0a64e-f618-4d81-8186-045f45b380d3",
+      "name": "List subscriptions - Paginated Subscription",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions",
         "method": "GET",
@@ -3704,7 +3809,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ed547c27-6d2e-4935-a296-a7e720ee7350",
+      "uuid": "e7c0a64e-f618-4d81-8186-045f45b380d3",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3717,8 +3822,8 @@
       }
     },
     {
-      "id": "759b0752-2eb0-4ed9-a8aa-e7cc1d32e139",
-      "name": "Create subscription - default",
+      "id": "b8384968-e860-4ab1-b2f5-606cbb03a208",
+      "name": "Create subscription - Subscription with surcharge",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions",
         "method": "POST",
@@ -3735,7 +3840,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "759b0752-2eb0-4ed9-a8aa-e7cc1d32e139",
+      "uuid": "b8384968-e860-4ab1-b2f5-606cbb03a208",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3748,8 +3853,8 @@
       }
     },
     {
-      "id": "9f3ca423-3261-4f6b-a16d-6ce054631f7f",
-      "name": "Retrieve subscription - default",
+      "id": "0ac2fceb-309a-425a-bba4-50ff008a0dc9",
+      "name": "Retrieve subscription - Subscription with surcharge",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions/{subscriptionId}",
         "method": "GET",
@@ -3769,7 +3874,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "9f3ca423-3261-4f6b-a16d-6ce054631f7f",
+      "uuid": "0ac2fceb-309a-425a-bba4-50ff008a0dc9",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3782,8 +3887,8 @@
       }
     },
     {
-      "id": "3c98efda-3abc-48d9-885b-8f1f42da3804",
-      "name": "Partially update subscription - default",
+      "id": "fc5aef40-2f17-480f-be81-1f327028e2f3",
+      "name": "Partially update subscription - Update subscription",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions/{subscriptionId}",
         "method": "PATCH",
@@ -3803,7 +3908,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "3c98efda-3abc-48d9-885b-8f1f42da3804",
+      "uuid": "fc5aef40-2f17-480f-be81-1f327028e2f3",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3816,8 +3921,8 @@
       }
     },
     {
-      "id": "761dc365-1763-4c0e-bae3-0ce4054d7770",
-      "name": "Deactivate subscription - default",
+      "id": "32e2f435-284e-498c-9d4d-a37a8194e88a",
+      "name": "Deactivate subscription - Deactivate subscription",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions/{subscriptionId}/deactivate",
         "method": "POST",
@@ -3837,7 +3942,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "761dc365-1763-4c0e-bae3-0ce4054d7770",
+      "uuid": "32e2f435-284e-498c-9d4d-a37a8194e88a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3850,8 +3955,8 @@
       }
     },
     {
-      "id": "cd06e85e-8095-478b-8396-d57276ddb902",
-      "name": "Re-activate subscription - default",
+      "id": "ac8944d3-ce77-4081-b73b-febacd33885f",
+      "name": "Re-activate subscription - Subscription with surcharge",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions/{subscriptionId}/reactivate",
         "method": "POST",
@@ -3871,7 +3976,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "cd06e85e-8095-478b-8396-d57276ddb902",
+      "uuid": "ac8944d3-ce77-4081-b73b-febacd33885f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3884,8 +3989,8 @@
       }
     },
     {
-      "id": "804ac1a2-00c4-49f8-b5bf-9a5e52585225",
-      "name": "Pay manual subscription - default",
+      "id": "b91fc56d-7427-4c61-b5b1-a5d381937d56",
+      "name": "Pay manual subscription - Subscription manual payment",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/subscriptions/{subscriptionId}/pay",
         "method": "POST",
@@ -3905,7 +4010,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "804ac1a2-00c4-49f8-b5bf-9a5e52585225",
+      "uuid": "b91fc56d-7427-4c61-b5b1-a5d381937d56",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3918,8 +4023,8 @@
       }
     },
     {
-      "id": "0e831a12-99bd-4933-8577-475f9016ecf6",
-      "name": "List batches - default",
+      "id": "b550db58-0dec-4394-9379-f1385e5575cd",
+      "name": "List batches - Paginated batches",
       "request": {
         "urlPathTemplate": "/batches",
         "method": "GET",
@@ -3948,7 +4053,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0e831a12-99bd-4933-8577-475f9016ecf6",
+      "uuid": "b550db58-0dec-4394-9379-f1385e5575cd",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3962,8 +4067,8 @@
       "postServeActions": []
     },
     {
-      "id": "39c926d2-341f-4c64-bddd-a4aedd63125d",
-      "name": "Retrieve batch - default",
+      "id": "35f6648c-14c7-4890-891a-4093f4f72d42",
+      "name": "Retrieve batch - Retrieved batch",
       "request": {
         "urlPathTemplate": "/batches/{batchId}",
         "method": "GET",
@@ -3980,7 +4085,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "39c926d2-341f-4c64-bddd-a4aedd63125d",
+      "uuid": "35f6648c-14c7-4890-891a-4093f4f72d42",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3993,8 +4098,8 @@
       }
     },
     {
-      "id": "54087920-3fb4-4ca0-abec-c7be8d37d670",
-      "name": "List transactions - default",
+      "id": "1b8f2b1a-9633-4346-b4a5-a664a8ec73bf",
+      "name": "List transactions - Paginated transactions",
       "request": {
         "urlPathTemplate": "/transactions",
         "method": "GET",
@@ -4029,7 +4134,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "54087920-3fb4-4ca0-abec-c7be8d37d670",
+      "uuid": "1b8f2b1a-9633-4346-b4a5-a664a8ec73bf",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4043,8 +4148,8 @@
       "postServeActions": []
     },
     {
-      "id": "99953058-fa7e-4168-bc22-103a65cb494f",
-      "name": "Retrieve transaction - default",
+      "id": "0cb8bb47-511d-4669-8e5b-cb5fec2b599a",
+      "name": "Retrieve transaction - Retrieve transaction",
       "request": {
         "urlPathTemplate": "/transactions/{transactionId}",
         "method": "GET",
@@ -4061,7 +4166,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "99953058-fa7e-4168-bc22-103a65cb494f",
+      "uuid": "0cb8bb47-511d-4669-8e5b-cb5fec2b599a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4074,8 +4179,8 @@
       }
     },
     {
-      "id": "b036ad58-98dd-4e90-8260-c0139a1b8e16",
-      "name": "List authorizations - default",
+      "id": "37a8aac5-a645-477e-8b2b-497ae2ab2560",
+      "name": "List authorizations - Paginated authorizations",
       "request": {
         "urlPathTemplate": "/authorizations",
         "method": "GET",
@@ -4107,7 +4212,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b036ad58-98dd-4e90-8260-c0139a1b8e16",
+      "uuid": "37a8aac5-a645-477e-8b2b-497ae2ab2560",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4121,8 +4226,8 @@
       "postServeActions": []
     },
     {
-      "id": "766fa591-c137-456a-bb1f-a0700b1fc668",
-      "name": "Retrieve authorization - default",
+      "id": "61d292b1-2808-4263-9687-f568b6bac0ad",
+      "name": "Retrieve authorization - Retrieve authorization",
       "request": {
         "urlPathTemplate": "/authorizations/{authorizationId}",
         "method": "GET",
@@ -4139,7 +4244,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "766fa591-c137-456a-bb1f-a0700b1fc668",
+      "uuid": "61d292b1-2808-4263-9687-f568b6bac0ad",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4152,8 +4257,8 @@
       }
     },
     {
-      "id": "a1e1724a-2da7-4540-b1be-6a36c70c9a13",
-      "name": "List disputes - default",
+      "id": "14c170c8-157d-4abc-8693-b031b3b18093",
+      "name": "List disputes - Paginated disputes",
       "request": {
         "urlPathTemplate": "/disputes",
         "method": "GET",
@@ -4182,7 +4287,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "a1e1724a-2da7-4540-b1be-6a36c70c9a13",
+      "uuid": "14c170c8-157d-4abc-8693-b031b3b18093",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4227,8 +4332,8 @@
       }
     },
     {
-      "id": "c3ace1f9-1214-4f7c-a85d-4ef4d67f0ae0",
-      "name": "List ACH deposits - default",
+      "id": "908106ff-cc32-4551-8cce-172e0f6ffb8a",
+      "name": "List ACH deposits - Paginated ACH deposits",
       "request": {
         "urlPathTemplate": "/ach-deposits",
         "method": "GET",
@@ -4257,7 +4362,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c3ace1f9-1214-4f7c-a85d-4ef4d67f0ae0",
+      "uuid": "908106ff-cc32-4551-8cce-172e0f6ffb8a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4271,8 +4376,8 @@
       "postServeActions": []
     },
     {
-      "id": "e55b3733-be46-4a2b-b1e4-7e67b9a872a8",
-      "name": "Retrieve ACH deposit - default",
+      "id": "b2be114f-027a-462c-b610-a3dcf6e4d494",
+      "name": "Retrieve ACH deposit - Retrieve ACH deposit",
       "request": {
         "urlPathTemplate": "/ach-deposits/{achDepositId}",
         "method": "GET",
@@ -4289,7 +4394,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "e55b3733-be46-4a2b-b1e4-7e67b9a872a8",
+      "uuid": "b2be114f-027a-462c-b610-a3dcf6e4d494",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4302,8 +4407,8 @@
       }
     },
     {
-      "id": "ac05528b-c25b-4653-84c2-08e2ec364051",
-      "name": "List ACH deposit fees - default",
+      "id": "26a38967-6e49-4d47-b7ea-17089df7989f",
+      "name": "List ACH deposit fees - Paginated ACH deposit fees",
       "request": {
         "urlPathTemplate": "/ach-deposit-fees",
         "method": "GET",
@@ -4335,7 +4440,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ac05528b-c25b-4653-84c2-08e2ec364051",
+      "uuid": "26a38967-6e49-4d47-b7ea-17089df7989f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4349,8 +4454,8 @@
       "postServeActions": []
     },
     {
-      "id": "c2fc55dd-1b01-450f-83a6-9c29fbc73bd3",
-      "name": "List secure tokens - default",
+      "id": "c89d7edc-a075-416d-96ec-a495de1d1a6f",
+      "name": "List secure tokens - Paginated Secure Token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/secure-tokens",
         "method": "GET",
@@ -4399,7 +4504,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "c2fc55dd-1b01-450f-83a6-9c29fbc73bd3",
+      "uuid": "c89d7edc-a075-416d-96ec-a495de1d1a6f",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4412,8 +4517,8 @@
       }
     },
     {
-      "id": "79d7750d-fc1f-41cc-b5c4-4efe395d9802",
-      "name": "Create secure token - default",
+      "id": "f112f10c-6f55-4092-aa7e-2adea916649e",
+      "name": "Create secure token - Secure Token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/secure-tokens",
         "method": "POST",
@@ -4430,7 +4535,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "79d7750d-fc1f-41cc-b5c4-4efe395d9802",
+      "uuid": "f112f10c-6f55-4092-aa7e-2adea916649e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4443,8 +4548,8 @@
       }
     },
     {
-      "id": "0fee60e9-5fcd-4cfc-990e-993039a5021d",
-      "name": "Retrieve secure token - default",
+      "id": "f447ca02-6f58-4e4d-8825-d1a23a43b9dd",
+      "name": "Retrieve secure token - Secure Token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/secure-tokens/{secureTokenId}",
         "method": "GET",
@@ -4464,7 +4569,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0fee60e9-5fcd-4cfc-990e-993039a5021d",
+      "uuid": "f447ca02-6f58-4e4d-8825-d1a23a43b9dd",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4511,8 +4616,8 @@
       }
     },
     {
-      "id": "ccc76dd1-9f21-4cc0-a33b-2026e556f620",
-      "name": "Partially update secure token - default",
+      "id": "a32b45a5-9d3f-4960-b9bb-6db33285e797",
+      "name": "Partially update secure token - Update secure token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/secure-tokens/{secureTokenId}",
         "method": "PATCH",
@@ -4532,7 +4637,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "ccc76dd1-9f21-4cc0-a33b-2026e556f620",
+      "uuid": "a32b45a5-9d3f-4960-b9bb-6db33285e797",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4545,8 +4650,8 @@
       }
     },
     {
-      "id": "677f591b-53b6-49f5-880c-9cd41647409c",
-      "name": "Update account details - default",
+      "id": "fe29cc09-e796-452e-b812-e744d0439e0a",
+      "name": "Update account details - Secure Token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/secure-tokens/{secureTokenId}/update-account",
         "method": "POST",
@@ -4566,7 +4671,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "677f591b-53b6-49f5-880c-9cd41647409c",
+      "uuid": "fe29cc09-e796-452e-b812-e744d0439e0a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4579,8 +4684,8 @@
       }
     },
     {
-      "id": "00a62e3d-ce9a-4f8e-9e92-0d0c4f45baaf",
-      "name": "Create single use token - default",
+      "id": "2fe2e842-fb86-4a03-b8e1-bb29fd53781a",
+      "name": "Create single use token - Create single-use token",
       "request": {
         "urlPathTemplate": "/processing-terminals/{processingTerminalId}/single-use-tokens",
         "method": "POST",
@@ -4597,7 +4702,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "00a62e3d-ce9a-4f8e-9e92-0d0c4f45baaf",
+      "uuid": "2fe2e842-fb86-4a03-b8e1-bb29fd53781a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4611,6 +4716,6 @@
     }
   ],
   "meta": {
-    "total": 134
+    "total": 135
   }
 }

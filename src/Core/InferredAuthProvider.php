@@ -5,6 +5,7 @@ namespace Payroc\Core;
 use Payroc\Auth\AuthClient;
 use DateTime;
 use Payroc\Auth\Requests\RetrieveTokenAuthRequest;
+use Payroc\Exceptions\PayrocException;
 
 /**
  * The InferredAuthProvider retrieves an access token from the configured token endpoint.
@@ -92,6 +93,10 @@ class InferredAuthProvider
         $request = new RetrieveTokenAuthRequest($values);
 
         $tokenResponse = $this->authClient->retrieveToken($request);
+
+        if ($tokenResponse === null) {
+            throw new PayrocException(message: "Expected a token response, but received an empty response.");
+        }
 
         $this->accessToken = $tokenResponse->accessToken;
         $this->expiresAt = $this->getExpiresAt($tokenResponse->expiresIn, $this->BUFFER_IN_MINUTES);

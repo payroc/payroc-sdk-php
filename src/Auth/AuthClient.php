@@ -60,11 +60,11 @@ class AuthClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return GetTokenResponse
+     * @return ?GetTokenResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveToken(RetrieveTokenAuthRequest $request, ?array $options = null): GetTokenResponse
+    public function retrieveToken(RetrieveTokenAuthRequest $request, ?array $options = null): ?GetTokenResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -82,6 +82,9 @@ class AuthClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return GetTokenResponse::fromJson($json);
             }
         } catch (JsonException $e) {

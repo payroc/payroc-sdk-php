@@ -121,11 +121,11 @@ class PaymentLinksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return CreatePaymentLinksResponse
+     * @return ?CreatePaymentLinksResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, CreatePaymentLinksRequest $request, ?array $options = null): CreatePaymentLinksResponse
+    public function create(string $processingTerminalId, CreatePaymentLinksRequest $request, ?array $options = null): ?CreatePaymentLinksResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -144,6 +144,9 @@ class PaymentLinksClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return CreatePaymentLinksResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -180,11 +183,11 @@ class PaymentLinksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievePaymentLinksResponse
+     * @return ?RetrievePaymentLinksResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $paymentLinkId, ?array $options = null): RetrievePaymentLinksResponse
+    public function retrieve(string $paymentLinkId, ?array $options = null): ?RetrievePaymentLinksResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -199,6 +202,9 @@ class PaymentLinksClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievePaymentLinksResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -245,11 +251,11 @@ class PaymentLinksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PartiallyUpdatePaymentLinksResponse
+     * @return ?PartiallyUpdatePaymentLinksResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $paymentLinkId, PartiallyUpdatePaymentLinksRequest $request, ?array $options = null): PartiallyUpdatePaymentLinksResponse
+    public function partiallyUpdate(string $paymentLinkId, PartiallyUpdatePaymentLinksRequest $request, ?array $options = null): ?PartiallyUpdatePaymentLinksResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -268,6 +274,9 @@ class PaymentLinksClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PartiallyUpdatePaymentLinksResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -299,11 +308,11 @@ class PaymentLinksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return DeactivatePaymentLinksResponse
+     * @return ?DeactivatePaymentLinksResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function deactivate(string $paymentLinkId, ?array $options = null): DeactivatePaymentLinksResponse
+    public function deactivate(string $paymentLinkId, ?array $options = null): ?DeactivatePaymentLinksResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -318,6 +327,9 @@ class PaymentLinksClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return DeactivatePaymentLinksResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -357,11 +369,11 @@ class PaymentLinksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentLinkPaginatedList
+     * @return ?PaymentLinkPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(string $processingTerminalId, ListPaymentLinksRequest $request = new ListPaymentLinksRequest(), ?array $options = null): PaymentLinkPaginatedList
+    private function _list(string $processingTerminalId, ListPaymentLinksRequest $request = new ListPaymentLinksRequest(), ?array $options = null): ?PaymentLinkPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -411,6 +423,9 @@ class PaymentLinksClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentLinkPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -103,11 +103,11 @@ class SharingEventsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentLinkEmailShareEvent
+     * @return ?PaymentLinkEmailShareEvent
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function share(string $paymentLinkId, ShareSharingEventsRequest $request, ?array $options = null): PaymentLinkEmailShareEvent
+    public function share(string $paymentLinkId, ShareSharingEventsRequest $request, ?array $options = null): ?PaymentLinkEmailShareEvent
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -126,6 +126,9 @@ class SharingEventsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentLinkEmailShareEvent::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -162,11 +165,11 @@ class SharingEventsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SharingEventPaginatedList
+     * @return ?SharingEventPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(string $paymentLinkId, ListSharingEventsRequest $request = new ListSharingEventsRequest(), ?array $options = null): SharingEventPaginatedList
+    private function _list(string $paymentLinkId, ListSharingEventsRequest $request = new ListSharingEventsRequest(), ?array $options = null): ?SharingEventPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -198,6 +201,9 @@ class SharingEventsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SharingEventPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

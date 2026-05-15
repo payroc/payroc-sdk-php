@@ -128,11 +128,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Payment
+     * @return ?Payment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(PaymentRequest $request, ?array $options = null): Payment
+    public function create(PaymentRequest $request, ?array $options = null): ?Payment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -151,6 +151,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Payment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -189,11 +192,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievedPayment
+     * @return ?RetrievedPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $paymentId, ?array $options = null): RetrievedPayment
+    public function retrieve(string $paymentId, ?array $options = null): ?RetrievedPayment
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -208,6 +211,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievedPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -246,11 +252,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Payment
+     * @return ?Payment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function adjust(string $paymentId, PaymentAdjustment $request, ?array $options = null): Payment
+    public function adjust(string $paymentId, PaymentAdjustment $request, ?array $options = null): ?Payment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -269,6 +275,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Payment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -308,11 +317,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Payment
+     * @return ?Payment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function capture(string $paymentId, PaymentCapture $request, ?array $options = null): Payment
+    public function capture(string $paymentId, PaymentCapture $request, ?array $options = null): ?Payment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -331,6 +340,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Payment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -369,11 +381,11 @@ class PaymentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentPaginatedListForRead
+     * @return ?PaymentPaginatedListForRead
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListPaymentsRequest $request = new ListPaymentsRequest(), ?array $options = null): PaymentPaginatedListForRead
+    private function _list(ListPaymentsRequest $request = new ListPaymentsRequest(), ?array $options = null): ?PaymentPaginatedListForRead
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -444,6 +456,9 @@ class PaymentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentPaginatedListForRead::fromJson($json);
             }
         } catch (JsonException $e) {

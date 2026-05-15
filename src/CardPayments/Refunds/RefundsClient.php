@@ -77,11 +77,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Payment
+     * @return ?Payment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function reverse(string $paymentId, PaymentReversal $request, ?array $options = null): Payment
+    public function reverse(string $paymentId, PaymentReversal $request, ?array $options = null): ?Payment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -100,6 +100,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Payment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -137,11 +140,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Payment
+     * @return ?Payment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createReferencedRefund(string $paymentId, ReferencedRefund $request, ?array $options = null): Payment
+    public function createReferencedRefund(string $paymentId, ReferencedRefund $request, ?array $options = null): ?Payment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -160,6 +163,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Payment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -224,11 +230,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievedRefund
+     * @return ?RetrievedRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createUnreferencedRefund(UnreferencedRefund $request, ?array $options = null): RetrievedRefund
+    public function createUnreferencedRefund(UnreferencedRefund $request, ?array $options = null): ?RetrievedRefund
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -247,6 +253,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievedRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -283,11 +292,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievedRefund
+     * @return ?RetrievedRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $refundId, ?array $options = null): RetrievedRefund
+    public function retrieve(string $refundId, ?array $options = null): ?RetrievedRefund
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -302,6 +311,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievedRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -343,11 +355,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievedRefund
+     * @return ?RetrievedRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function adjust(string $refundId, RefundAdjustment $request, ?array $options = null): RetrievedRefund
+    public function adjust(string $refundId, RefundAdjustment $request, ?array $options = null): ?RetrievedRefund
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -366,6 +378,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievedRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -398,11 +413,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrievedRefund
+     * @return ?RetrievedRefund
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function reverseRefund(string $refundId, ReverseRefundRefundsRequest $request, ?array $options = null): RetrievedRefund
+    public function reverseRefund(string $refundId, ReverseRefundRefundsRequest $request, ?array $options = null): ?RetrievedRefund
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -420,6 +435,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrievedRefund::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -455,11 +473,11 @@ class RefundsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RefundPaginatedList
+     * @return ?RefundPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListRefundsRequest $request = new ListRefundsRequest(), ?array $options = null): RefundPaginatedList
+    private function _list(ListRefundsRequest $request = new ListRefundsRequest(), ?array $options = null): ?RefundPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -521,6 +539,9 @@ class RefundsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RefundPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

@@ -107,11 +107,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent52
+     * @return ?PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreatePricingIntentsRequest $request, ?array $options = null): PricingIntent52
+    public function create(CreatePricingIntentsRequest $request, ?array $options = null): ?PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -130,6 +130,9 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -164,11 +167,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent52
+     * @return ?PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $pricingIntentId, ?array $options = null): PricingIntent52
+    public function retrieve(string $pricingIntentId, ?array $options = null): ?PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -183,6 +186,9 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -319,11 +325,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PricingIntent52
+     * @return ?PricingIntent52
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $pricingIntentId, PartiallyUpdatePricingIntentsRequest $request, ?array $options = null): PricingIntent52
+    public function partiallyUpdate(string $pricingIntentId, PartiallyUpdatePricingIntentsRequest $request, ?array $options = null): ?PricingIntent52
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -342,6 +348,9 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PricingIntent52::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -376,11 +385,11 @@ class PricingIntentsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedPricingIntent
+     * @return ?PaginatedPricingIntent
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListPricingIntentsRequest $request = new ListPricingIntentsRequest(), ?array $options = null): PaginatedPricingIntent
+    private function _list(ListPricingIntentsRequest $request = new ListPricingIntentsRequest(), ?array $options = null): ?PaginatedPricingIntent
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -406,6 +415,9 @@ class PricingIntentsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedPricingIntent::fromJson($json);
             }
         } catch (JsonException $e) {

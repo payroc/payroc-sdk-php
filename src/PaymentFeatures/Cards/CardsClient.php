@@ -70,11 +70,11 @@ class CardsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return CardVerificationResult
+     * @return ?CardVerificationResult
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function verifyCard(CardVerificationRequest $request, ?array $options = null): CardVerificationResult
+    public function verifyCard(CardVerificationRequest $request, ?array $options = null): ?CardVerificationResult
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -93,6 +93,9 @@ class CardsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return CardVerificationResult::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -120,11 +123,11 @@ class CardsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Balance
+     * @return ?Balance
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function viewEbtBalance(BalanceInquiry $request, ?array $options = null): Balance
+    public function viewEbtBalance(BalanceInquiry $request, ?array $options = null): ?Balance
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -140,6 +143,9 @@ class CardsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Balance::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -171,11 +177,11 @@ class CardsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return CardInfo
+     * @return ?CardInfo
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function lookupBin(BinLookup $request, ?array $options = null): CardInfo
+    public function lookupBin(BinLookup $request, ?array $options = null): ?CardInfo
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -191,6 +197,9 @@ class CardsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return CardInfo::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -231,11 +240,11 @@ class CardsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return FxRate
+     * @return ?FxRate
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveFxRates(FxRateInquiry $request, ?array $options = null): FxRate
+    public function retrieveFxRates(FxRateInquiry $request, ?array $options = null): ?FxRate
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -251,6 +260,9 @@ class CardsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return FxRate::fromJson($json);
             }
         } catch (JsonException $e) {

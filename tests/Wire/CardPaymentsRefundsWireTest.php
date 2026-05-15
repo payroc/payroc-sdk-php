@@ -8,6 +8,7 @@ use Payroc\CardPayments\Refunds\Requests\PaymentReversal;
 use Payroc\CardPayments\Refunds\Requests\ReferencedRefund;
 use Payroc\CardPayments\Refunds\Requests\ListRefundsRequest;
 use Payroc\CardPayments\Refunds\Types\ListRefundsRequestTender;
+use Payroc\CardPayments\Refunds\Types\ListRefundsRequestStatusItem;
 use DateTime;
 use Payroc\CardPayments\Refunds\Types\ListRefundsRequestSettlementState;
 use Payroc\CardPayments\Refunds\Requests\UnreferencedRefund;
@@ -98,6 +99,11 @@ class CardPaymentsRefundsWireTest extends WireMockTestCase
                 'first6' => '453985',
                 'last4' => '7062',
                 'tender' => ListRefundsRequestTender::Ebt->value,
+                'status' => [
+                    ListRefundsRequestStatusItem::Accepted->value,
+                    ListRefundsRequestStatusItem::Ready->value,
+                    ListRefundsRequestStatusItem::Complete->value,
+                ],
                 'dateFrom' => new DateTime('2024-07-01T15:30:00Z'),
                 'dateTo' => new DateTime('2024-07-03T15:30:00Z'),
                 'settlementState' => ListRefundsRequestSettlementState::Settled->value,
@@ -119,7 +125,7 @@ class CardPaymentsRefundsWireTest extends WireMockTestCase
             $testId,
             "GET",
             "/refunds",
-            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'operator' => 'Jane', 'cardholderName' => 'Sarah%20Hazel%20Hopper', 'first6' => '453985', 'last4' => '7062', 'tender' => 'ebt', 'dateFrom' => '2024-07-01T15:30:00Z', 'dateTo' => '2024-07-03T15:30:00Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-02', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
+            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'operator' => 'Jane', 'cardholderName' => 'Sarah%20Hazel%20Hopper', 'first6' => '453985', 'last4' => '7062', 'tender' => 'ebt', 'status' => ['accepted', 'ready', 'complete'], 'dateFrom' => '2024-07-01T15:30:00Z', 'dateTo' => '2024-07-03T15:30:00Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-02', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
             1
         );
     }

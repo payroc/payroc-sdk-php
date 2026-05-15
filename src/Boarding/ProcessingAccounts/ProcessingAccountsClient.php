@@ -91,11 +91,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ProcessingAccount
+     * @return ?ProcessingAccount
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $processingAccountId, ?array $options = null): ProcessingAccount
+    public function retrieve(string $processingAccountId, ?array $options = null): ?ProcessingAccount
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -110,6 +110,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ProcessingAccount::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -143,11 +146,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return array<FundingAccount>
+     * @return ?array<FundingAccount>
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listProcessingAccountFundingAccounts(string $processingAccountId, ?array $options = null): array
+    public function listProcessingAccountFundingAccounts(string $processingAccountId, ?array $options = null): ?array
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -162,6 +165,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeArray($json, [FundingAccount::class]); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -199,11 +205,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedContacts
+     * @return ?PaginatedContacts
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listContacts(string $processingAccountId, ListContactsProcessingAccountsRequest $request = new ListContactsProcessingAccountsRequest(), ?array $options = null): PaginatedContacts
+    public function listContacts(string $processingAccountId, ListContactsProcessingAccountsRequest $request = new ListContactsProcessingAccountsRequest(), ?array $options = null): ?PaginatedContacts
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -229,6 +235,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedContacts::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -268,11 +277,11 @@ class ProcessingAccountsClient
      * @return (
      *    PricingAgreementUs40
      *   |PricingAgreementUs50
-     * )
+     * )|null
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function getProcessingAccountPricingAgreement(string $processingAccountId, ?array $options = null): PricingAgreementUs40|PricingAgreementUs50
+    public function getProcessingAccountPricingAgreement(string $processingAccountId, ?array $options = null): PricingAgreementUs40|PricingAgreementUs50|null
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -287,6 +296,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeUnion($json, new Union(PricingAgreementUs40::class, PricingAgreementUs50::class)); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -351,11 +363,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return CreateReminderProcessingAccountsResponse
+     * @return ?CreateReminderProcessingAccountsResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createReminder(string $processingAccountId, CreateReminderProcessingAccountsRequest $request, ?array $options = null): CreateReminderProcessingAccountsResponse
+    public function createReminder(string $processingAccountId, CreateReminderProcessingAccountsRequest $request, ?array $options = null): ?CreateReminderProcessingAccountsResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -374,6 +386,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return CreateReminderProcessingAccountsResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -415,11 +430,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return array<TerminalOrder>
+     * @return ?array<TerminalOrder>
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listTerminalOrders(string $processingAccountId, ListTerminalOrdersProcessingAccountsRequest $request = new ListTerminalOrdersProcessingAccountsRequest(), ?array $options = null): array
+    public function listTerminalOrders(string $processingAccountId, ListTerminalOrdersProcessingAccountsRequest $request = new ListTerminalOrdersProcessingAccountsRequest(), ?array $options = null): ?array
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -445,6 +460,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeArray($json, [TerminalOrder::class]); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -479,11 +497,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return TerminalOrder
+     * @return ?TerminalOrder
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createTerminalOrder(string $processingAccountId, CreateTerminalOrder $request, ?array $options = null): TerminalOrder
+    public function createTerminalOrder(string $processingAccountId, CreateTerminalOrder $request, ?array $options = null): ?TerminalOrder
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -502,6 +520,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return TerminalOrder::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -571,11 +592,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedOwners
+     * @return ?PaginatedOwners
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listOwners(string $processingAccountId, ListProcessingAccountOwnersRequest $request = new ListProcessingAccountOwnersRequest(), ?array $options = null): PaginatedOwners
+    private function _listOwners(string $processingAccountId, ListProcessingAccountOwnersRequest $request = new ListProcessingAccountOwnersRequest(), ?array $options = null): ?PaginatedOwners
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -601,6 +622,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedOwners::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -640,11 +664,11 @@ class ProcessingAccountsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedProcessingTerminals
+     * @return ?PaginatedProcessingTerminals
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _listProcessingTerminals(string $processingAccountId, ListProcessingTerminalsProcessingAccountsRequest $request = new ListProcessingTerminalsProcessingAccountsRequest(), ?array $options = null): PaginatedProcessingTerminals
+    private function _listProcessingTerminals(string $processingAccountId, ListProcessingTerminalsProcessingAccountsRequest $request = new ListProcessingTerminalsProcessingAccountsRequest(), ?array $options = null): ?PaginatedProcessingTerminals
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -670,6 +694,9 @@ class ProcessingAccountsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedProcessingTerminals::fromJson($json);
             }
         } catch (JsonException $e) {

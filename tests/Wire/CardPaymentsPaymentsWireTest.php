@@ -6,6 +6,9 @@ use Payroc\Tests\Wire\WireMockTestCase;
 use Payroc\PayrocClient;
 use Payroc\CardPayments\Payments\Requests\ListPaymentsRequest;
 use Payroc\CardPayments\Payments\Types\ListPaymentsRequestTender;
+use Payroc\CardPayments\Payments\Types\ListPaymentsRequestTipModeItem;
+use Payroc\CardPayments\Payments\Types\ListPaymentsRequestTypeItem;
+use Payroc\CardPayments\Payments\Types\ListPaymentsRequestStatusItem;
 use DateTime;
 use Payroc\CardPayments\Payments\Types\ListPaymentsRequestSettlementState;
 use Payroc\CardPayments\Payments\Requests\PaymentRequest;
@@ -51,6 +54,19 @@ class CardPaymentsPaymentsWireTest extends WireMockTestCase
                 'first6' => '453985',
                 'last4' => '7062',
                 'tender' => ListPaymentsRequestTender::Ebt->value,
+                'tipMode' => [
+                    ListPaymentsRequestTipModeItem::NoTip->value,
+                    ListPaymentsRequestTipModeItem::Prompted->value,
+                ],
+                'type' => [
+                    ListPaymentsRequestTypeItem::Sale->value,
+                    ListPaymentsRequestTypeItem::PreAuthorization->value,
+                ],
+                'status' => [
+                    ListPaymentsRequestStatusItem::Accepted->value,
+                    ListPaymentsRequestStatusItem::Ready->value,
+                    ListPaymentsRequestStatusItem::Complete->value,
+                ],
                 'dateFrom' => new DateTime('2024-07-01T15:30:00Z'),
                 'dateTo' => new DateTime('2024-07-03T15:30:00Z'),
                 'settlementState' => ListPaymentsRequestSettlementState::Settled->value,
@@ -73,7 +89,7 @@ class CardPaymentsPaymentsWireTest extends WireMockTestCase
             $testId,
             "GET",
             "/payments",
-            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'operator' => 'Jane', 'cardholderName' => 'Sarah%20Hazel%20Hopper', 'first6' => '453985', 'last4' => '7062', 'tender' => 'ebt', 'dateFrom' => '2024-07-01T15:30:00Z', 'dateTo' => '2024-07-03T15:30:00Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-02', 'paymentLinkId' => 'JZURRJBUPS', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
+            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'operator' => 'Jane', 'cardholderName' => 'Sarah%20Hazel%20Hopper', 'first6' => '453985', 'last4' => '7062', 'tender' => 'ebt', 'tipMode' => ['noTip', 'prompted'], 'type' => ['sale', 'preAuthorization'], 'status' => ['accepted', 'ready', 'complete'], 'dateFrom' => '2024-07-01T15:30:00Z', 'dateTo' => '2024-07-03T15:30:00Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-02', 'paymentLinkId' => 'JZURRJBUPS', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
             1
         );
     }

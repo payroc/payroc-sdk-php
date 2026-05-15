@@ -69,11 +69,11 @@ class OwnersClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Owner
+     * @return ?Owner
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $ownerId, ?array $options = null): Owner
+    public function retrieve(int $ownerId, ?array $options = null): ?Owner
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -88,6 +88,9 @@ class OwnersClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Owner::fromJson($json);
             }
         } catch (JsonException $e) {

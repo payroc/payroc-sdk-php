@@ -67,11 +67,11 @@ class RefundInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RefundInstruction
+     * @return ?RefundInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function submit(string $serialNumber, RefundInstructionRequest $request, ?array $options = null): RefundInstruction
+    public function submit(string $serialNumber, RefundInstructionRequest $request, ?array $options = null): ?RefundInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -90,6 +90,9 @@ class RefundInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RefundInstruction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -119,11 +122,11 @@ class RefundInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RefundInstruction
+     * @return ?RefundInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $refundInstructionId, ?array $options = null): RefundInstruction
+    public function retrieve(string $refundInstructionId, ?array $options = null): ?RefundInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -138,6 +141,9 @@ class RefundInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RefundInstruction::fromJson($json);
             }
         } catch (JsonException $e) {

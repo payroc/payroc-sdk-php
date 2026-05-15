@@ -65,11 +65,11 @@ class SignatureInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SignatureInstruction
+     * @return ?SignatureInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function submit(string $serialNumber, SignatureInstructionRequest $request, ?array $options = null): SignatureInstruction
+    public function submit(string $serialNumber, SignatureInstructionRequest $request, ?array $options = null): ?SignatureInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -88,6 +88,9 @@ class SignatureInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SignatureInstruction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -117,11 +120,11 @@ class SignatureInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SignatureInstruction
+     * @return ?SignatureInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $signatureInstructionId, ?array $options = null): SignatureInstruction
+    public function retrieve(string $signatureInstructionId, ?array $options = null): ?SignatureInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -136,6 +139,9 @@ class SignatureInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SignatureInstruction::fromJson($json);
             }
         } catch (JsonException $e) {

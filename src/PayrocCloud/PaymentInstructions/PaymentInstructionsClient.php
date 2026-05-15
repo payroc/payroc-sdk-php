@@ -67,11 +67,11 @@ class PaymentInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentInstruction
+     * @return ?PaymentInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function submit(string $serialNumber, PaymentInstructionRequest $request, ?array $options = null): PaymentInstruction
+    public function submit(string $serialNumber, PaymentInstructionRequest $request, ?array $options = null): ?PaymentInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -90,6 +90,9 @@ class PaymentInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentInstruction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -119,11 +122,11 @@ class PaymentInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentInstruction
+     * @return ?PaymentInstruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $paymentInstructionId, ?array $options = null): PaymentInstruction
+    public function retrieve(string $paymentInstructionId, ?array $options = null): ?PaymentInstruction
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -138,6 +141,9 @@ class PaymentInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentInstruction::fromJson($json);
             }
         } catch (JsonException $e) {

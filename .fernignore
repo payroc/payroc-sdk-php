@@ -12,3 +12,8 @@ tests/Integration/
 .previewignore
 SECURITY.md
 .github/CODEOWNERS
+CLAUDE.md
+**/CLAUDE.md
+
+# Prevent Fern from regenerating GitHub Actions workflows
+.github/workflows/**

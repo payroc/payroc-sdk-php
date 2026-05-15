@@ -73,11 +73,11 @@ class FundingActivityClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return RetrieveBalanceFundingActivityResponse
+     * @return ?RetrieveBalanceFundingActivityResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieveBalance(RetrieveBalanceFundingActivityRequest $request = new RetrieveBalanceFundingActivityRequest(), ?array $options = null): RetrieveBalanceFundingActivityResponse
+    public function retrieveBalance(RetrieveBalanceFundingActivityRequest $request = new RetrieveBalanceFundingActivityRequest(), ?array $options = null): ?RetrieveBalanceFundingActivityResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -106,6 +106,9 @@ class FundingActivityClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return RetrieveBalanceFundingActivityResponse::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -164,11 +167,11 @@ class FundingActivityClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListFundingActivityResponse
+     * @return ?ListFundingActivityResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListFundingActivityRequest $request, ?array $options = null): ListFundingActivityResponse
+    private function _list(ListFundingActivityRequest $request, ?array $options = null): ?ListFundingActivityResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -199,6 +202,9 @@ class FundingActivityClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListFundingActivityResponse::fromJson($json);
             }
         } catch (JsonException $e) {

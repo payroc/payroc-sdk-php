@@ -105,11 +105,11 @@ class FundingInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Instruction
+     * @return ?Instruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreateFundingInstructionsRequest $request, ?array $options = null): Instruction
+    public function create(CreateFundingInstructionsRequest $request, ?array $options = null): ?Instruction
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -128,6 +128,9 @@ class FundingInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Instruction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -161,11 +164,11 @@ class FundingInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Instruction
+     * @return ?Instruction
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $instructionId, ?array $options = null): Instruction
+    public function retrieve(int $instructionId, ?array $options = null): ?Instruction
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -180,6 +183,9 @@ class FundingInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Instruction::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -314,11 +320,11 @@ class FundingInstructionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ListFundingInstructionsResponse
+     * @return ?ListFundingInstructionsResponse
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListFundingInstructionsRequest $request, ?array $options = null): ListFundingInstructionsResponse
+    private function _list(ListFundingInstructionsRequest $request, ?array $options = null): ?ListFundingInstructionsResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -346,6 +352,9 @@ class FundingInstructionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return ListFundingInstructionsResponse::fromJson($json);
             }
         } catch (JsonException $e) {

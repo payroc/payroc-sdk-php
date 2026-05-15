@@ -120,11 +120,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Subscription
+     * @return ?Subscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, SubscriptionRequest $request, ?array $options = null): Subscription
+    public function create(string $processingTerminalId, SubscriptionRequest $request, ?array $options = null): ?Subscription
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -143,6 +143,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Subscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -183,11 +186,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Subscription
+     * @return ?Subscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $processingTerminalId, string $subscriptionId, ?array $options = null): Subscription
+    public function retrieve(string $processingTerminalId, string $subscriptionId, ?array $options = null): ?Subscription
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -202,6 +205,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Subscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -246,11 +252,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Subscription
+     * @return ?Subscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $processingTerminalId, string $subscriptionId, PartiallyUpdateSubscriptionsRequest $request, ?array $options = null): Subscription
+    public function partiallyUpdate(string $processingTerminalId, string $subscriptionId, PartiallyUpdateSubscriptionsRequest $request, ?array $options = null): ?Subscription
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -269,6 +275,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Subscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -303,11 +312,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Subscription
+     * @return ?Subscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function deactivate(string $processingTerminalId, string $subscriptionId, ?array $options = null): Subscription
+    public function deactivate(string $processingTerminalId, string $subscriptionId, ?array $options = null): ?Subscription
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -322,6 +331,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Subscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -356,11 +368,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Subscription
+     * @return ?Subscription
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function reactivate(string $processingTerminalId, string $subscriptionId, ?array $options = null): Subscription
+    public function reactivate(string $processingTerminalId, string $subscriptionId, ?array $options = null): ?Subscription
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -375,6 +387,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Subscription::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -410,11 +425,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SubscriptionPayment
+     * @return ?SubscriptionPayment
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function pay(string $processingTerminalId, string $subscriptionId, SubscriptionPaymentRequest $request, ?array $options = null): SubscriptionPayment
+    public function pay(string $processingTerminalId, string $subscriptionId, SubscriptionPaymentRequest $request, ?array $options = null): ?SubscriptionPayment
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -433,6 +448,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SubscriptionPayment::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -473,11 +491,11 @@ class SubscriptionsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return SubscriptionPaginatedList
+     * @return ?SubscriptionPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(string $processingTerminalId, ListSubscriptionsRequest $request = new ListSubscriptionsRequest(), ?array $options = null): SubscriptionPaginatedList
+    private function _list(string $processingTerminalId, ListSubscriptionsRequest $request = new ListSubscriptionsRequest(), ?array $options = null): ?SubscriptionPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -524,6 +542,9 @@ class SubscriptionsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return SubscriptionPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

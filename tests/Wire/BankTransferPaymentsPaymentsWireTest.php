@@ -5,6 +5,8 @@ namespace Payroc\Tests;
 use Payroc\Tests\Wire\WireMockTestCase;
 use Payroc\PayrocClient;
 use Payroc\BankTransferPayments\Payments\Requests\ListPaymentsRequest;
+use Payroc\BankTransferPayments\Payments\Types\ListPaymentsRequestTypeItem;
+use Payroc\BankTransferPayments\Payments\Types\ListPaymentsRequestStatusItem;
 use DateTime;
 use Payroc\BankTransferPayments\Payments\Types\ListPaymentsRequestSettlementState;
 use Payroc\BankTransferPayments\Payments\Requests\BankTransferPaymentRequest;
@@ -44,6 +46,12 @@ class BankTransferPaymentsPaymentsWireTest extends WireMockTestCase
                 'orderId' => 'OrderRef6543',
                 'nameOnAccount' => 'Sarah%20Hazel%20Hopper',
                 'last4' => '7890',
+                'type' => [
+                    ListPaymentsRequestTypeItem::Payment->value,
+                ],
+                'status' => [
+                    ListPaymentsRequestStatusItem::Ready->value,
+                ],
                 'dateFrom' => new DateTime('2024-07-01T00:00:00Z'),
                 'dateTo' => new DateTime('2024-07-31T23:59:59Z'),
                 'settlementState' => ListPaymentsRequestSettlementState::Settled->value,
@@ -66,7 +74,7 @@ class BankTransferPaymentsPaymentsWireTest extends WireMockTestCase
             $testId,
             "GET",
             "/bank-transfer-payments",
-            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'nameOnAccount' => 'Sarah%20Hazel%20Hopper', 'last4' => '7890', 'dateFrom' => '2024-07-01T00:00:00Z', 'dateTo' => '2024-07-31T23:59:59Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-15', 'paymentLinkId' => 'JZURRJBUPS', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
+            ['processingTerminalId' => '1234001', 'orderId' => 'OrderRef6543', 'nameOnAccount' => 'Sarah%20Hazel%20Hopper', 'last4' => '7890', 'type' => 'payment', 'status' => 'ready', 'dateFrom' => '2024-07-01T00:00:00Z', 'dateTo' => '2024-07-31T23:59:59Z', 'settlementState' => 'settled', 'settlementDate' => '2024-07-15', 'paymentLinkId' => 'JZURRJBUPS', 'before' => '2571', 'after' => '8516', 'limit' => '1'],
             1
         );
     }

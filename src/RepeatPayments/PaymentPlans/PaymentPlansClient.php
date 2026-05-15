@@ -113,11 +113,11 @@ class PaymentPlansClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentPlan
+     * @return ?PaymentPlan
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(string $processingTerminalId, CreatePaymentPlansRequest $request, ?array $options = null): PaymentPlan
+    public function create(string $processingTerminalId, CreatePaymentPlansRequest $request, ?array $options = null): ?PaymentPlan
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -136,6 +136,9 @@ class PaymentPlansClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentPlan::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -173,11 +176,11 @@ class PaymentPlansClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentPlan
+     * @return ?PaymentPlan
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(string $processingTerminalId, string $paymentPlanId, ?array $options = null): PaymentPlan
+    public function retrieve(string $processingTerminalId, string $paymentPlanId, ?array $options = null): ?PaymentPlan
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -192,6 +195,9 @@ class PaymentPlansClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentPlan::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -281,11 +287,11 @@ class PaymentPlansClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentPlan
+     * @return ?PaymentPlan
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function partiallyUpdate(string $processingTerminalId, string $paymentPlanId, PartiallyUpdatePaymentPlansRequest $request, ?array $options = null): PaymentPlan
+    public function partiallyUpdate(string $processingTerminalId, string $paymentPlanId, PartiallyUpdatePaymentPlansRequest $request, ?array $options = null): ?PaymentPlan
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -304,6 +310,9 @@ class PaymentPlansClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentPlan::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -341,11 +350,11 @@ class PaymentPlansClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaymentPlanPaginatedList
+     * @return ?PaymentPlanPaginatedList
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(string $processingTerminalId, ListPaymentPlansRequest $request = new ListPaymentPlansRequest(), ?array $options = null): PaymentPlanPaginatedList
+    private function _list(string $processingTerminalId, ListPaymentPlansRequest $request = new ListPaymentPlansRequest(), ?array $options = null): ?PaymentPlanPaginatedList
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -371,6 +380,9 @@ class PaymentPlansClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaymentPlanPaginatedList::fromJson($json);
             }
         } catch (JsonException $e) {

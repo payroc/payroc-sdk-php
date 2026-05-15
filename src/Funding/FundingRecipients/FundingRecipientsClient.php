@@ -108,11 +108,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return FundingRecipient
+     * @return ?FundingRecipient
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function create(CreateFundingRecipient $request, ?array $options = null): FundingRecipient
+    public function create(CreateFundingRecipient $request, ?array $options = null): ?FundingRecipient
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -131,6 +131,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return FundingRecipient::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -166,11 +169,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return FundingRecipient
+     * @return ?FundingRecipient
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function retrieve(int $recipientId, ?array $options = null): FundingRecipient
+    public function retrieve(int $recipientId, ?array $options = null): ?FundingRecipient
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -185,6 +188,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return FundingRecipient::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -316,11 +322,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return array<FundingAccount>
+     * @return ?array<FundingAccount>
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listAccounts(int $recipientId, ?array $options = null): array
+    public function listAccounts(int $recipientId, ?array $options = null): ?array
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -335,6 +341,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeArray($json, [FundingAccount::class]); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -372,11 +381,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return FundingAccount
+     * @return ?FundingAccount
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createAccount(int $recipientId, CreateAccountFundingRecipientsRequest $request, ?array $options = null): FundingAccount
+    public function createAccount(int $recipientId, CreateAccountFundingRecipientsRequest $request, ?array $options = null): ?FundingAccount
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -395,6 +404,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return FundingAccount::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -431,11 +443,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return array<Owner>
+     * @return ?array<Owner>
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function listOwners(int $recipientId, ?array $options = null): array
+    public function listOwners(int $recipientId, ?array $options = null): ?array
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -450,6 +462,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return JsonDecoder::decodeArray($json, [Owner::class]); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
@@ -488,11 +503,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return Owner
+     * @return ?Owner
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    public function createOwner(int $recipientId, CreateOwnerFundingRecipientsRequest $request, ?array $options = null): Owner
+    public function createOwner(int $recipientId, CreateOwnerFundingRecipientsRequest $request, ?array $options = null): ?Owner
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -511,6 +526,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return Owner::fromJson($json);
             }
         } catch (JsonException $e) {
@@ -545,11 +563,11 @@ class FundingRecipientsClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return PaginatedFundRecipients
+     * @return ?PaginatedFundRecipients
      * @throws PayrocException
      * @throws PayrocApiException
      */
-    private function _list(ListFundingRecipientsRequest $request = new ListFundingRecipientsRequest(), ?array $options = null): PaginatedFundRecipients
+    private function _list(ListFundingRecipientsRequest $request = new ListFundingRecipientsRequest(), ?array $options = null): ?PaginatedFundRecipients
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -575,6 +593,9 @@ class FundingRecipientsClient
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 400) {
                 $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
                 return PaginatedFundRecipients::fromJson($json);
             }
         } catch (JsonException $e) {
